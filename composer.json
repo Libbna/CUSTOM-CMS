@@ -1,0 +1,15 @@
+{
+    "name": "libbna/custom-cms",
+    "autoload": {
+        "psr-4": {
+            "Libbna\\CustomCms\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Libbna",
+            "email": "libbna260296@gmail.com"
+        }
+    ],
+    "require": {}
+}
