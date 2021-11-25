@@ -1,6 +1,6 @@
 <?php
 require "dbconfig.php";
-class Database{
+class Database{ 
     function db_connect(){
         $con = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
         if (!$con) {
