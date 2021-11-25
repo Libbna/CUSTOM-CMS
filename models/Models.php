@@ -1,17 +1,27 @@
 <?php
 require "dbconfig.php";
-class Database{ 
-    function db_connect(){
-        $con = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
-        if (!$con) {
-            die("Connection to database failed");
+class Database
+{
+    public $conn;
+    public $result;
+    public $sql;
+
+    public function __construct()
+    {
+        require 'dbconfig.php';
+
+        $this->conn = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
+        if (!$this->conn) {
+            echo "<h1>Datbase connection failed</h1>";
         }
     }
-}
-class Contact{
-    function fetchUserDetails($id){
-        $sql = "SELECT * FROM users WHERE id = '$id' ";
-        $result = mysqli_query($con, $sql);
-        return $row = mysqli_fetch_assoc($result);
+
+    public function fetchUserDetails()
+    {
+        $query = $this->conn->prepare("SELECT * FROM users");
+        $query->execute();
+        $res = $query->get_result();
+        $ans = $res->fetch_assoc();
+        return $ans;
     }
 }

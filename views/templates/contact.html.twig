@@ -1,1 +1,11 @@
-<p> Contact Page </p>
+<p>
+	Contact Page
+</p>
+<h2>{{ result }}</h2>
+
+<ul>
+	{% for key, value in result %}
+        <li>{{ key }}</li>
+		<li>{{ value }}</li>
+	{% endfor %}
+</ul>
