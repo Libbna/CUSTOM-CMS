@@ -4,13 +4,15 @@
     require_once('../controllers/Contact.php');
 
     
-    $path = $_SERVER['REQUEST_URI'];    
+    $url = $_SERVER['REQUEST_URI'];  
+    $org_path = explode('/', $url);
+    $path = $org_path[2];  
     switch ($path){
-        case "/custom_cms/home":
+        case "home":
             $object = new Home();
             $response = $object->getData($twig);
             break;
-        case "/custom_cms/contact":
+        case "contact":
             $object = new Contacts();
             $response = $object->fetchUser($twig);
             break;
