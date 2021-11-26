@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>MVC Model</title>
-</head>
-<body>
-    <h2>Home</h2>
-    <h3>{{  name }}</h3>
-    <ul>
-        {% for item in foo %}
-            <li>{{ item.name }}</li>
-        {% endfor %}
-    </ul>
 
-</body>
-</html>
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+	<h2>Home</h2>
+	<h3>{{  name }}</h3>
+	<ul>
+		{% for item in foo %}
+			<li>{{ item.name }}</li>
+		{% endfor %}
+	</ul>
+{% endblock %}

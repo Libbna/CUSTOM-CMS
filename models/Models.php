@@ -20,8 +20,8 @@ class Database
     {
         $query = $this->conn->prepare("SELECT * FROM users");
         $query->execute();
-        $res = $query->get_result();
-        $ans = $res->fetch_assoc();
+        $ans = $query->get_result();
+        // $ans = $res->fetch_assoc();
         return $ans;
     }
 }

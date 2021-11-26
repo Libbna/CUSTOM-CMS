@@ -1,11 +1,22 @@
-<p>
-	Contact Page
-</p>
-<h2>{{ result }}</h2>
+{% extends 'layout.html.twig' %}
 
-<ul>
-	{% for key, value in result %}
-        <li>{{ key }}</li>
-		<li>{{ value }}</li>
-	{% endfor %}
-</ul>
+{% block body %}
+	<h5 class="text-center contacts__heading">
+		Contacts
+	</h5>
+	<div class="info__details">
+		<ul
+			class="align-items-center">
+
+			{% for r in result %}
+				<div class="info__details-item">
+					<li class='text-white'>{{ r.name }}</li>
+					<li class='text-white'>{{ r.phone }}</li>
+				</div>
+			{% endfor %}
+
+		</ul>
+	</div>
+
+
+{% endblock %}
