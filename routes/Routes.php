@@ -5,14 +5,15 @@
 
     
     $url = $_SERVER['REQUEST_URI'];  
-    $org_path = explode('/', $url);
-    $path = $org_path[2];  
+    $path = explode('/', $url)[0];
+    // $path = $org_path[2];  
     switch ($path){
-        case "home":
+        case "/home":
             $object = new Home();
             $response = $object->getData($twig);
+            // $twig->render('contact.html.twig');
             break;
-        case "contact":
+        case "/contact":
             $object = new Contacts();
             $response = $object->fetchUser($twig);
             break;
@@ -20,4 +21,7 @@
             echo "Error 404";
     }
 
-    
+
+    // Route::set('home', function() {
+    //     echo "homepage";
+    // });
