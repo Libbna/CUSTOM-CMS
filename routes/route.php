@@ -1,6 +1,6 @@
 <?php 
     require_once('../twigtemplate.php');
-    require_once ('../controllers/Home.php');
+    require_once('../controllers/Home.php');
     require_once('../controllers/Contact.php');
 
     
