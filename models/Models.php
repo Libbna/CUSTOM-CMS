@@ -29,7 +29,6 @@ class Database
         $query = $this->conn->prepare("INSERT INTO users(name, phone) VALUES('$name', '$phone')");
         $query->execute();
         $ans = $query->get_result();
-        // $ans = $res->fetch_assoc();
         return $ans;
     }
 }
