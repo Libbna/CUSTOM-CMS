@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Libbna\CustomCms\Models;
 
 require "dbconfig.php";
 class Database

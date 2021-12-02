@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace Libbna\CustomCms\Controllers;
 
 // use App\Models\Database;
 

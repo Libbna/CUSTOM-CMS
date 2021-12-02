@@ -1,4 +1,5 @@
 <?php
+require 'vendor/autoload.php';
 
 // require_once __DIR__.'/bootstrap.php';
 
@@ -7,7 +8,6 @@ use App\Controllers\Home;
 
 require_once('./twigtemplate.php');
 
-require 'vendor/autoload.php';
 
 spl_autoload_register(function($className) {
   // $base_dir = __DIR__ . '/src/';
