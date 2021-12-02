@@ -1,12 +1,8 @@
 <?php
 
-// namespace App\Controllers;
-namespace Libbna\CustomCms\Controllers;
+namespace CustomCms\Controllers;
 
-use Libbna\CustomCms\Models\Database;
-// use App\Models\Database;
-
-
+use CustomCms\Models\Database;
 
 // require_once('Controller.php');
 // require_once('../models/Models.php');

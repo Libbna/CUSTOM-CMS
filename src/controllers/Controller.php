@@ -1,7 +1,7 @@
 <?php
 
 // namespace App\Controllers;
-namespace Libbna\CustomCms\Controllers;
+namespace CustomCms\Controllers;
 
 
 

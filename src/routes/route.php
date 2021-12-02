@@ -1,9 +1,9 @@
 <?php 
 
-    namespace Libbna\CustomCms\Routes;
+    namespace CustomCms\Routes;
 
-    use Libbna\CustomCms\Controllers\Home;
-    use Libbna\CustomCms\Controllers\Contacts;
+    use CustomCms\Controllers\Home;
+    use CustomCms\Controllers\Contacts;
 
     require_once('../twigtemplate.php');
     
