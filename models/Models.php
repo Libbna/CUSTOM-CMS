@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Models;
+
 require "dbconfig.php";
 class Database
 {

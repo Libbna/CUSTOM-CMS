@@ -1,6 +1,13 @@
 <?php
-require_once('Controller.php');
-require_once('../models/Models.php');
+
+namespace App\Controllers;
+
+use App\Models\Database;
+
+
+// require_once('Controller.php');
+// require_once('../models/Models.php');
+
 
 class Contacts extends Controller
 {

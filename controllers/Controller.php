@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+
+
 class Controller {
     // protected $db;
 
@@ -9,7 +13,8 @@ class Controller {
 
     //     $this->$db = new Database;
     // }
+    
     public static function CreateView() {
         echo "View Created";
-    }
+    }   
 }

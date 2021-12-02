@@ -1,9 +1,15 @@
 <?php 
-    require_once('../twigtemplate.php');
-    require_once('../controllers/Home.php');
-    require_once('../controllers/Contact.php');
 
+    namespace App\Routes;
+
+    use App\Controllers\Home;
+    use App\Controllers\Contacts;
+
+    require_once('../twigtemplate.php');
     
+    // require_once('../controllers/Home.php');
+    // require_once('../controllers/Contact.php');
+
     $url = $_SERVER['REQUEST_URI'];  
     $org_path = explode('/', $url);
     $path = $org_path[2];  

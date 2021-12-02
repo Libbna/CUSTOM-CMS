@@ -2,7 +2,8 @@
     "name": "libbna/custom-cms",
     "autoload": {
         "psr-4": {
-            "Libbna\\CustomCms\\": "src/"
+            "Libbna\\CustomCms\\": "src/",
+            "App\\": "app/"
         }
     },
     "authors": [

@@ -1,5 +1,11 @@
 <?php
-require_once('Controller.php');
+
+namespace App\Controllers;
+
+// use App\Models\Database;
+
+
+// require_once('Controller.php');
 
 class Home extends Controller
 {
