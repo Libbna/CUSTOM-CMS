@@ -12,6 +12,10 @@
             $object = new Home();
             $response = $object->getData($twig);
             break;
+        case "home?insert":
+            $object = new Contacts();
+            $object->insertUser($twig);
+            break;
         case "contact":
             $object = new Contacts();
             $response = $object->fetchUser($twig);
