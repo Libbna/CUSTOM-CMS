@@ -1,6 +1,9 @@
 <?php 
+    // namespace CustomCms\Routes;
 
-    namespace CustomCms\Routes;
+    echo "libbna";
+    die();
+    // require_once "vendor/autoload.php";
 
     use CustomCms\Controllers\Home;
     use CustomCms\Controllers\Contacts;
@@ -31,3 +34,5 @@
     }
 
     
+// $home = new Home();
+// $contact = new Contacts();

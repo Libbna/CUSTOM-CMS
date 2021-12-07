@@ -1,7 +1,16 @@
 RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ routes/route.php?path=$1 [NC,L,QSA]
 
+# RewriteCond %{ENV:REDIRECT_STATUS} ^$ prevents looping by checking an internal 
+# mod_rewrite variable REDIRECT_STATUS which is set to 200 after 
+# first successful internal redirect.
+
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ Routes/route.php?path=$1 [NC,L,QSA]
+# RewriteCond %{ENV:REDIRECT_STATUS} ^$
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.php?url=$1 [L]
 # RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
 
