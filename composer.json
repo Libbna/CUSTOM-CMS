@@ -12,6 +12,10 @@
         }
     ],
     "require": {
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "symfony/routing": "^5.4",
+        "symfony/http-foundation": "^5.4",
+        "symfony/yaml": "^5.4",
+        "symfony/config": "^5.4"
     }
 }

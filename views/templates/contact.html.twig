@@ -1,17 +1,16 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-	<h5 class="text-center contacts__heading">
+	<h5 class="text-center mt-4 mb-4 contacts__heading">
 		Contacts
 	</h5>
-	<div class="info__details">
-		<ul
-			class="align-items-center">
+	<div class="info__details mb-4">
+		<ul class="align-items-center list-group">
 
 			{% for r in result %}
-				<div class="info__details-item">
-					<li class='text-white'>{{ r.name }}</li>
-					<li class='text-white'>{{ r.phone }}</li>
+				<div class="dinfo__details-item d-flex flex-row mb-4 w-50">
+					<li class='text-black list-group-item list-group-item-dark w-100'>{{ r.name }}</li>
+					<li class='text-bloack list-group-item list-group-item-dark'>{{ r.phone }}</li>
 				</div>
 			{% endfor %}
 

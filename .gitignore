@@ -1,3 +1,4 @@
 /vendor
 routes/test.php
 dbconfig.php
+/test
