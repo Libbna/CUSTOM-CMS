@@ -1,6 +1,6 @@
 <?php
 
-namespace CustomCms\Models;
+namespace Cms\Models;
 
 require "dbconfig.php";
 class Database

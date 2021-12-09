@@ -1,11 +1,9 @@
 <?php
 
-namespace CustomCms\Controllers;
+namespace Cms\Controllers;
 
+class Home
 
-// require_once('Controller.php');
-
-class Home extends Controller
 {
     public function getData($twig)
     {

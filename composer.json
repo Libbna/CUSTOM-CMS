@@ -2,8 +2,9 @@
     "name": "libbna/custom-cms",
     "autoload": {
         "psr-4": {
-            "CustomCms\\": "src/"
+            "Cms\\": "src/"
         }
+        
     },
     "authors": [
         {

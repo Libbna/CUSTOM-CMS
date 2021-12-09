@@ -1,15 +1,13 @@
 <?php
 
-namespace CustomCms\Controllers;
+namespace Cms\Controllers;
 
-use CustomCms\Models\Database;
+use Cms\Models\Database;
 
-// require_once('Controller.php');
-// require_once('../models/Models.php');
+class Contact
 
-
-class Contacts extends Controller
 {
+   
     public function fetchUser($twig)
     {
         $contact = new Database();
@@ -34,4 +32,3 @@ class Contacts extends Controller
 
     }
 }
-

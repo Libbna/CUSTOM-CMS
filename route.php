@@ -1,18 +1,13 @@
-<?php 
-    // namespace CustomCms\Routes;
+<?php
 
-    echo "libbna";
-    die();
-    // require_once "vendor/autoload.php";
+use Cms\Controllers\Contact;
+use Cms\Controllers\Home;
 
-    use CustomCms\Controllers\Home;
-    use CustomCms\Controllers\Contacts;
+require_once("vendor/autoload.php");
+  
 
-    require_once('../twigtemplate.php');
-    
-    // require_once('../controllers/Home.php');
-    // require_once('../controllers/Contact.php');
-
+    require_once('./twigtemplate.php');
+ 
     $url = $_SERVER['REQUEST_URI'];  
     $org_path = explode('/', $url);
     $path = $org_path[2];  
@@ -22,11 +17,11 @@
             $response = $object->getData($twig);
             break;
         case "home?insert":
-            $object = new Contacts();
+            $object = new Contact();
             $object->insertUser($twig);
             break;
         case "contact":
-            $object = new Contacts();
+            $object = new Contact();
             $response = $object->fetchUser($twig);
             break;
         default:
@@ -34,5 +29,3 @@
     }
 
     
-// $home = new Home();
-// $contact = new Contacts();
