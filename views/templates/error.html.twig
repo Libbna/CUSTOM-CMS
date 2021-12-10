@@ -1,6 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Error in Loading file</h1>
-    <p>{{ message }}</p>
+	<h4 class="text-center mt-4">{{ message }}</h4>
+	<section class="d-flex justify-content-center">
+
+		<img class="col-7 mt-3" src="https://www.wpoven.com/blog/wp-content/uploads/2019/12/404-error-not-found.png" alt="">
+	</section>
+	<div class="home-link d-flex justify-content-center mt-3">
+
+		<a class="text-decoration-none" href="/custom_cms/home">Go to Home</a>
+	</div>
 {% endblock %}
