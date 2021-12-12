@@ -40,5 +40,5 @@ try {
 
     exit;
 } catch (ResourceNotFoundException $e) {
-    echo $e->getMessage();
+    echo $twig->render('error.html.twig', ['message' => $e->getMessage()]);
 }
