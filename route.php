@@ -2,30 +2,44 @@
 
 use Cms\Controllers\Contact;
 use Cms\Controllers\Home;
-
-require_once("vendor/autoload.php");
-  
-
-    require_once('./twigtemplate.php');
- 
-    $url = $_SERVER['REQUEST_URI'];  
-    $org_path = explode('/', $url);
-    $path = $org_path[2];  
-    switch ($path){
-        case "home":
-            $object = new Home();
-            $response = $object->getData($twig);
-            break;
-        case "home?insert":
-            $object = new Contact();
-            $object->insertUser($twig);
-            break;
-        case "contact":
-            $object = new Contact();
-            $response = $object->fetchUser($twig);
-            break;
-        default:
-            echo "Error 404";
-    }
-
     
+require_once 'vendor/autoload.php';
+require_once './twigtemplate.php';
+
+use Symfony\Component\Routing\Matcher\UrlMatcher;
+use Symfony\Component\Routing\RequestContext;
+use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Routing\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
+
+
+try {
+    $routes = new RouteCollection();
+    $context = new RequestContext();
+
+    $home_route = new Route("/custom_cms/home", ['controller' => "Home::getData"]);
+    $contact_route = new Route("/custom_cms/contact", array('controller' => "Contacts::fetchUser"));
+
+    $foo_placeholder_route = new Route(
+        '/custom_cms/foo/{id}',
+        array('controller' => 'Home::getData'),
+        array('id' => '[0-9]+')
+    );
+
+    $routes->add('home_route', $home_route);
+    $routes->add('contact_route', $contact_route);
+    $routes->add('foo_route', $foo_placeholder_route);
+
+    $context->fromRequest(Request::createFromGlobals());
+    $matcher = new UrlMatcher($routes, $context);
+    $parameters = $matcher->match($context->getPathInfo());
+
+    list($controllerClassName, $action) = explode('::', $parameters['controller']);
+    $controller = new $controllerClassName();
+    $controller->{$action}($twig);
+
+    exit;
+} catch (ResourceNotFoundException $e) {
+    echo $twig->render('error.html.twig', ['message' => $e->getMessage()]);
+}
