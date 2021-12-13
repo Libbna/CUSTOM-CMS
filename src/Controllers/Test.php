@@ -2,14 +2,15 @@
 
 namespace Cms\Controllers;
 
-class Home
+class Test {
+    public function hello() {
+        return "hello";
+    }
 
-{
-    public static function getData($twig)
+    public function getData($twig)
     {
         $data = "Dummy";
         echo $twig->render('home.html.twig', ['name' => $data]);
         return;
     }   
 }
-
