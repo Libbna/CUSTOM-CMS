@@ -12,16 +12,18 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
-
+$path = __DIR__;
+$org_path = explode('/var/www/html', $path);
+$main = explode('/', $org_path[1]);
 try {
     $routes = new RouteCollection();
     $context = new RequestContext();
 
-    $home_route = new Route("/custom_cms/home", ['controller' => "Home::getData"]);
-    $contact_route = new Route("/custom_cms/contact", array('controller' => "Contacts::fetchUser"));
+    $home_route = new Route($main[1]. '/home', ['controller' => "Home::getData"]);
+    $contact_route = new Route($main[1]. '/contact', array('controller' => "Contacts::fetchUser"));
 
     $foo_placeholder_route = new Route(
-        '/custom_cms/foo/{id}',
+        '/foo/{id}',
         array('controller' => 'Home::getData'),
         array('id' => '[0-9]+')
     );
