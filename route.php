@@ -4,6 +4,7 @@ require_once './twigtemplate.php';
 
 use Cms\Controllers\Contact;
 use Cms\Controllers\Home;
+use Cms\Controllers\Block;
 use Cms\Controllers\Test;
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
@@ -19,7 +20,8 @@ try {
     $context = new RequestContext();
     $home_route = new Route('/home', ['controller' => "Cms\Controllers\Home::getData"]);
     $contact_route = new Route('/contact', array('controller' => "Cms\Controllers\Contact::fetchUser"));
-    
+    $block_route = new Route('/block', ['controller' => "Cms\Controllers\Block::displayForm"]);
+
     $foo_placeholder_route = new Route(
         '/foo/{id}',
         array('controller' => 'Home::getData'),
@@ -29,6 +31,7 @@ try {
     $routes->add('home_route', $home_route);
     $routes->add('contact_route', $contact_route);
     $routes->add('foo_route', $foo_placeholder_route);
+    $routes->add('block_route', $block_route);
     
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
