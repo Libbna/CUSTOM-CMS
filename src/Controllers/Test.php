@@ -1,8 +1,12 @@
 <?php
-require_once('Controller.php');
 
-class Home extends Controller
-{
+namespace Cms\Controllers;
+
+class Test {
+    public function hello() {
+        return "hello";
+    }
+
     public function getData($twig)
     {
         $data = "Dummy";
@@ -10,4 +14,3 @@ class Home extends Controller
         return;
     }   
 }
-

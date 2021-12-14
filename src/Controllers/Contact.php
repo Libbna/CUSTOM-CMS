@@ -1,9 +1,13 @@
 <?php
-require_once('Controller.php');
-require_once('../models/Models.php');
 
-class Contacts extends Controller
+namespace Cms\Controllers;
+
+use Cms\Models\Database;
+
+class Contact
+
 {
+   
     public function fetchUser($twig)
     {
         $contact = new Database();

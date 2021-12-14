@@ -1,4 +1,7 @@
 <?php
+
+namespace Cms\Models;
+
 require "dbconfig.php";
 class Database
 {
@@ -21,7 +24,6 @@ class Database
         $query = $this->conn->prepare("SELECT * FROM users");
         $query->execute();
         $ans = $query->get_result();
-        // $ans = $res->fetch_assoc();
         return $ans;
     }
 

@@ -2,8 +2,9 @@
     "name": "libbna/custom-cms",
     "autoload": {
         "psr-4": {
-            "Libbna\\CustomCms\\": "src/"
+            "Cms\\": "src/"
         }
+        
     },
     "authors": [
         {
@@ -16,6 +17,7 @@
         "symfony/routing": "^5.4",
         "symfony/http-foundation": "^5.4",
         "symfony/yaml": "^5.4",
-        "symfony/config": "^5.4"
+        "symfony/config": "^5.4",
+        "symfony/class-loader": "^3.4"
     }
 }
