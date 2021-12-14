@@ -6,9 +6,6 @@ use Cms\Controllers\Contact;
 use Cms\Controllers\Home;
 use Cms\Controllers\Test;
 
-$a = new Test();
-
-
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
@@ -35,15 +32,11 @@ try {
     
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
-    // var_dump($context->getPathInfo());
-    // var_dump($context);
+   
     $parameters = $matcher->match($context->getPathInfo());
-    // die("hello");
 
     list($controllerClassName, $action) = explode('::', $parameters['controller']);
-    // die($a->hello());
     $controller = new $controllerClassName();
-    // $controller = new Test();
     $controller->{$action}($twig);
 
     exit;
