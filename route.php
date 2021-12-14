@@ -4,7 +4,7 @@ require_once './twigtemplate.php';
 
 use Cms\Controllers\Contact;
 use Cms\Controllers\Home;
-use Cms\Controllers\Block;
+use Cms\Controllers\CustomBlock;
 use Cms\Controllers\Test;
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
@@ -20,7 +20,7 @@ try {
     $context = new RequestContext();
     $home_route = new Route('/home', ['controller' => "Cms\Controllers\Home::getData"]);
     $contact_route = new Route('/contact', array('controller' => "Cms\Controllers\Contact::fetchUser"));
-    $block_route = new Route('/block', ['controller' => "Cms\Controllers\Block::displayForm"]);
+    $block_route = new Route('/block', ['controller' => "Cms\Controllers\CustomBlock::displayForm"]);
 
     $foo_placeholder_route = new Route(
         '/foo/{id}',
