@@ -5,7 +5,6 @@ require_once './twigtemplate.php';
 use Cms\Controllers\Contact;
 use Cms\Controllers\Home;
 use Cms\Controllers\CustomBlock;
-use Cms\Controllers\Test;
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
