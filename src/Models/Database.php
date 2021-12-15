@@ -18,7 +18,7 @@ class Database
             echo "<h1>Datbase connection failed</h1>";
         }
     }
-
+    
     public function fetchUserDetails()
     {
         $query = $this->conn->prepare("SELECT * FROM users");
@@ -33,4 +33,21 @@ class Database
         $ans = $query->get_result();
         return $ans;
     }
+
+    // query for inserting block 
+    public function insertBlockDetails($title, $desc) {
+        $query = $this->conn->prepare("INSERT INTO customBlock(block_title, block_desc) VALUES('$title', '$desc')");
+        $query->execute();
+        $result = $query->get_result();
+        return $result;
+    }
+    
+    // query for displaying block 
+    public function displayBlock() {
+        $query = $this->conn->prepare("SELECT * FROM customBlock");
+        $query->execute();
+        $result = $query->get_result();
+        return $result;
+    }
+
 }

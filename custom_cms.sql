@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 23, 2021 at 05:57 PM
+-- Generation Time: Dec 15, 2021 at 08:00 PM
 -- Server version: 8.0.27-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -25,6 +25,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customBlock`
+--
+
+CREATE TABLE `customBlock` (
+  `block_title` varchar(255) DEFAULT NULL,
+  `block_desc` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -40,7 +51,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `phone`) VALUES
 (1, 'Tony Stark', '1234567890'),
-(2, 'ABC', '0987654321');
+(2, 'ABC', '0987654321'),
+(3, 'Tia', '9846374625'),
+(4, 'sfdsd', '34324324');
 
 --
 -- Indexes for dumped tables
@@ -60,7 +73,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
