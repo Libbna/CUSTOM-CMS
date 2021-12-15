@@ -20,6 +20,7 @@ try {
     $home_route = new Route('/home', ['controller' => "Cms\Controllers\Home::getData"]);
     $contact_route = new Route('/contact', array('controller' => "Cms\Controllers\Contact::fetchUser"));
     $block_route = new Route('/block', ['controller' => "Cms\Controllers\CustomBlock::displayForm"]);
+    $block_insert_route = new Route('/block/insert', ['controller' => "Cms\Controllers\CustomBlock::insertCustomBlock"]);
 
     $foo_placeholder_route = new Route(
         '/foo/{id}',
@@ -31,6 +32,7 @@ try {
     $routes->add('contact_route', $contact_route);
     $routes->add('foo_route', $foo_placeholder_route);
     $routes->add('block_route', $block_route);
+    $routes->add('block_insert_route', $block_insert_route);
     
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);

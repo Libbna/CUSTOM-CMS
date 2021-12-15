@@ -4,11 +4,12 @@ namespace Cms\Controllers;
 class CustomBlock
 {
     public function displayForm($twig){
+
         echo $twig->render('block.html.twig');
         return;
     }
 
-    public function customBlockInfo($twig){
+    public function insertCustomBlock($twig){
 
         $block_title = $_POST['block-title'];
         $block_body = $_POST['block-description'];
@@ -18,7 +19,7 @@ class CustomBlock
             return;
         }
 
-        echo $twig->render('blockDisplay.html.twig');
+        echo $twig->render('home.html.twig');
         return;
     }
 }
