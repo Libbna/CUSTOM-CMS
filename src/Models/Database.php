@@ -36,7 +36,7 @@ class Database
     }
 
     // query for inserting block 
-    public function insertBlockDetails(){
+    public function insertBlockDetails($title, $desc){
         $query = $this->conn->prepare("INSERT INTO customBlock(block_title, block_desc) VALUES(?, ?)");
         $query->bind_param("ss", $title, $desc);
         $query->execute();

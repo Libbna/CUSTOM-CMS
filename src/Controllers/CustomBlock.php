@@ -1,6 +1,8 @@
 <?php
 namespace Cms\Controllers;
 
+use Cms\Models\Database;
+
 class CustomBlock
 {
     public function displayForm($twig){
@@ -19,6 +21,10 @@ class CustomBlock
             return;
         }
 
+        $newBlock = new Database();
+        $result = $newBlock->insertBlockDetails($block_title, $block_body);
+
+        echo var_dump($result);
         echo $twig->render('home.html.twig');
         return;
     }
