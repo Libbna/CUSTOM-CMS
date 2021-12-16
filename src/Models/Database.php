@@ -27,16 +27,18 @@ class Database
         return $ans;
     }
 
-    public function insertUserDetails($name, $phone){
-        $query = $this->conn->prepare("INSERT INTO users(name, phone) VALUES('$name', '$phone')");
+    public function insertUserDetails(){
+        $query = $this->conn->prepare("INSERT INTO users(name, phone) VALUES(?, ?)");
+        $query->bind_param("ss", $name, $phone);
         $query->execute();
         $ans = $query->get_result();
         return $ans;
     }
 
     // query for inserting block 
-    public function insertBlockDetails($title, $desc) {
-        $query = $this->conn->prepare("INSERT INTO customBlock(block_title, block_desc) VALUES('$title', '$desc')");
+    public function insertBlockDetails(){
+        $query = $this->conn->prepare("INSERT INTO customBlock(block_title, block_desc) VALUES(?, ?)");
+        $query->bind_param("ss", $title, $desc);
         $query->execute();
         $result = $query->get_result();
         return $result;
