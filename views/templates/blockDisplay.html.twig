@@ -1,5 +1,13 @@
 {% extends "layout.html.twig"%}
 
 {% block body %}
-<h4> Custom Block display page </h4>
+	<h4>
+		Custom Block display page
+	</h4>
+	{% for r in result %}
+		<div class="info__details-item">
+			<li class='text-white'>{{ r.block_title }}</li>
+			<li class='text-white'>{{ r.block_desc }}</li>
+		</div>
+	{% endfor %}
 {% endblock %}

@@ -48,8 +48,8 @@ class Database
     public function displayBlock() {
         $query = $this->conn->prepare("SELECT * FROM customBlock");
         $query->execute();
-        $result = $query->get_result();
-        return $result;
+        $ans = $query->get_result();
+        return $ans;
     }
 
 }

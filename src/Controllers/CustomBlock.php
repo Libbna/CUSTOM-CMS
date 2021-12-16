@@ -14,7 +14,7 @@ class CustomBlock
     public function insertCustomBlock($twig){
 
         $block_title = $_POST['block-title'];
-        $block_body = $_POST['block-description'];
+        $block_body = strip_tags($_POST['block-description']);
 
         if (!isset($block_title) and !isset($block_body)){
             echo $twig->render('error.html.twig');
@@ -24,8 +24,16 @@ class CustomBlock
         $newBlock = new Database();
         $result = $newBlock->insertBlockDetails($block_title, $block_body);
 
-        echo var_dump($result);
         echo $twig->render('home.html.twig');
+        return;
+    }
+
+    public function displayCustomBlock($twig){
+
+        $displayBlockList = new Database();
+        $result = $displayBlockList->displayBlock();
+
+        echo $twig->render('blockDisplay.html.twig', ['result' => $result]);
         return;
     }
 }
