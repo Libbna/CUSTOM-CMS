@@ -17,6 +17,8 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 try {
     $routes = new RouteCollection();
     $context = new RequestContext();
+
+    //creating routes
     $home_route = new Route('/home', ['controller' => "Cms\Controllers\Home::getData"]);
     $contact_route = new Route('/contact', array('controller' => "Cms\Controllers\Contact::fetchUser"));
 
@@ -32,6 +34,7 @@ try {
         array('id' => '[0-9]+')
     );
     
+    //adding route to RouteCollection
     $routes->add('home_route', $home_route);
     $routes->add('contact_route', $contact_route);
     $routes->add('foo_route', $foo_placeholder_route);
@@ -39,11 +42,12 @@ try {
     $routes->add('block_info_route', $block_info_route);
     $routes->add('block_insert_route', $block_insert_route);
     
+    //matching routes with the url
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
-   
     $parameters = $matcher->match($context->getPathInfo());
 
+    //calling the controller
     list($controllerClassName, $action) = explode('::', $parameters['controller']);
     $controller = new $controllerClassName();
     $controller->{$action}($twig);

@@ -9,6 +9,7 @@ class Database
     public $result;
     public $sql;
 
+    //establishing database connection
     public function __construct()
     {
         require 'dbconfig.php';
@@ -19,6 +20,7 @@ class Database
         }
     }
     
+    //fetch user data from the database
     public function fetchUserDetails()
     {
         $query = $this->conn->prepare("SELECT * FROM users");
@@ -27,6 +29,7 @@ class Database
         return $ans;
     }
 
+    //insert user data into database
     public function insertUserDetails(){
         $query = $this->conn->prepare("INSERT INTO users(name, phone) VALUES(?, ?)");
         $query->bind_param("ss", $name, $phone);
