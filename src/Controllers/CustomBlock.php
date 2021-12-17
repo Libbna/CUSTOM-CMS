@@ -24,7 +24,7 @@ class CustomBlock
         $newBlock = new Database();
         $result = $newBlock->insertBlockDetails($block_title, $block_body);
 
-        echo $twig->render('home.html.twig');
+        echo $twig->render('block.html.twig');
         return;
     }
 
