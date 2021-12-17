@@ -29,8 +29,8 @@ class Database
         return $ans;
     }
 
-    //insert user data into database
-    public function insertUserDetails(){
+
+    public function insertUserDetails($name, $phone){
         $query = $this->conn->prepare("INSERT INTO users(name, phone) VALUES(?, ?)");
         $query->bind_param("ss", $name, $phone);
         $query->execute();
