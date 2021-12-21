@@ -1,12 +1,11 @@
-
 {% extends 'layout.html.twig' %}
 
 {% block body %}
 	<div class="home__form mt-5 d-flex justify-content-center">
-		<form action="/custom_cms/home-contact-insert" class = "p-4" method = "POST">
+		<form action="/custom_cms/home-contact-insert" class="p-4" method="POST">
 			<div class="home__input mb-3">
 				<label class="form-label">Name</label>
-				<input type="text" name="userName" class="form-control" autocomplete = "off"/>
+				<input type="text" name="userName" class="form-control" autocomplete="off"/>
 			</div>
 
 			<div class="home__input mb-3">
@@ -17,4 +16,34 @@
 			<button type="submit" name="submitBtn" class="btn btn-secondary">Submit</button>
 		</form>
 	</div>
+{% endblock %}
+
+
+{% block footer %}
+
+	<footer>
+
+		<div class="footer__container">
+
+
+			<div class="footer__box1">
+				<div class="footerBox1__logoBox">Logo</div>
+				<div class="footerBox1__aboutInfo">About</div>
+				<div class="footerBox1__socialBox">Social</div>
+			</div>
+
+			<div class="footer__box2">
+				<div class="footerBox2__menuContainer">Menu Links</div>
+			</div>
+
+		</div>
+
+		<div class="footer__copyrightContainer">
+			DEVELOPED & DESIGNED BY STEFAN MEYER
+		</div>
+
+
+	</footer>
+
+
 {% endblock %}
