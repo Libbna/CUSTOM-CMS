@@ -16,7 +16,7 @@
   display: flex;
   margin: 0 auto;
   -ms-flex-pack: distribute;
-  justify-content: space-around;
+      justify-content: space-around;
   text-align: center;
 }
 
@@ -66,11 +66,11 @@ footer {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 5rem;
   width: 100%;
   border: 1px solid black;
@@ -80,14 +80,12 @@ footer {
   .footer__container {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-
   .footer__container .footer__box1,
   .footer__container .footer__box2 {
     width: 100%;
   }
 }
-
 /*# sourceMappingURL=main.css.map */
