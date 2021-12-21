@@ -17,6 +17,7 @@ $foo = [
 
 // // Render our view
 echo $twig->render('home.html.twig', ['foo' => $foo] );
+echo $twig->render('header.html.twig');
 
     
 

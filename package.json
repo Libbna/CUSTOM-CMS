@@ -1,0 +1,23 @@
+{
+  "name": "cms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Libbna/CUSTOM-CMS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Libbna/CUSTOM-CMS/issues"
+  },
+  "homepage": "https://github.com/Libbna/CUSTOM-CMS#readme",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "sass": "^1.45.1"
+  }
+}
