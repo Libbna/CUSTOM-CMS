@@ -1,0 +1,26 @@
+.header {
+    width: 100%;
+    display: flex;
+    background: aliceblue;
+}
+.header-wrapper {
+    width: 100%;
+}
+.block-region-header {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    text-align: center;
+
+    .logo {
+        width: 25%;
+        background: antiquewhite;
+    }
+    .navbar-links {
+        width: 50%;
+        background: cadetblue;
+    }
+    .user-auth-btns {
+        width: 25%;
+    }
+}
