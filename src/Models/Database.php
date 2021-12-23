@@ -17,6 +17,7 @@ class Database
         $this->conn = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
         if (!$this->conn) {
             echo "<h1>Datbase connection failed</h1>";
+            return;
         }
     }
     

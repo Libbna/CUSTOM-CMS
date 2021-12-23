@@ -3,7 +3,8 @@
     "autoload": {
         "psr-4": {
             "Cms\\": "src/"
-        }
+        },
+        "classmap": ["src"]
         
     },
     "authors": [
@@ -18,6 +19,8 @@
         "symfony/http-foundation": "^5.4",
         "symfony/yaml": "^5.4",
         "symfony/config": "^5.4",
-        "symfony/class-loader": "^3.4"
+        "symfony/class-loader": "^3.4",
+        "symfony/security": "^4.4",
+        "doctrine/dbal": "^3.2"
     }
 }
