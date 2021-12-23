@@ -51,14 +51,12 @@ footer {
   padding: 2rem;
   width: 35%;
   height: 100%;
-  border: 1px solid black;
 }
 
 .footer__container .footer__box2 {
   padding: 2rem;
   width: 65%;
   height: 100%;
-  border: 1px solid black;
 }
 
 .footer__copyrightContainer {
@@ -73,7 +71,6 @@ footer {
           align-items: center;
   height: 5rem;
   width: 100%;
-  border: 1px solid black;
 }
 
 @media only screen and (max-width: 426px) {
