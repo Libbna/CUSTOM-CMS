@@ -12,32 +12,7 @@
 
 	</head>
 	<body>
-		{% include "header.html.twig" %}
-
-		<nav class="p-3 bg-secondary">
-			<ul class="nav d-flex justify-content-end">
-				<li class="nav-item">
-					<a href="home" class="nav-link active text-white">
-						Home
-					</a>
-				</li>
-				<li>
-					<a href="contact" class="nav-link text-white">
-						Contacts
-					</a>
-				</li>
-				<li>
-					<a href="block-form" class="nav-link text-white">
-						Add a block
-					</a>
-				</li>
-				<li>
-					<a href="block-info" class="nav-link text-white">
-						Blocks
-					</a>
-				</li>
-			</ul>
-		</nav>
+		{% include "header.html.twig" with result %}
 
 		{% block body %}{% endblock %}
 

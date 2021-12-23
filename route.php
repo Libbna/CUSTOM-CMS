@@ -5,6 +5,7 @@ require_once './twigtemplate.php';
 use Cms\Controllers\Contact;
 use Cms\Controllers\Home;
 use Cms\Controllers\CustomBlock;
+use Cms\Controllers\Menu;
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -31,6 +32,8 @@ try {
 
     $block_insert_route = new Route('/block-insert', ['controller' => "Cms\Controllers\CustomBlock::insertCustomBlock"]);
 
+    $menu_route = new Route('/menu', ['controller' => "Cms\Controllers\Menu::getMenu"]);
+
     $foo_placeholder_route = new Route(
         '/foo/{id}',
         array('controller' => 'Home::getData'),
@@ -46,6 +49,7 @@ try {
     $routes->add('block_route', $block_route);
     $routes->add('block_info_route', $block_info_route);
     $routes->add('block_insert_route', $block_insert_route);
+    $routes->add('menu_route', $menu_route);
 
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);

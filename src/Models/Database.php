@@ -55,4 +55,14 @@ class Database
         return $ans;
     }
 
+    //query for getting the menu item
+    public function displayMenuTitle(){
+        $query = $this->conn->prepare("SELECT * FROM menus");
+        $query->execute();
+        $ans = $query->get_result();
+        // var_dump($ans);
+        // echo "test";
+        return $ans;
+    }
+
 }
