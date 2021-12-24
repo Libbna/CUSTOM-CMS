@@ -1,0 +1,27 @@
+
+{% extends 'layout.html.twig' %}
+
+
+{% block body %}
+	<div class="home__form mt-5 d-flex justify-content-center">
+		<form action="/custom_cms/register-insert" class = "p-4 mb-4" method = "POST">
+			<h5 class='mb-4 text-muted'>Register</h5>
+			<div class="home__input mb-3">
+				<label class="form-label">Username</label>
+				<input type="text" name="userName" class="form-control" autocomplete = "off"/>
+			</div>
+
+			<div class="home__input mb-3">
+				<label>Password</label>
+				<input type="text" name="userPassword" class="form-control" autocomplete="off"/>
+			</div>
+
+            <div class="home__input mb-3">
+				<label>Confirm Password</label>
+				<input type="text" name="userConfirmPassword" class="form-control" autocomplete="off"/>
+			</div>
+
+			<button type="submit" name="submitBtn" class="btn btn-secondary">Register</button>
+		</form>
+	</div>
+{% endblock %}

@@ -43,6 +43,15 @@ class DatabaseUserProvider implements UserProviderInterface
         }
     }
 
+    public function insertUser($username, $password){
+        $stmt = $this->connection->prepare("INSERT INTO userauth(username, password, roles) VALUES(?, ?, ?)");
+        $role = "authenticated";
+        $stmt->bind_param("sss", $username, $password, $role);
+        $stmt->execute();
+        $ans = $stmt->get_result();
+        return true;
+    }
+
     public function refreshUser(UserInterface $user)
     {
         if (!$user instanceof User)
