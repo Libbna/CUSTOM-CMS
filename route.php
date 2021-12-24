@@ -32,6 +32,12 @@ try {
 
     $block_insert_route = new Route('/block-insert', ['controller' => "Cms\Controllers\CustomBlock::insertCustomBlock"]);
 
+    $login_form_route = new Route('/login', ['controller' => "Cms\Controllers\Db_auth::getLoginForm"]);
+
+    $register_form_route = new Route('/register', ['controller' => "Cms\Controllers\Db_auth::getRegisterForm"]);
+
+    $registerInsert_form_route = new Route('/register-insert', ['controller' => "Cms\Controllers\Db_auth::userRegistration"]);
+
     $user_auth_route = new Route('/user-auth', ['controller' => "Cms\Controllers\Db_auth::userAuth"]);
 
     $foo_placeholder_route = new Route(
@@ -50,6 +56,9 @@ try {
     $routes->add('block_info_route', $block_info_route);
     $routes->add('block_insert_route', $block_insert_route);
     $routes->add('user_auth_route', $user_auth_route);
+    $routes->add('login_form_route', $login_form_route);
+    $routes->add('register_form_route', $register_form_route);
+    $routes->add('registerInsert_form_route', $registerInsert_form_route);
 
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
