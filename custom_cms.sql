@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 16, 2021 at 03:22 PM
+-- Generation Time: Dec 26, 2021 at 02:34 PM
 -- Server version: 8.0.27-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -47,6 +47,46 @@ INSERT INTO `customBlock` (`id`, `block_title`, `block_desc`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `menus`
+--
+
+CREATE TABLE `menus` (
+  `menu_id` int NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`menu_id`, `title`, `description`) VALUES
+(1, 'home', 'link to homepage'),
+(2, 'contact', 'link to contact details page'),
+(3, 'block', 'Link to block details page');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userauth`
+--
+
+CREATE TABLE `userauth` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `roles` enum('admin','authenticated') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `userauth`
+--
+
+INSERT INTO `userauth` (`username`, `password`, `roles`) VALUES
+('Vivek', '$2y$10$NS1WRopghpnkEzVUX2Rr9OJxntxJV.4Quig7wEJ9SxlBT5Gs7VVae', 'authenticated');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -63,46 +103,41 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `phone`) VALUES
 (1, 'Tony Stark', '1234567890'),
 (2, 'ABC', '0987654321'),
-(3, 'Tom', '8776623451'),
-(9, 'Cap', '098765'),
-(11, 'xyz', '0987654321'),
-(14, 'John', '9992223334'),
-(15, 'pqr', '12345'),
-(16, 'Demo', '1234567'),
-(17, 'Lmn', '123456');
+(3, 'ahdcjah', '2173126e481'),
+(4, 'SDHAHKA', '1919914'),
+(5, 'wdfghj23456789', '2345678');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `customBlock`
+-- Indexes for table `menus`
 --
-ALTER TABLE `customBlock`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`menu_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `customBlock`
+-- AUTO_INCREMENT for table `menus`
 --
-ALTER TABLE `customBlock`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `menus`
+  MODIFY `menu_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

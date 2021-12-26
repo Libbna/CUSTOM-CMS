@@ -1,0 +1,13 @@
+{% extends "layout.html.twig"%}
+
+{% block body %}
+	<h4>
+		Custom Menu display page
+	</h4>
+	{% for r in result %}
+		<div class="info__details-item">
+			<li class='text-white'>{{ r.title }}</li>
+			<li class='text-white'>{{ r.description }}</li>
+		</div>
+	{% endfor %}
+{% endblock %}

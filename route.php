@@ -6,6 +6,7 @@ use Cms\Controllers\Contact;
 use Cms\Controllers\Home;
 use Cms\Controllers\CustomBlock;
 use Cms\Controllers\Db_auth;
+use Cms\Controllers\Menu;
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -42,6 +43,13 @@ try {
 
     $user_auth_route = new Route('/user-auth', ['controller' => "Cms\Controllers\Db_auth::userAuth"]);
 
+    $menu_route = new Route('/menu-form', ['controller' => "Cms\Controllers\Menu::displayMenuForm"]);
+
+    $menu_info_route = new Route('/menu-info', ['controller' => "Cms\Controllers\Menu::displayMenus"]);
+
+    $menu_insert_route = new Route('/menu-insert', ['controller' => "Cms\Controllers\Menu::insertMenu"]);
+
+
     $foo_placeholder_route = new Route(
         '/foo/{id}',
         array('controller' => 'Home::getData'),
@@ -62,6 +70,10 @@ try {
     $routes->add('register_form_route', $register_form_route);
     $routes->add('registerInsert_form_route', $registerInsert_form_route);
     $routes->add('login_insert_form_route', $login_insert_form_route);
+    $routes->add('menu_route', $menu_route);
+    $routes->add('menu_info_route', $menu_info_route);
+    $routes->add('menu_insert_route', $menu_insert_route);
+
 
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
