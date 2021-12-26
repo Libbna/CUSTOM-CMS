@@ -24,29 +24,36 @@ class Db_auth
 
     public function userAuth($twig)
     {
-        // $conn = mysqli_connect('localhost', 'root', 'root', 'custom_cms');
-        // if (!$conn) {
-        //     echo "<h1>Datbase connection failed</h1>";
-        // }
 
         // init our custom db user provider
         $userProvider = new DatabaseUserProvider($this->conn);
 
         try {
-            // init un/pw, usually you'll get these from the $_POST variable, submitted by the end user
-            $username = 'admin';
-            $password = 'admin';
+
+            if (isset($_POST['userName']) and isset($_POST['userPassword'])) {
+
+                $username = $_POST['userName'];
+                $password = $_POST['userPassword'];
+            } else{
+                echo $twig->render("error.html.twig", ["message" => "Enter all the details!"]);
+                return;
+            }
 
             $user = $userProvider->getUser($username);
             $hashed_password =  $user->getPassword();
 
-            if ($password == $hashed_password) {
-                echo "Authentication successful";
+
+            if (password_verify($password, $hashed_password)) {
+                $auth_user = $user->getUsername();
+                session_start();
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $auth_user;
+                echo $twig->render("home.html.twig", ["username" => $auth_user, "message" => "Login Successful, Welcome"]);
+                return;
+            } else {
+                echo $twig->render("loginForm.html.twig", ["status" => "false", 'message' => "Invalid Username/Password."]);
+                return;
             }
-
-            echo $twig->render('home.html.twig');
-            return;
-
 
             echo "\n";
         } catch (AuthenticationException $e) {

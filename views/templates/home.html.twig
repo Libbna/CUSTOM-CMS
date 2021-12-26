@@ -3,6 +3,9 @@
 
 
 {% block body %}
+	{% if username %}
+		<h5>{{ username }}</h5>
+	{% endif %}
 	<div class="home__form mt-5 d-flex justify-content-center">
 		<form action="/custom_cms/home-contact-insert" class = "p-4 mb-4" method = "POST">
 			<div class="home__input mb-3">

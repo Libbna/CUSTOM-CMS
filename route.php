@@ -34,6 +34,8 @@ try {
 
     $login_form_route = new Route('/login', ['controller' => "Cms\Controllers\Db_auth::getLoginForm"]);
 
+    $login_insert_form_route = new Route('/login-insert', ['controller' => "Cms\Controllers\Db_auth::userAuth"]);
+
     $register_form_route = new Route('/register', ['controller' => "Cms\Controllers\Db_auth::getRegisterForm"]);
 
     $registerInsert_form_route = new Route('/register-insert', ['controller' => "Cms\Controllers\Db_auth::userRegistration"]);
@@ -59,6 +61,7 @@ try {
     $routes->add('login_form_route', $login_form_route);
     $routes->add('register_form_route', $register_form_route);
     $routes->add('registerInsert_form_route', $registerInsert_form_route);
+    $routes->add('login_insert_form_route', $login_insert_form_route);
 
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
