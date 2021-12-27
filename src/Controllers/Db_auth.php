@@ -50,6 +50,7 @@ class Db_auth
 
                 session_start();
                 $_SESSION['loggedin'] = true;
+                $_SESSION['user_id'] = $user->getUserId();
                 $_SESSION['username'] = $auth_user;
                 $_SESSION['role'] = $user->getRoles();
                 

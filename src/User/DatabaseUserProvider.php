@@ -30,6 +30,7 @@ class DatabaseUserProvider implements UserProviderInterface
         $stmt->execute();
         $ans = $stmt->get_result();
         $row = $ans->fetch_assoc();
+        $id = $row['id'];
 
 
 
@@ -41,7 +42,7 @@ class DatabaseUserProvider implements UserProviderInterface
         }
         else
         {
-            return new User($row['username'], $row['password'], $row['roles']);
+            return new User($row['username'], $row['password'], $row['roles'], $id);
         }
     }
 

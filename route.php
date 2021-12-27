@@ -6,6 +6,7 @@ use Cms\Controllers\Contact;
 use Cms\Controllers\Home;
 use Cms\Controllers\CustomBlock;
 use Cms\Controllers\Db_auth;
+use Cms\Controllers\Article;
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -57,6 +58,11 @@ try {
     // user-auth route
     $user_auth_route = new Route('/user-auth', ['controller' => "Cms\Controllers\Db_auth::userAuth"]);
 
+    // Article form route
+    $article_form_route = new Route('/articleForm', ['controller' => "Cms\Controllers\Article::getArticleForm"]);
+    $article_insert_route = new Route('/article-insert', ['controller' => "Cms\Controllers\Article::insertArticle"]);
+
+
     $foo_placeholder_route = new Route(
         '/foo/{id}',
         array('controller' => 'Home::getData'),
@@ -78,6 +84,11 @@ try {
     $routes->add('login_insert_form_route', $login_insert_form_route);
     $routes->add('login_form_route', $login_form_route);
     $routes->add('logout', $logout);
+
+
+    $routes->add('article_form_route', $article_form_route);
+    $routes->add('article_insert_route', $article_insert_route);
+    
 
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
