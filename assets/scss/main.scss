@@ -1,4 +1,10 @@
 @import "layout/header";
+@import "./layout/content";
+@import "./layout/sidebar";
 @import "layout/footer.scss";
 
 
+.region-wrapper {
+    display: flex;
+    padding: 10px;
+}

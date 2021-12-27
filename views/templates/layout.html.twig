@@ -39,8 +39,14 @@
 				</li>
 			</ul>
 		</nav>
+		<div class="region-wrapper">
+			{% include "content.html.twig" %}
+			{% include "sidebar.html.twig" %}
+		<div>
+		
 
 		{% block body %}{% endblock %}
+
 
 		{% include "footer.html.twig" %}
 		<script src="assets/js/ck_editor.js"></script>
