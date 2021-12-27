@@ -13,7 +13,7 @@ class Db_auth
     //establishing database connection
     public function __construct()
     {
-        require 'dbconfig.php';
+        require 'src/Models/dbconfig.php';
 
         $this->conn = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
         if (!$this->conn) {
