@@ -20,7 +20,7 @@ class Menu
     }
     public function insertMenu($twig){
         $title = $_POST['menu-title'];
-        $desc = strip_tags($_POST['menu-description']);
+        $desc = $_POST['menu-link'];
 
         if (!isset($title) and !isset($desc)){
             echo $twig->render('error.html.twig');

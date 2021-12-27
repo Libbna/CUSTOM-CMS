@@ -65,9 +65,9 @@ class Database
     }
 
     // query for inserting menu
-    public function insertMenuDetails($title, $desc){
-        $query = $this->conn->prepare("INSERT INTO menus(title, description) VALUES(?, ?)");
-        $query->bind_param("ss", $title, $desc);
+    public function insertMenuDetails($title, $link){
+        $query = $this->conn->prepare("INSERT INTO menus(title, link) VALUES(?, ?)");
+        $query->bind_param("ss", $title, $link);
         $query->execute();
         $result = $query->get_result();
         return $result;
