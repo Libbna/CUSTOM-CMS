@@ -1,6 +1,7 @@
 <?php
 
 namespace Cms\Models;
+session_start();
 
 require "dbconfig.php";
 class Database

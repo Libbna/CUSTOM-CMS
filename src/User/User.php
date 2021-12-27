@@ -11,7 +11,7 @@ class User implements UserInterface
     private $password;
     private $roles;
 
-    public function __construct(string $username, string $password, string $roles)
+    public function __construct(string $username, string $password, string $roles, int $user_id)
     {
         if (empty($username))
         {
@@ -21,6 +21,7 @@ class User implements UserInterface
         $this->username = $username;
         $this->password = $password;
         $this->roles = $roles;
+        $this->user_id = $user_id;
     }
 
     public function getUsername()
@@ -37,6 +38,11 @@ class User implements UserInterface
     {
         $role = explode(",", $this->roles);
         return $role[0];
+    }
+
+    public function getUserId()
+    {
+        return $this->user_id;
     }
 
     public function getSalt()

@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+	{% if (status == "true" or status == "false") %}
+		<i>{{ message }}</i>
+	{% endif %}
+	<div class="home__form mt-5 d-flex justify-content-center">
+		<form action="/custom_cms/article-insert" class="p-4" method="POST">
+			<h5 class='mb-4 text-muted'>Article</h5>
+			<div class="home__input mb-3">
+				<label class="form-label">Title</label>
+				<input type="text" name="article-title" class="form-control" autocomplete="off"/>
+			</div>
+
+			<div class="home__input mb-3">
+				<label>Body</label>
+				<textarea class="form-control" name="article-description" id="editor" cols="30" rows="10"></textarea>
+			</div>
+
+			<button type="submit" name="submitBtn" class="btn btn-secondary">Submit</button>
+		</form>
+	</div>
+
+{% endblock %}
