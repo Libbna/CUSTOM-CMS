@@ -2,8 +2,9 @@
 
 namespace Cms\Controllers;
 
-use Cms\Models\Database;
+session_start();
 
+use Cms\Models\Database;
 class Contact
 
 {

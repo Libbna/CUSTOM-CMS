@@ -5,6 +5,7 @@
 {% block body %}
 	{% if username %}
 		<h5>{{ username }}</h5>
+		<h6>{{ role }}</h6>
 	{% endif %}
 	<div class="home__form mt-5 d-flex justify-content-center">
 		<form action="/custom_cms/home-contact-insert" class = "p-4 mb-4" method = "POST">

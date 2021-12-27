@@ -1,6 +1,8 @@
 <?php
 namespace Cms\User;
 
+session_start();
+
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface

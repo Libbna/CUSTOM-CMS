@@ -1,7 +1,7 @@
 <?php
 
 namespace Cms\Controllers;
-
+session_start();
 class Home
 
 {
