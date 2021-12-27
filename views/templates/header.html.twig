@@ -4,8 +4,20 @@
 
         <div class="block-region-header">
 
-            <div class="logo"> LOGO</div>
-            <div class="navbar-links">NAV-LINKS</div>
+            <div class="logo">LOGO</div>
+            <div class="navbar-links">
+			<nav class="p-3 bg-secondary">
+				<ul class="nav d-flex justify-content-end">
+					{% for r in result %}
+					<li class="nav-item">
+						<a href="{{ r.title }}" class="nav-link active text-white">
+							{{ r.title }}
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</nav>
+			</div>
             <div class="user-auth-btns"> 
                 <div>LOGIN/SIGNUP</div>
             </div>

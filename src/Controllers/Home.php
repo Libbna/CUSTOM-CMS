@@ -2,6 +2,8 @@
 
 namespace Cms\Controllers;
 
+use Cms\Models\Database;
+
 class Home
 
 {
@@ -9,6 +11,10 @@ class Home
     {
         $data = "Dummy";
         echo $twig->render('home.html.twig', ['name' => $data]);
+
+        $displayMenu = new Database();
+        $result = $displayMenu->displayMenu();
+        echo $twig->render('header.html.twig', ['result' => $result]);
         return;
     }   
 }
