@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 16, 2021 at 03:22 PM
+-- Generation Time: Dec 27, 2021 at 05:28 PM
 -- Server version: 8.0.27-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -34,15 +34,18 @@ CREATE TABLE `customBlock` (
   `block_desc` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `customBlock`
+-- Table structure for table `userauth`
 --
 
-INSERT INTO `customBlock` (`id`, `block_title`, `block_desc`) VALUES
-(1, 'test', '<p>test</p>'),
-(2, 'test 2', '<p>test 2</p>'),
-(3, 'test 3', 'test 3'),
-(4, 'Demo Block Title', 'Demo Block Body');
+CREATE TABLE `userauth` (
+  `id` int NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `roles` enum('admin','authenticated') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -57,21 +60,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `phone`) VALUES
-(1, 'Tony Stark', '1234567890'),
-(2, 'ABC', '0987654321'),
-(3, 'Tom', '8776623451'),
-(9, 'Cap', '098765'),
-(11, 'xyz', '0987654321'),
-(14, 'John', '9992223334'),
-(15, 'pqr', '12345'),
-(16, 'Demo', '1234567'),
-(17, 'Lmn', '123456');
-
---
 -- Indexes for dumped tables
 --
 
@@ -80,6 +68,13 @@ INSERT INTO `users` (`id`, `name`, `phone`) VALUES
 --
 ALTER TABLE `customBlock`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `userauth`
+--
+ALTER TABLE `userauth`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `users`
@@ -96,13 +91,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `customBlock`
 --
 ALTER TABLE `customBlock`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `userauth`
+--
+ALTER TABLE `userauth`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
