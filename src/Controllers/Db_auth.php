@@ -2,6 +2,8 @@
 
 namespace Cms\Controllers;
 
+session_start();
+
 use Cms\User\DatabaseUserProvider;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
@@ -34,7 +36,7 @@ class Db_auth
 
                 $username = $_POST['userName'];
                 $password = $_POST['userPassword'];
-            } else{
+            } else {
                 echo $twig->render("error.html.twig", ["message" => "Enter all the details!"]);
                 return;
             }
@@ -45,10 +47,13 @@ class Db_auth
 
             if (password_verify($password, $hashed_password)) {
                 $auth_user = $user->getUsername();
+
                 session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['username'] = $auth_user;
-                echo $twig->render("home.html.twig", ["username" => $auth_user, "message" => "Login Successful, Welcome"]);
+                $_SESSION['role'] = $user->getRoles();
+                
+                echo $twig->render("home.html.twig", ["username" => $auth_user, "role" => $_SESSION['role'] ,"message" => "Login Successful, Welcome"]);
                 return;
             } else {
                 echo $twig->render("loginForm.html.twig", ["status" => "false", 'message' => "Invalid Username/Password."]);
@@ -70,20 +75,20 @@ class Db_auth
             $username = $_POST['userName'];
             $password = $_POST['userPassword'];
             $confirmPassword = $_POST['userConfirmPassword'];
-        } else{
+        } else {
             echo $twig->render("error.html.twig", ["message" => "Enter all the details!"]);
             return;
         }
 
-        if ($password == $confirmPassword){
+        if ($password == $confirmPassword) {
             $hash_password = password_hash($password, PASSWORD_DEFAULT);
         }
 
         $userProvider = new DatabaseUserProvider($this->conn);
         $insertUser = $userProvider->insertUser($username, $hash_password);
 
-        if ($insertUser){
-            echo $twig->render("loginForm.html.twig", ["status" => "true","message" => "Registeration successful"]);
+        if ($insertUser) {
+            echo $twig->render("loginForm.html.twig", ["status" => "true", "message" => "Registeration successful"]);
             return;
         } else {
             echo $twig->render("registerForm.html.twig", ["status" => "false", "message" => "Registration not successful"]);
@@ -93,13 +98,30 @@ class Db_auth
 
     public function getLoginForm($twig)
     {
+        if (isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] == true) {
+            echo $twig->render("error.html.twig", ["message" => "Access Prohibited!"]);
+            return;
+        }
         echo $twig->render('loginForm.html.twig');
         return;
     }
 
     public function getRegisterForm($twig)
     {
+        if (isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] == true) {
+            echo $twig->render("error.html.twig", ["message" => "Access Prohibited!"]);
+            return;
+        }
         echo $twig->render('registerForm.html.twig');
+        return;
+    }
+
+    public function logout($twig)
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+        echo $twig->render("loginForm.html.twig", ["status" => "true", "message" => "You have logged out!"]);
         return;
     }
 }

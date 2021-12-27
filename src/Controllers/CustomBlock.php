@@ -1,6 +1,8 @@
 <?php
 namespace Cms\Controllers;
 
+session_start();
+
 use Cms\Models\Database;
 
 class CustomBlock
