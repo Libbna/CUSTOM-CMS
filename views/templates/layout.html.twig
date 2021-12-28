@@ -40,13 +40,14 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="region-wrapper">
+		{# <div class="region-wrapper">
 			{% include "content.html.twig" %}
 			{% include "sidebar.html.twig" %}
-		<div>
+		<div> #}
 		
-
-		{% block body %}{% endblock %}
+		<div class="content-region container border border-primary mt-4">
+			{% block body %}{% endblock %}
+		</div>
 
 
 		{% include "footer.html.twig" %}
