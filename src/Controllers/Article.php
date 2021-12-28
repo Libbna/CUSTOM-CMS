@@ -31,9 +31,10 @@ class Article
         $article_title = $_POST['article-title'];
         $article_body = strip_tags($_POST['article-description']);
         $article_category = $_POST['article-category'];
+        $article_image = $_POST['article_image'];
 
         $contact = new ArticleModel();
-        $ans = $contact->insertArticleData($article_title, $article_body, $_SESSION['user_id'], $article_category);
+        $ans = $contact->insertArticleData($article_title, $article_body, $_SESSION['user_id'], $article_category, $article_image);
 
         if (empty($ans) == 1){
             echo $twig->render("articleForm.html.twig", ["status" => "true", "message" => "Article posted successfully!"]);

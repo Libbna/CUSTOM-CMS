@@ -21,14 +21,33 @@ class ArticleModel
         }
     }
 
+
+
     public function insertArticleData($title, $body, $user_id, $category){
-        $query = $this->conn->prepare("INSERT INTO articles(title, body, user_id, category) VALUES(?, ?, ?, ?)");
-        $query->bind_param("ssis", $title, $body, $user_id, $category);
+
+        $article_image = $_FILES['article_image'];
+
+        $file = $article_image['name'];
+        $file_tmp = $article_image['tmp_name'];
+
+        $profile_ext = explode('.',  $file);
+        $filecheck = strtolower(end($profile_ext));
+
+        $file_ext_stored = array('jpeg', 'png', 'jpg');
+
+        if (in_array($filecheck, $file_ext_stored)) {
+            $destinationFile = '/images' . $file;
+            move_uploaded_file($article_image, $file_tmp, $destinationFile);
+        }
+
+        $query = $this->conn->prepare("INSERT INTO articles(title, body, user_id, category, image) VALUES(?, ?, ?, ?, ?)");
+        $query->bind_param("ssiss", $title, $body, $user_id, $category, $destinationFile);
         $query->execute();
         $ans = $query->get_result();
         return $ans;
     }
     
+
     
 
 }
