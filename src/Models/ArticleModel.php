@@ -21,9 +21,9 @@ class ArticleModel
         }
     }
 
-    public function insertArticleData($title, $body, $user_id){
-        $query = $this->conn->prepare("INSERT INTO articles(title, body, user_id) VALUES(?, ?, ?)");
-        $query->bind_param("ssi", $title, $body, $user_id);
+    public function insertArticleData($title, $body, $user_id, $category){
+        $query = $this->conn->prepare("INSERT INTO articles(title, body, user_id, category) VALUES(?, ?, ?, ?)");
+        $query->bind_param("ssis", $title, $body, $user_id, $category);
         $query->execute();
         $ans = $query->get_result();
         return $ans;
