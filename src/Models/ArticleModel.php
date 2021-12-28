@@ -36,12 +36,19 @@ class ArticleModel
         $file_ext_stored = array('jpeg', 'png', 'jpg');
 
         if (in_array($filecheck, $file_ext_stored)) {
-            $destinationFile = '/images' . $file;
-            move_uploaded_file($article_image, $file_tmp, $destinationFile);
+            $destinationFile = 'images' . $file;
+            move_uploaded_file($file_tmp, $destinationFile);
         }
 
         $query = $this->conn->prepare("INSERT INTO articles(title, body, user_id, category, image) VALUES(?, ?, ?, ?, ?)");
         $query->bind_param("ssiss", $title, $body, $user_id, $category, $destinationFile);
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
+    public function fetchArticleData() {
+        $query = $this->conn->prepare("SELECT * FROM articles");
         $query->execute();
         $ans = $query->get_result();
         return $ans;
