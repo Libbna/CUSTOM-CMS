@@ -1,0 +1,27 @@
+.content-region {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin-left: 0;
+    width: 70%;
+    margin-right: 0.8rem;
+}
+
+.section1 {
+    border: 1px solid orangered;
+    height: 25%;
+}
+.section2 {
+    height: 25%;
+    border: 1px solid purple;
+}
+.section3 {
+    height: 25%;
+    border: 1px solid saddlebrown;
+}
+.inner-section {
+    position: relative;
+    top: 3rem;
+    border-radius: 15px;
+}
