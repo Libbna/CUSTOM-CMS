@@ -23,7 +23,7 @@ try {
     //creating routes
 
     // Home route
-    $home_route = new Route('/home', ['controller' => "Cms\Controllers\Home::getData"]);
+    $home_route = new Route('/home', ['controller' => "Cms\Controllers\Article::fetchAllArticles"]);
 
     // contact insert route
     $contact_insert_route = new Route('/home-contact-insert', ['controller' => "Cms\Controllers\Contact::insertUser"]);
