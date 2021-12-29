@@ -29,6 +29,12 @@ class ArticleModel
         return $ans;
     }
     
+    public function getAllArticles(){
+        $query = $this->conn->prepare("SELECT * FROM articles");
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
     
 
 }

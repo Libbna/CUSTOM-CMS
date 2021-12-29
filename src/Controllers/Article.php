@@ -41,4 +41,12 @@ class Article
         return;
 
     }
+    
+    public function fetchAllArticles($twig){
+        $articles = new ArticleModel();
+        $result = $articles->getAllArticles();
+        echo $twig->render("home.html.twig", ['result' => $result]);
+    }
+
+
 }
