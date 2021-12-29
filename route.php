@@ -25,12 +25,6 @@ try {
     // Home route
     $home_route = new Route('/home', ['controller' => "Cms\Controllers\Article::fetchAllArticles"]);
 
-    // contact insert route
-    $contact_insert_route = new Route('/home-contact-insert', ['controller' => "Cms\Controllers\Contact::insertUser"]);
-
-    // contact display route
-    $contact_route = new Route('/contact', array('controller' => "Cms\Controllers\Contact::fetchUser"));
-
     // block-form display route
     $block_route = new Route('/block-form', ['controller' => "Cms\Controllers\CustomBlock::displayForm"]);
 
@@ -72,8 +66,6 @@ try {
     
     //adding route to RouteCollection
     $routes->add('home_route', $home_route);
-    $routes->add('contact_route', $contact_route);
-    $routes->add('contact_insert_route',     $contact_insert_route);
     $routes->add('foo_route', $foo_placeholder_route);
     $routes->add('block_route', $block_route);
     $routes->add('block_info_route', $block_info_route);
