@@ -23,7 +23,7 @@ try {
     //creating routes
 
     // Home route
-    $home_route = new Route('/home', ['controller' => "Cms\Controllers\Home::getData"]);
+    $home_route = new Route('/home', ['controller' => "Cms\Controllers\Article::fetchAllArticles"]);
 
     // block-form display route
     $block_route = new Route('/block-form', ['controller' => "Cms\Controllers\CustomBlock::displayForm"]);
