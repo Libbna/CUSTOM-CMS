@@ -57,4 +57,21 @@ class Database
         return $ans;
     }
 
+    // query for inserting block 
+    public function insertMenuDetails($title, $link){
+        $query = $this->conn->prepare("INSERT INTO menus(title, link) VALUES(?, ?)");
+        $query->bind_param("ss", $title, $link);
+        $query->execute();
+        $result = $query->get_result();
+        return $result;
+    }
+    
+    // query for displaying Menu 
+    public function displayMenu() {
+        $query = $this->conn->prepare("SELECT * FROM menus");
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
 }

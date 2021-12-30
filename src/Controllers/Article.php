@@ -6,25 +6,28 @@ session_start();
 
 use Cms\Models\ArticleModel;
 
-class Article
+class Article extends ControllerBase
 {
 
 
     public function getArticleForm($twig)
     {
+        $variables = parent::preprocesspage();
         if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != true) {
-            echo $twig->render("error.html.twig", ["message" => "Access Prohibited!"]);
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
             return;
         }
-
-        echo $twig->render("articleForm.html.twig");
+        echo $twig->render("articleForm.html.twig", $variables);
         return;
     }
 
     public function insertArticle($twig)
     {
-        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category']))   {
-            echo $twig->render("error.html.twig", ["message" => "Enter all the article details!"]);
+        $variables = parent::preprocesspage();
+        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category'])){
+            $variables['message'] = "Enter all the article details!";
+            echo $twig->render("error.html.twig", $variables);
             return;
         } 
 
@@ -37,6 +40,8 @@ class Article
         $ans = $contact->insertArticleData($article_title, $article_body, $_SESSION['user_id'], $article_category, $article_image);
 
         if (empty($ans) == 1){
+            $variables['status'] = "true";
+            $variables['message'] = "Article posted successfully!";
             echo $twig->render("articleForm.html.twig", ["status" => "true", "message" => "Article posted successfully!"]);
             return;
         }
@@ -45,9 +50,12 @@ class Article
     }
     
     public function fetchAllArticles($twig){
+
+        $variables = parent::preprocesspage();
         $articles = new ArticleModel();
         $result = $articles->fetchAllArticleData();
-        echo $twig->render("home.html.twig", ['result' => $result]);
+        $variables['result'] = $result;
+        echo $twig->render("home.html.twig", $variables);
     }
 
 
