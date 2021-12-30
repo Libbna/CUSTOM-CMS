@@ -36,7 +36,7 @@ class ArticleModel
         $file_ext_stored = array('jpeg', 'png', 'jpg');
 
         if (in_array($filecheck, $file_ext_stored)) {
-            $destinationFile = 'images' . $file;
+            $destinationFile = 'assets/images/' . $file;
             move_uploaded_file($file_tmp, $destinationFile);
         }
 
