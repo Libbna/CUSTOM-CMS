@@ -42,7 +42,7 @@ class Article extends ControllerBase
         if (empty($ans) == 1){
             $variables['status'] = "true";
             $variables['message'] = "Article posted successfully!";
-            echo $twig->render("articleForm.html.twig", ["status" => "true", "message" => "Article posted successfully!"]);
+            echo $twig->render("articleForm.html.twig", $variables);
             return;
         }
         return;
