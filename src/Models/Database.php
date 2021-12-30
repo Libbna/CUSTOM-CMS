@@ -3,7 +3,6 @@
 namespace Cms\Models;
 session_start();
 
-require "dbconfig.php";
 class Database
 {
     public $conn;
@@ -13,7 +12,7 @@ class Database
     //establishing database connection
     public function __construct()
     {
-        require 'dbconfig.php';
+        require './dbconfig.php';
 
         $this->conn = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
         if (!$this->conn) {

@@ -14,11 +14,11 @@ class Db_auth extends ControllerBase
     //establishing database connection
     public function __construct()
     {
-        require 'dbconfig.php';
+        require './dbconfig.php';
 
         $this->conn = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
         if (!$this->conn) {
-            echo "<h1>Datbase connection failed</h1>";
+            echo "<h1>Database connection failed</h1>";
             return;
         }
     }
