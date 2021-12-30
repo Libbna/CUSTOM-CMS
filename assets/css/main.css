@@ -73,6 +73,47 @@
   border-radius: 15px;
 }
 
+@media only screen and (min-width: 768px) {
+  .login_container {
+    padding-left: 8rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .login_container {
+    padding-left: 22rem;
+  }
+}
+
+.login_container .login-form {
+  width: 19rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .login_container .login-form {
+    width: 28rem;
+  }
+}
+
+.login_container .frm_input {
+  height: 3rem;
+  font-size: 15px;
+  font-family: "Poppins", Arial,sans-serif;
+}
+
+.login_container .sumbit-btn {
+  border-radius: 30px;
+  background: #ff895d;
+  border: 1px solid #ff895d;
+  color: #fff;
+}
+
+.login_container .sumbit-btn:hover {
+  border: 1px solid #ff895d;
+  background: transparent;
+  color: #ff895d;
+}
+
 .sidebar-region {
   width: 30%;
   height: 100vh;

@@ -1,0 +1,35 @@
+.login_container {
+    @media only screen and (min-width: 768px) {
+        padding-left: 8rem;
+    }
+    @media only screen and (min-width: 1200px) {
+        padding-left: 22rem;
+    }
+
+    .login-form {
+        width: 19rem;
+        @media only screen and (min-width: 768px) {
+            width: 28rem;
+        }
+        
+    }
+
+    .frm_input {
+        height: 3rem;
+        font-size: 15px;
+        font-family: "Poppins", Arial,sans-serif;
+    }
+    
+    .sumbit-btn {
+        border-radius: 30px;
+        background: #ff895d;
+        border: 1px solid #ff895d;
+        color: #fff;
+
+        &:hover {
+            border: 1px solid #ff895d;
+            background: transparent;
+            color: #ff895d;
+        }
+    }
+}
