@@ -21,6 +21,7 @@
         "symfony/config": "^5.4",
         "symfony/class-loader": "^3.4",
         "symfony/security": "^4.4",
-        "doctrine/dbal": "^3.2"
+        "doctrine/dbal": "^3.2",
+        "squizlabs/php_codesniffer": "3.*"
     }
 }
