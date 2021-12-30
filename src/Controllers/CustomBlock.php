@@ -5,16 +5,18 @@ session_start();
 
 use Cms\Models\Database;
 
-class CustomBlock
+class CustomBlock extends ControllerBase
 {
     public function displayForm($twig){
 
-        echo $twig->render('block.html.twig');
+        $variables = parent::preprocesspage();
+        echo $twig->render('block.html.twig', $variables);
         return;
     }
 
     public function insertCustomBlock($twig){
 
+        $variables = parent::preprocesspage();
         $block_title = $_POST['block-title'];
         $block_body = strip_tags($_POST['block-description']);
 
@@ -25,17 +27,17 @@ class CustomBlock
 
         $newBlock = new Database();
         $result = $newBlock->insertBlockDetails($block_title, $block_body);
-
+        $variables['result'] = $result;
         echo $twig->render('block.html.twig');
         return;
     }
 
     public function displayCustomBlock($twig){
-
+        $variables = parent::preprocesspage();
         $displayBlockList = new Database();
         $result = $displayBlockList->displayBlock();
-
-        echo $twig->render('blockDisplay.html.twig', ['result' => $result]);
+        $variables['result'] = $result;
+        echo $twig->render('blockDisplay.html.twig', $variables);
         return;
     }
 }

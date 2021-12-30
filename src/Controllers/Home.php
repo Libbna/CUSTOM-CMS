@@ -1,14 +1,16 @@
 <?php
 
 namespace Cms\Controllers;
+
 session_start();
-class Home
+
+class Home extends ControllerBase
 
 {
     public static function getData($twig)
     {
-        $data = "Dummy";
-        echo $twig->render('home.html.twig', ['name' => $data]);
+        $variables = parent::preprocesspage();
+        echo $twig->render('home.html.twig', $variables);
         return;
     }   
 }

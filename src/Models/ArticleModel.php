@@ -2,7 +2,6 @@
 
 namespace Cms\Models;
 
-require "dbconfig.php";
 class ArticleModel
 {
     public $conn;
@@ -12,7 +11,7 @@ class ArticleModel
     //establishing database connection
     public function __construct()
     {
-        require 'dbconfig.php';
+        require './dbconfig.php';
 
         $this->conn = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
         if (!$this->conn) {
