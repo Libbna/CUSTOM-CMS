@@ -5,9 +5,34 @@
         <div class="block-region-header">
 
             <div class="logo"> LOGO</div>
-            <div class="navbar-links">NAV-LINKS</div>
+            <div class="navbar-links">
+			<nav class="p-3 bg-secondary">
+				<ul class="nav d-flex justify-content-center">
+					{% for nav_link in nav_links %}
+					<li class="nav-item">
+						<a href="{{ nav_link.link }}" class="nav-link active text-white">
+							{{ nav_link.title }}
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</nav>
+			</div>
             <div class="user-auth-btns"> 
-                <div>LOGIN/SIGNUP</div>
+                <div>
+					<ul class="nav d-flex justify-content-center">
+						<li>
+							<a href="login" class="nav-link text-black">
+								Login
+							</a>
+						</li>
+						<li>
+							<a href="register" class="nav-link text-black">
+								Register
+							</a>
+						</li>
+					</ul>
+		</nav></div>
             </div>
             
         </div>

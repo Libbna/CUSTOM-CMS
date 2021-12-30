@@ -3,7 +3,6 @@
 namespace Cms\Models;
 session_start();
 
-require "dbconfig.php";
 class Database
 {
     public $conn;
@@ -13,7 +12,7 @@ class Database
     //establishing database connection
     public function __construct()
     {
-        require 'dbconfig.php';
+        require './dbconfig.php';
 
         $this->conn = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
         if (!$this->conn) {
@@ -52,6 +51,23 @@ class Database
     // query for displaying block 
     public function displayBlock() {
         $query = $this->conn->prepare("SELECT * FROM customBlock");
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
+    // query for inserting block 
+    public function insertMenuDetails($title, $link){
+        $query = $this->conn->prepare("INSERT INTO menus(title, link) VALUES(?, ?)");
+        $query->bind_param("ss", $title, $link);
+        $query->execute();
+        $result = $query->get_result();
+        return $result;
+    }
+    
+    // query for displaying Menu 
+    public function displayMenu() {
+        $query = $this->conn->prepare("SELECT * FROM menus");
         $query->execute();
         $ans = $query->get_result();
         return $ans;

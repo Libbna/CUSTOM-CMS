@@ -7,6 +7,7 @@ use Cms\Controllers\Home;
 use Cms\Controllers\CustomBlock;
 use Cms\Controllers\Db_auth;
 use Cms\Controllers\Article;
+use Cms\Controllers\Menu;
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -56,6 +57,15 @@ try {
     $article_form_route = new Route('/articleForm', ['controller' => "Cms\Controllers\Article::getArticleForm"]);
     $article_insert_route = new Route('/article-insert', ['controller' => "Cms\Controllers\Article::insertArticle"]);
 
+    // menu-form display route
+    $menu_route = new Route('/menu-form', ['controller' => "Cms\Controllers\Menu::displayMenuForm"]);
+
+    // menus display route
+    $menu_info_route = new Route('/menu-info', ['controller' => "Cms\Controllers\Menu::displayCustomMenu"]);
+
+    // menu insert route
+    $menu_insert_route = new Route('/menu-insert', ['controller' => "Cms\Controllers\Menu::insertCustomMenu"]);
+
 
     $foo_placeholder_route = new Route(
         '/foo/{id}',
@@ -76,8 +86,9 @@ try {
     $routes->add('login_insert_form_route', $login_insert_form_route);
     $routes->add('login_form_route', $login_form_route);
     $routes->add('logout', $logout);
-
-
+    $routes->add('menu_route', $menu_route);
+    $routes->add('menu_info_route', $menu_info_route);
+    $routes->add('menu_insert_route', $menu_insert_route);
     $routes->add('article_form_route', $article_form_route);
     $routes->add('article_insert_route', $article_insert_route);
     

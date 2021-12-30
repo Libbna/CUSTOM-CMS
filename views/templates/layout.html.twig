@@ -14,42 +14,8 @@
 
 	</head>
 	<body>
-		{% include "header.html.twig" %}
+		{% include "header.html.twig" with nav_links %}
 
-		<nav class="p-3 bg-secondary">
-			<ul class="nav d-flex justify-content-end">
-				<li class="nav-item">
-					<a href="home" class="nav-link active text-white">
-						Home
-					</a>
-				</li>
-				<li>
-					<a href="block-form" class="nav-link text-white">
-						Add a block
-					</a>
-				</li>
-				<li>
-					<a href="block-info" class="nav-link text-white">
-						Blocks
-					</a>
-				</li>
-					<li>
-					<a href="login" class="nav-link text-white">
-						Login
-					</a>
-				</li>
-					<li>
-					<a href="register" class="nav-link text-white">
-						Register
-					</a>
-				</li>
-			</ul>
-		</nav>
-		{# <div class="region-wrapper">
-			{% include "content.html.twig" %}
-			{% include "sidebar.html.twig" %}
-		<div> #}
-		
 		<div class="content-region  border border-primary">
 			{% block body %}{% endblock %}
 		</div>
