@@ -85,6 +85,12 @@
   }
 }
 
+.login_container h1 {
+  font-weight: 600;
+  color: #fb885c;
+  margin-left: 3rem;
+}
+
 .login_container .login-form {
   width: 19rem;
 }
