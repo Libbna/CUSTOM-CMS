@@ -3,17 +3,24 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background: aliceblue;
 }
 
 .header-wrapper {
   width: 100%;
+  max-width: 1300px;
 }
 
 .block-region-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 auto;
   -ms-flex-pack: distribute;
       justify-content: space-around;
@@ -34,6 +41,11 @@
   width: 25%;
 }
 
+.block-region-header .user-auth-btns ul li a {
+  background-color: #FB885C;
+  margin-right: 1rem;
+}
+
 .content-region {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,14 +64,35 @@
 }
 
 .section1 {
-  height: 55%;
+  height: 50%;
+  max-height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .section1 img {
   width: 100%;
+  max-width: 1300px;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.home__heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.home__heading h4 {
+  max-width: 1300px;
 }
 
 .section3 {
@@ -72,6 +105,11 @@
   top: 3rem;
   border-radius: 15px;
 }
+
+
+.card .card-body a {
+  background-color: #FB885C !important;
+  border: none;
 
 @media only screen and (min-width: 768px) {
   .login_container {
@@ -118,6 +156,7 @@
   border: 1px solid #ff895d;
   background: transparent;
   color: #ff895d;
+
 }
 
 .sidebar-region {

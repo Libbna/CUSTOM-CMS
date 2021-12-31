@@ -55,6 +55,7 @@ class Db_auth extends ControllerBase
 
                 $variables['username'] = $auth_user;
                 $variables['role'] = $_SESSION['role'];
+                $variables['authenticated_userId'] = $_SESSION['user_id'];
                 $variables['message'] = "Login Successful, Welcome";
                 echo $twig->render("home.html.twig", $variables);
                 return;
@@ -111,6 +112,7 @@ class Db_auth extends ControllerBase
     {
         $variables = parent::preprocesspage();
         if (isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] == true) {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['message'] = "Access Prohibited!";
             echo $twig->render("error.html.twig", $variables);
             return;
@@ -123,6 +125,7 @@ class Db_auth extends ControllerBase
     {
         $variables = parent::preprocesspage();
         if (isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] == true) {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['message'] = "Access Prohibited!";
             echo $twig->render("error.html.twig", $variables);
             return;

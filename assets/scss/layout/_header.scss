@@ -1,13 +1,16 @@
 .header {
     width: 100%;
     display: flex;
+    justify-content:center;
     background: aliceblue;
 }
 .header-wrapper {
     width: 100%;
+    max-width: 1300px;
 }
 .block-region-header {
     display: flex;
+    align-items: center;
     margin: 0 auto;
     justify-content: space-around;
     text-align: center;
@@ -19,8 +22,15 @@
     .navbar-links {
         width: 50%;
         background: cadetblue;
+ 
     }
     .user-auth-btns {
         width: 25%;
+        ul{
+            li a{
+                background-color:#FB885C;
+                margin-right: 1rem;
+            }
+        }
     }
 }
