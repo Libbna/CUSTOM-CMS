@@ -5,20 +5,23 @@
 	{% if (status == "true" or status == "false") %}
 		<i>{{ message }}</i>
 	{% endif %}
-	<div class="home__form mt-5 d-flex justify-content-center">
-		<form action="login-insert" class="p-4 mb-4" method="POST">
-			<h5 class='mb-4 text-muted'>Login</h5>
-			<div class="home__input mb-3">
-				<label class="form-label">Username</label>
-				<input type="text" name="userName" class="form-control" autocomplete="off"/>
-			</div>
 
-			<div class="home__input mb-3">
-				<label>Password</label>
-				<input type="password" name="userPassword" class="form-control" autocomplete="off"/>
+		<div class="container mt-5 login_container">
+			<div class="col-md-6 order-md-last pr-md-5">
+				<h1 class="text-center">LOGIN</h1>
+				<form action="login-insert" method="POST" class="border-0 login-form">
+					<div class="form-group mb-3">
+						<input type="text" name="userName" class="form-control rounded-0 frm_input" placeholder="Username">
+					</div>
+					<div class="form-group mb-3">
+						<input type="password" name="userPassword" class="form-control rounded-0 frm_input" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<input type="submit" name="submitBtn" value="Login" class="btn btn-primary py-3 px-5 sumbit-btn">
+					</div>
+				</form>
 			</div>
+		</div>
 
-			<button type="submit" name="submitBtn" class="btn btn-secondary">Login</button>
-		</form>
-	</div>
+	
 {% endblock %}
