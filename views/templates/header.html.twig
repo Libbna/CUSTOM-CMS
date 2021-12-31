@@ -1,16 +1,16 @@
-<header class="header">
-	<div class="header-wrapper">
+<header class="header bg-light">
+	<div class="header-wrapper bg-light">
 
 		<div class="block-region-header">
 
-			<div class="logo">
+			<div class="logo bg-light">
 				LOGO</div>
 			<div class="navbar-links">
-				<nav class="p-3 bg-secondary">
+				<nav class="p-3 bg-light">
 					<ul class="nav d-flex justify-content-center">
 						{% for nav_link in nav_links %}
 							<li class="nav-item">
-								<a href="{{ nav_link.link }}" class="nav-link active text-white">
+								<a href="{{ nav_link.link }}" class="nav-link active text-dark">
 									{{ nav_link.title }}
 								</a>
 							</li>
@@ -18,27 +18,27 @@
 					</ul>
 				</nav>
 			</div>
-			<div class="user-auth-btns">
+			<div class="user-auth-btns bg-light">
 				<div>
 					<ul class="nav d-flex justify-content-center">
 						<li>
 							{% if authenticated_userId %}
-								<a href="home" class="nav-link text-black">
+								<a href="home" class="nav-link text-white">
 									{{ username }}
 								</a>
 							{% else %}
-								<a href="login" class="nav-link text-black">
+								<a href="login" class="nav-link text-black text-white">
 									Login
 								</a>
 							{% endif %}
 						</li>
 						<li>
 							{% if authenticated_userId %}
-								<a href="logout" class="nav-link text-black">
+								<a href="logout" class="nav-link text-white">
 									Logout
 								</a>
 							{% else %}
-								<a href="register" class="nav-link text-black">
+								<a href="register" class="nav-link text-white">
 									Register
 								</a>
 							{% endif %}

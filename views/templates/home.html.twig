@@ -3,24 +3,35 @@
 
 {% block body %}
 	{% if username %}
-		<div class="alert alert-success" role="alert"> Login Successfull, Aloha {{ username }} !</div>
+		<div class="alert alert-success d-flex justify-content-between" role="alert">
+			<p>
+				Login Successfull, Aloha
+				{{ username }}
+			!</p>
+			<p id="alertCloseBtn">
+				close
+			</p>
+			
+		</div>
 		{# <div class="alert alert-success" role="alert">{{ role }}</div> #}
 	{% endif %}
 
 	<div class="section1">
-		<img src = "https://i.pinimg.com/originals/8b/4c/f5/8b4cf55476f5d9a662c23362a9d2a1ed.jpg">
+		<img src="https://i.pinimg.com/originals/8b/4c/f5/8b4cf55476f5d9a662c23362a9d2a1ed.jpg">
 	</div>
-	<h3 class = "p-4">RECENT BLOGS</h3>
-	<div class="section2 container border border-primary d-flex justify-content-evenly flex-wrap">
-		
+	<div class="home__heading">
+		<h4 class="p-4">RECENT BLOGS</h4>
+	</div>
+	<div class="section2 container d-flex justify-content-evenly flex-wrap">
+
 		{% for r in result %}
 
 			<div class="m-4">
-				{# <li class='text-white'>{{ r.title }}</li>
-				<li class='text-white'>{{ r.body }}</li> #}
 
 				<div class="card" style="width: 18rem;">
+
 					<img class="card-img-top" src="{{ r.image }}" alt="Card image cap">
+
 					<div class="card-body">
 						<h5 class="card-title">{{ r.title }}</h5>
 						<p class="card-text">{{ r.body }}</p>
