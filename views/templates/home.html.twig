@@ -3,8 +3,8 @@
 
 {% block body %}
 	{% if username %}
-		<h5>{{ username }}</h5>
-		<h6>{{ role }}</h6>
+		<div class="alert alert-success" role="alert"> Login Successfull, Aloha {{ username }} !</div>
+		{# <div class="alert alert-success" role="alert">{{ role }}</div> #}
 	{% endif %}
 
 	<div class="section1">

@@ -55,6 +55,10 @@ class Article extends ControllerBase
         $articles = new ArticleModel();
         $result = $articles->fetchAllArticleData();
         $variables['result'] = $result;
+        if (isset($_SESSION["user_id"])){
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+        }
         echo $twig->render("home.html.twig", $variables);
     }
 

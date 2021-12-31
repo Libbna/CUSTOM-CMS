@@ -11,6 +11,10 @@ class Menu extends ControllerBase
     public function displayMenuForm($twig){
 
         $variables = parent::preprocesspage();
+        if (isset($_SESSION["user_id"])){
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+        }
         echo $twig->render('menu.html.twig', $variables);
         return;
     }
@@ -39,6 +43,10 @@ class Menu extends ControllerBase
         $displayMenuList = new Database();
         $result = $displayMenuList->displayMenu();
         $variables['result'] = $result;
+        if (isset($_SESSION["user_id"])){
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+        }
         echo $twig->render('menuDisplay.html.twig', $variables);
         return;
     }
