@@ -1,0 +1,12 @@
+name: custom-cms
+recipe: lamp
+config:
+  webroot: .
+services:
+  phpmyadmin:
+    type: phpmyadmin
+    hosts:
+      - database
+proxy:
+  phpmyadmin:
+    - phpmyadmin.ecom.lndo.site
