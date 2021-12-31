@@ -2,6 +2,7 @@ name: custom-cms
 recipe: lamp
 config:
   webroot: .
+  database: mysql:8.0.27
 services:
   phpmyadmin:
     type: phpmyadmin
