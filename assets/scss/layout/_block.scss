@@ -1,0 +1,27 @@
+.block-wrapper {
+    h3 {
+        // color: #fff;
+        font-size: 30px;
+        font-family: "Poppins", Arial, sans-serif;
+        text-transform: uppercase;
+        color: #FB885C;
+        font-weight: 600;
+    }
+
+    form {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border: 1px solid #ddd;
+    }
+    .sumbit-btn {
+        border-radius: 30px;
+        background: #ff895d;
+        border: 1px solid #ff895d;
+        color: #fff;
+
+        &:hover {
+            border: 1px solid #ff895d;
+            background: transparent;
+            color: #ff895d;
+        }
+    }
+}
