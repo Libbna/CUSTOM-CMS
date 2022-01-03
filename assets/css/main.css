@@ -87,6 +87,7 @@
   background-color: #FB885C;
   margin-right: 1rem;
   border-radius: 6px;
+  border: 1px solid #ff895d;
 }
 
 .block-region-header .user-auth-btns ul li a:hover {
