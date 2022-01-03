@@ -7,6 +7,11 @@
         a img{
             height: 100%;
             width: 100%;
+
+            &:hover {
+                transition: transform .7s ease-in-out;
+                transform: rotate(360deg);
+            }
         }
     }
 }
