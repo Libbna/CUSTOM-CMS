@@ -53,6 +53,13 @@ class ArticleModel
         return $ans;
     }
 
-    
+
+    public function fetchTopicWiseArticles($category = "Food"){
+        $query = $this->conn->prepare("SELECT * FROM articles WHERE category = ?");
+        $query->bind_param("s", $category);
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
 
 }

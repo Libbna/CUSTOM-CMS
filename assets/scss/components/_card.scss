@@ -1,6 +1,13 @@
-.card .card-body{
-    a{
-        background-color: #FB885C !important;
-        border: none;
+.card {
+  min-height: 50vh;
+  .card-body {
+    a {
+      background-color: $primary !important;
+      border: none;
     }
+  }
+
+  img {
+    min-height: 25vh;
+  }
 }
