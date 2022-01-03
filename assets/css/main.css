@@ -31,6 +31,15 @@
   width: 100%;
 }
 
+.logo .logo__container a img:hover {
+  -webkit-transition: -webkit-transform .7s ease-in-out;
+  transition: -webkit-transform .7s ease-in-out;
+  transition: transform .7s ease-in-out;
+  transition: transform .7s ease-in-out, -webkit-transform .7s ease-in-out;
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
 .header {
   width: 100%;
   display: -webkit-box;
