@@ -14,6 +14,7 @@ class Menu extends ControllerBase
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
         }
         echo $twig->render('menu.html.twig', $variables);
         return;
@@ -46,6 +47,7 @@ class Menu extends ControllerBase
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
         }
         echo $twig->render('menuDisplay.html.twig', $variables);
         return;

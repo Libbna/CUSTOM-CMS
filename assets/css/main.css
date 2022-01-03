@@ -1,3 +1,17 @@
+.admin__navbarContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.admin__navbarContainer .admin__navbar {
+  width: 100%;
+  max-width: 1300px;
+}
+
 .header {
   width: 100%;
   display: -webkit-box;

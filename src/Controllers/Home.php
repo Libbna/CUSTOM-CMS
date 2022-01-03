@@ -13,6 +13,7 @@ class Home extends ControllerBase
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
         }
         echo $twig->render('home.html.twig', $variables);
         return;

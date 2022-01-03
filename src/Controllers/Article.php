@@ -18,6 +18,7 @@ class Article extends ControllerBase
             echo $twig->render("error.html.twig", $variables);
             return;
         }
+        $variables['role'] = $_SESSION['role'];
         echo $twig->render("articleForm.html.twig", $variables);
         return;
     }
@@ -42,6 +43,7 @@ class Article extends ControllerBase
         if (empty($ans) == 1){
             $variables['status'] = "true";
             $variables['message'] = "Article posted successfully!";
+            $variables['role'] = $_SESSION['role'];
             echo $twig->render("articleForm.html.twig", $variables);
             return;
         }
@@ -58,6 +60,7 @@ class Article extends ControllerBase
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
         }
         echo $twig->render("home.html.twig", $variables);
     }
