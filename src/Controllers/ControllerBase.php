@@ -9,7 +9,6 @@ class ControllerBase{
     protected function preprocessPage(){
 
         $this->page['nav_links'] = $this->getNavLinks();
-        $this->page['base_tag'] = $database['base'];
         return $this->page;
     }
     protected function getNavLinks(){
