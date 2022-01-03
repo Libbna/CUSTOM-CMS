@@ -106,10 +106,10 @@
   border-radius: 15px;
 }
 
-
 .card .card-body a {
   background-color: #FB885C !important;
   border: none;
+}
 
 @media only screen and (min-width: 768px) {
   .login_container {
@@ -156,7 +156,6 @@
   border: 1px solid #ff895d;
   background: transparent;
   color: #ff895d;
-
 }
 
 .sidebar-region {
