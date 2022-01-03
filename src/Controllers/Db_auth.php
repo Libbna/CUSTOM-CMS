@@ -57,12 +57,14 @@ class Db_auth extends ControllerBase
                 $variables['role'] = $_SESSION['role'];
                 $variables['authenticated_userId'] = $_SESSION['user_id'];
                 $variables['message'] = "Login Successful, Welcome";
+                $variables['title'] = $this->reverie . " | Welcome";
                 echo $twig->render("home.html.twig", $variables);
                 return;
             } else {
 
                 $variables['status'] = "false";
                 $variables['message'] = "Login Successful, Welcome";
+                $variables['title'] = $this->reverie . " | Login";
                 echo $twig->render("loginForm.html.twig", $variables);
                 return;
             }
@@ -98,11 +100,13 @@ class Db_auth extends ControllerBase
         if ($insertUser) {
             $variables['status'] = "true";
             $variables['message'] = "Registeration successful";
+            $variables['title'] = $this->reverie . " | Register";
             echo $twig->render("loginForm.html.twig", $variables);
             return;
         } else {
             $variables['status'] = "false";
             $variables['message'] = "Registeration not successful";
+            $variables['title'] = $this->reverie . " | Register";
             echo $twig->render("registerForm.html.twig", $variables);
             return;
         }
@@ -117,6 +121,7 @@ class Db_auth extends ControllerBase
             echo $twig->render("error.html.twig", $variables);
             return;
         }
+        $variables['title'] = $this->reverie . " | Login";
         echo $twig->render('loginForm.html.twig', $variables);
         return;
     }
@@ -130,6 +135,7 @@ class Db_auth extends ControllerBase
             echo $twig->render("error.html.twig", $variables);
             return;
         }
+        $variables['title'] = $this->reverie . " | Register";
         echo $twig->render('registerForm.html.twig', $variables);
         return;
     }
@@ -142,6 +148,7 @@ class Db_auth extends ControllerBase
         $variables = parent::preprocesspage();
         $variables['status'] = "true";
         $variables['message'] = "You have logged out!";
+        $variables['title'] = $this->reverie . " | Logout";
         echo $twig->render("loginForm.html.twig", $variables);
         return;
     }
