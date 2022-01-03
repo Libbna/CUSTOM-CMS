@@ -1,19 +1,23 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-	<div class="home__form mt-5 d-flex justify-content-center">
-		<form action="menu-insert" class = "p-4" method = "POST">
-			<div class="home__input mb-3">
-				<label class="form-label">Menu Title</label>
-				<input type="text" name="menu-title" class="form-control" autocomplete = "off"/>
-			</div>
+	
+	<div class="block-wrapper mt-5">
+		<h3 class="text-center">Create a Menu here!</h3>
+		<div class="home__form mt-5 d-flex justify-content-center">
+			<form action="menu-insert" class = "p-4" method = "POST">
+				<div class="home__input mb-3">
+					<label class="form-label">Menu Title</label>
+					<input type="text" name="menu-title" class="form-control" autocomplete = "off"/>
+				</div>
 
-			<div class="home__input mb-3">
-				<label>Menu Link</label>
-				<input type="text" name="menu-link" class="form-control" autocomplete = "off"/>
-			</div>
+				<div class="home__input mb-3">
+					<label>Menu Link</label>
+					<input type="text" name="menu-link" class="form-control" autocomplete = "off"/>
+				</div>
 
-			<button type="submit" name="submitBtn" class="btn btn-secondary">Submit</button>
-		</form>
+				<button type="submit" name="submitBtn" class="btn sumbit-btn">Submit</button>
+			</form>
+		</div>
 	</div>
 {% endblock %}
