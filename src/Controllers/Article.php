@@ -63,8 +63,8 @@ class Article extends ControllerBase
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];
-            $variables['title'] = $this->reverie . " | Home";
         }
+        $variables['title'] = $this->reverie . " | Home";
         echo $twig->render("home.html.twig", $variables);
     }
 
