@@ -10,6 +10,8 @@ class CustomBlock extends ControllerBase
     public function displayForm($twig){
 
         $variables = parent::preprocesspage();
+        $variables['username'] = $_SESSION['username'];
+        $variables['role'] = $_SESSION['role'];
         echo $twig->render('block.html.twig', $variables);
         return;
     }
@@ -40,6 +42,7 @@ class CustomBlock extends ControllerBase
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
         }
         echo $twig->render('blockDisplay.html.twig', $variables);
         return;

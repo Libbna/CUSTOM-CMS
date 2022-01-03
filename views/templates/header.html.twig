@@ -1,5 +1,5 @@
 {# Admin Navbar Menu #}
-{% if authenticated_userId %}
+{% if role == 'admin' %}
 
 	<div class="admin__navbarContainer">
 		<div class="admin__navbar p-2 bg-dark">
@@ -8,6 +8,11 @@
 				<li>
 					<a href="home" class="nav-link text-white">
 						{{ username }}
+					</a>
+				</li>
+				<li>
+					<a href="user-info" class="nav-link text-white">
+						Users
 					</a>
 				</li>
 			</ul>
