@@ -30,9 +30,20 @@
     max-width: 1300px;
   }
 }
+
 // .section2 {
 //     // height: 100%;
 //     // border: 1px solid purple;
 // }
 
-@import "../components/topicWiseBlogs";
+
+
+.section3 {
+  height: 25%;
+  border: 1px solid saddlebrown;
+}
+.inner-section {
+  position: relative;
+  top: 3rem;
+  border-radius: 15px;
+}
