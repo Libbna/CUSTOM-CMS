@@ -32,6 +32,13 @@
             li a{
                 background-color:#FB885C;
                 margin-right: 1rem;
+                border-radius: 6px;
+
+                &:hover {
+                    border: 1px solid #ff895d;
+                    background: transparent;
+                    color: #ff895d !important;
+                }
             }
         }
     }

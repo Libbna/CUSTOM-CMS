@@ -77,6 +77,13 @@
 .block-region-header .user-auth-btns ul li a {
   background-color: #FB885C;
   margin-right: 1rem;
+  border-radius: 6px;
+}
+
+.block-region-header .user-auth-btns ul li a:hover {
+  border: 1px solid #ff895d;
+  background: transparent;
+  color: #ff895d !important;
 }
 
 .content-region {
