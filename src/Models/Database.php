@@ -1,7 +1,6 @@
 <?php
 
 namespace Cms\Models;
-session_start();
 
 class Database
 {
@@ -72,5 +71,4 @@ class Database
         $ans = $query->get_result();
         return $ans;
     }
-
 }
