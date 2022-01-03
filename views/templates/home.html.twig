@@ -7,11 +7,11 @@
 			<p>
 				Login Successfull, Aloha
 				{{ username }}
-			!</p>
+				!</p>
 			<p id="alertCloseBtn">
 				close
 			</p>
-			
+
 		</div>
 		{# <div class="alert alert-success" role="alert">{{ role }}</div> #}
 	{% endif %}
@@ -34,13 +34,38 @@
 
 					<div class="card-body">
 						<h5 class="card-title">{{ r.title }}</h5>
-						<p class="card-text">{{ r.body }}</p>
+						<p class="card-text">{{ r.body|slice(0, 120) ~ '...' }}</p>
 						<a href="#" class="btn btn-primary">Go somewhere</a>
 					</div>
 				</div>
 			</div>
 		{% endfor %}
 	</div>
-	<div class="inner-section section3 mt-1 p-4">Section 3 - Category wise blogs</div>
+
+
+	<div class="topicWise__container mt-4">
+
+		<div class="home__heading">
+			<h4 class="p-4">FOOD BLOGS</h4>
+		</div>
+		<div class="section3 p-4 d-flex justify-content-evenly flex-wrap">
+			{% for r in topicResult %}
+
+				<div>
+
+					<div class="card" style="width: 18rem;">
+
+						<img class="card-img-top" src="{{ r.image }}" alt="Card image cap">
+
+						<div class="card-body">
+							<h5 class="card-title">{{ r.title }}</h5>
+							<p class="card-text">{{ r.body|slice(0, 120) ~ '...' }}</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
 
 {% endblock %}

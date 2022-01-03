@@ -109,20 +109,41 @@
   max-width: 1300px;
 }
 
-.section3 {
-  height: 25%;
-  border: 1px solid saddlebrown;
-}
-
 .inner-section {
   position: relative;
   top: 3rem;
   border-radius: 15px;
 }
 
+.topicWise__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fdc9b5;
+}
+
+.topicWise__container .section3 .card {
+  margin-right: 1rem;
+}
+
+.card {
+  min-height: 50vh;
+}
+
 .card .card-body a {
   background-color: #FB885C !important;
   border: none;
+}
+
+.card img {
+  min-height: 25vh;
 }
 
 @media only screen and (min-width: 768px) {

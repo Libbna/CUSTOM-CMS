@@ -1,0 +1,22 @@
+// .section3 {
+//   height: 25%;
+// //   border: 1px solid saddlebrown;
+// }
+.inner-section {
+  position: relative;
+  top: 3rem;
+  border-radius: 15px;
+}
+
+.topicWise__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:$primaryLightBackground;
+    
+    .section3{
+        .card{
+            margin-right: 1rem;
+        }
+    }
+}

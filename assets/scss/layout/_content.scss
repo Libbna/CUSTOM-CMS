@@ -1,3 +1,5 @@
+@import "../abstract/colors";
+
 .content-region {
   display: flex;
   justify-content: flex-start;
@@ -32,12 +34,5 @@
 //     // height: 100%;
 //     // border: 1px solid purple;
 // }
-.section3 {
-  height: 25%;
-  border: 1px solid saddlebrown;
-}
-.inner-section {
-  position: relative;
-  top: 3rem;
-  border-radius: 15px;
-}
+
+@import "../components/topicWiseBlogs";
