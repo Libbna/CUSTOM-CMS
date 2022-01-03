@@ -12,6 +12,25 @@
   max-width: 1300px;
 }
 
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.logo .logo__container {
+  height: 3rem;
+  width: 3rem;
+}
+
+.logo .logo__container a img {
+  height: 100%;
+  width: 100%;
+}
+
 .header {
   width: 100%;
   display: -webkit-box;

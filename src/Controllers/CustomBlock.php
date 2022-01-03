@@ -12,6 +12,7 @@ class CustomBlock extends ControllerBase
         $variables = parent::preprocesspage();
         $variables['username'] = $_SESSION['username'];
         $variables['role'] = $_SESSION['role'];
+        $variables['title'] = $this->reverie . " | Block";
         echo $twig->render('block.html.twig', $variables);
         return;
     }
@@ -30,6 +31,7 @@ class CustomBlock extends ControllerBase
         $newBlock = new Database();
         $result = $newBlock->insertBlockDetails($block_title, $block_body);
         $variables['result'] = $result;
+        $variables['title'] = $this->reverie . " | Block";
         echo $twig->render('block.html.twig');
         return;
     }
@@ -44,6 +46,7 @@ class CustomBlock extends ControllerBase
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];
         }
+        $variables['title'] = $this->reverie . " | Blocks";
         echo $twig->render('blockDisplay.html.twig', $variables);
         return;
     }
