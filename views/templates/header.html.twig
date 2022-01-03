@@ -1,4 +1,24 @@
+{# Admin Navbar Menu #}
+{% if authenticated_userId %}
+
+	<div class="admin__navbarContainer">
+		<div class="admin__navbar p-2 bg-dark">
+
+			<ul class="nav d-flex justify-content-start">
+				<li>
+					<a href="home" class="nav-link text-white">
+						{{ username }}
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+{% endif %}
+
 <header class="header bg-light">
+
+
 	<div class="header-wrapper bg-light">
 
 		<div class="block-region-header">
