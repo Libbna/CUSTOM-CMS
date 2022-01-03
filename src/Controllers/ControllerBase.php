@@ -6,6 +6,7 @@ use Cms\Models\Database;
 
 class ControllerBase{
     protected $page = [];
+    protected $reverie = "Reverie";
     protected function preprocessPage(){
 
         $this->page['nav_links'] = $this->getNavLinks();

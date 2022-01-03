@@ -16,6 +16,7 @@ class Menu extends ControllerBase
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];
         }
+        $variables['title'] = $this->reverie . " | Enter Menu";
         echo $twig->render('menu.html.twig', $variables);
         return;
     }
@@ -34,6 +35,8 @@ class Menu extends ControllerBase
         $newMenu = new Database();
         $result = $newMenu->insertMenuDetails($menu_title, $menu_link);
         $variables['result'] = $result; 
+        $variables['role'] = $_SESSION['role'];
+        $variables['title'] = $this->reverie . " | Menu";
         echo $twig->render('menu.html.twig', $variables);
         return;
     }
@@ -49,6 +52,7 @@ class Menu extends ControllerBase
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];
         }
+        $variables['title'] = $this->reverie . " | Menus";
         echo $twig->render('menuDisplay.html.twig', $variables);
         return;
     }
