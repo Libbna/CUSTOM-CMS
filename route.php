@@ -8,6 +8,7 @@ use Cms\Controllers\CustomBlock;
 use Cms\Controllers\Db_auth;
 use Cms\Controllers\Article;
 use Cms\Controllers\Menu;
+use Cms\Controllers\Admin;
 
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
@@ -22,6 +23,8 @@ try {
     $context = new RequestContext();
 
     //creating routes
+
+    $root_route = new Route('/', ['controller' => "Cms\Controllers\Article::fetchAllArticles"]);
 
     // Home route
     $home_route = new Route('/home', ['controller' => "Cms\Controllers\Article::fetchAllArticles"]);
@@ -66,6 +69,9 @@ try {
     // menu insert route
     $menu_insert_route = new Route('/menu-insert', ['controller' => "Cms\Controllers\Menu::insertCustomMenu"]);
 
+    //users display route
+    $user_info_route = new Route('/user-info', ['controller' => "Cms\Controllers\Admin::displayUserDetails"]);
+
 
     $foo_placeholder_route = new Route(
         '/foo/{id}',
@@ -75,6 +81,7 @@ try {
 
     
     //adding route to RouteCollection
+    $routes->add('root_route', $root_route);
     $routes->add('home_route', $home_route);
     $routes->add('foo_route', $foo_placeholder_route);
     $routes->add('block_route', $block_route);
@@ -91,6 +98,7 @@ try {
     $routes->add('menu_insert_route', $menu_insert_route);
     $routes->add('article_form_route', $article_form_route);
     $routes->add('article_insert_route', $article_insert_route);
+    $routes->add('user_info_route', $user_info_route);
     
 
     $context->fromRequest(Request::createFromGlobals());
