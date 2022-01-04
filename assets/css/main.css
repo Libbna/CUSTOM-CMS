@@ -63,7 +63,13 @@
 
 .main-nav .navbar-toggler {
   background-color: #FB885C;
+
+  margin-right: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ff895d;
 }
+
+
 
 .content-region {
   display: -webkit-box;
