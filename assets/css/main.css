@@ -40,61 +40,36 @@
           transform: rotate(360deg);
 }
 
-.header {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  background: aliceblue;
+.main-nav .navbar-nav .nav-item:hover a {
+  color: #FB885C !important;
 }
 
-.header-wrapper {
-  width: 100%;
-  max-width: 1300px;
-}
-
-.block-region-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 auto;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  text-align: center;
-}
-
-.block-region-header .logo {
-  width: 25%;
-  background: antiquewhite;
-}
-
-.block-region-header .navbar-links {
-  width: 50%;
-  background: cadetblue;
-}
-
-.block-region-header .user-auth-btns {
-  width: 25%;
-}
-
-.block-region-header .user-auth-btns ul li a {
+.main-nav .user-auth-btns button {
   background-color: #FB885C;
+  border-radius: 6px;
+  border-color: transparent;
+}
+
+.main-nav .user-auth-btns button:hover {
+  background-color: transparent;
+  color: #FB885C !important;
+  border-color: #FB885C;
+}
+
+.main-nav .user-auth-btns button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-nav .navbar-toggler {
+  background-color: #FB885C;
+
   margin-right: 1rem;
   border-radius: 6px;
   border: 1px solid #ff895d;
 }
 
-.block-region-header .user-auth-btns ul li a:hover {
-  border: 1px solid #ff895d;
-  background: transparent;
-  color: #ff895d !important;
-}
+
 
 .content-region {
   display: -webkit-box;
@@ -145,28 +120,15 @@
   max-width: 1300px;
 }
 
+.section3 {
+  height: 25%;
+  border: 1px solid saddlebrown;
+}
+
 .inner-section {
   position: relative;
   top: 3rem;
   border-radius: 15px;
-}
-
-.topicWise__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #fdc9b5;
-}
-
-.topicWise__container .section3 .card {
-  margin-right: 1rem;
 }
 
 .card {
