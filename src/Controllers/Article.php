@@ -19,6 +19,7 @@ class Article extends ControllerBase
             return;
         }
         $variables['role'] = $_SESSION['role'];
+        $variables['authenticated_userId'] = $_SESSION['user_id'];
         $variables['title'] = $this->reverie . " | Article";
         echo $twig->render("articleForm.html.twig", $variables);
         return;

@@ -11,6 +11,12 @@ class Admin extends ControllerBase
     public function displayUserDetails($twig){
 
         $variables = parent::preprocesspage();
+        if ($_SESSION['role'] != 'admin') {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
         $displayUsers = new AdminModel();
         $result = $displayUsers->displayUsers();
         $variables['result'] = $result;

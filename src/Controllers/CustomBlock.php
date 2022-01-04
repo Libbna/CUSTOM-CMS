@@ -10,8 +10,15 @@ class CustomBlock extends ControllerBase
     public function displayForm($twig){
 
         $variables = parent::preprocesspage();
+        if (!isset($_SESSION["loggedin"])) {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
         $variables['username'] = $_SESSION['username'];
         $variables['role'] = $_SESSION['role'];
+        $variables['authenticated_userId'] = $_SESSION['user_id'];
         $variables['title'] = $this->reverie . " | Block";
         echo $twig->render('block.html.twig', $variables);
         return;
@@ -31,6 +38,7 @@ class CustomBlock extends ControllerBase
         $newBlock = new Database();
         $result = $newBlock->insertBlockDetails($block_title, $block_body);
         $variables['result'] = $result;
+        $variables['authenticated_userId'] = $_SESSION['user_id'];
         $variables['title'] = $this->reverie . " | Block";
         echo $twig->render('block.html.twig');
         return;
