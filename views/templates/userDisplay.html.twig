@@ -7,7 +7,13 @@
 	{% for r in result %}
 		<div class="info__details-item">
 			<li class='text-white'>{{ r.username }}</li>
-			<li class='text-white'>{{ r.roles }}</li>
+			<li class='text-white'>
+				<input class="user-role__input" type="text" value="{{ r.roles }}"></li>
+			{% if r.roles == "authenticated" %}
+				<a href="update-role/{{ r.id }}" class="text-white">Set User as Admin</a>
+			{% elseif r.roles == "admin"%}
+				<a href="remove-role/{{ r.id }}" class="text-white">Set User as Authenticated</a>
+			{% endif %}
 		</div>
 	{% endfor %}
 {% endblock %}

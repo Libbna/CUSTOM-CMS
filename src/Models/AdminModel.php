@@ -27,5 +27,33 @@ class AdminModel
         $ans = $query->get_result();
         return $ans;
     }
+
+    public function setUserToAdmin($user_id){
+        // UPDATE userdetails SET bio = ? WHERE user_id = ?
+        $query = $this->conn->prepare("UPDATE userauth SET roles = ? WHERE id = ?");
+        $query->bind_param("si", $role, $user_id);
+        $role = "admin";
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
+    public function setUserToAuth($user_id){
+        $authenticated = "authenticated"; 
+        $query = $this->conn->prepare("UPDATE userauth SET roles = ? WHERE id = ?");
+        $query->bind_param("si", $role, $user_id);
+        $role = $authenticated;
+
+        // if logged in user who is also admin, requests to change the role.
+        if ($_SESSION['user_id'] == $user_id){
+            if ($_SESSION['role'] == 'admin'){
+                $_SESSION['role'] = $authenticated;
+            }
+        }
+
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
     
 }
