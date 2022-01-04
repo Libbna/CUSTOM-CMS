@@ -4,10 +4,14 @@
 	<h4>
 		Users display page
 	</h4>
+	<p>{{ message }}</p>
 	{% for r in result %}
 		<div class="info__details-item">
 			<li class='text-white'>{{ r.username }}</li>
 			<li class='text-white'>{{ r.roles }}</li>
+			<li>
+				<a href="delete/id/{{ r.id }}" class="btn btn-primary"><i class="fas fa-trash-alt"></i></a>
+			</li>
 		</div>
 	{% endfor %}
 {% endblock %}

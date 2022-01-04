@@ -27,5 +27,12 @@ class AdminModel
         $ans = $query->get_result();
         return $ans;
     }
+
+    public function deleteUser($id){
+        $query = $this->conn->prepare("DELETE FROM userauth WHERE id = ?");
+        $query->bind_param("i", $id);
+        $query->execute();
+        return;
+    }
     
 }

@@ -79,6 +79,12 @@ try {
         array('id' => '[0-9]+')
     );
 
+    $delete_route = new Route(
+        '/delete/id/{id}',
+        array('controller' => 'Cms\Controllers\Admin::userDelete'),
+        array('id' => '[0-9]+')
+    );
+
     
     //adding route to RouteCollection
     $routes->add('root_route', $root_route);
@@ -99,6 +105,7 @@ try {
     $routes->add('article_form_route', $article_form_route);
     $routes->add('article_insert_route', $article_insert_route);
     $routes->add('user_info_route', $user_info_route);
+    $routes->add('delete_route', $delete_route);
     
 
     $context->fromRequest(Request::createFromGlobals());
