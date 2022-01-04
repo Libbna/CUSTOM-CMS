@@ -86,6 +86,19 @@ try {
     );
 
     
+    $admin_role_route = new Route(
+        '/update-role/{id}',
+        array('controller' => 'Cms\Controllers\Admin::updateUserRoleToAdmin'),
+        array('id' => '[0-9]+')
+    );
+
+    $authenticated_role_route = new Route(
+        '/remove-role/{id}',
+        array('controller' => 'Cms\Controllers\Admin::updateUserRoleToAuth'),
+        array('id' => '[0-9]+')
+    );
+
+
     //adding route to RouteCollection
     $routes->add('root_route', $root_route);
     $routes->add('home_route', $home_route);
@@ -108,9 +121,13 @@ try {
     $routes->add('delete_route', $delete_route);
     
 
+    $routes->add('admin_role_route', $admin_role_route);
+    $routes->add('authenticated_role_route', $authenticated_role_route);
+
+
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
-    
+
     //matching routes with the url
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
@@ -119,8 +136,14 @@ try {
 
     //calling the controller
     list($controllerClassName, $action) = explode('::', $parameters['controller']);
-    $controller = new $controllerClassName();
-    $controller->{$action}($twig);
+    if (isset($parameters['id'])) {
+        $id = $parameters['id'];
+        $controller = new $controllerClassName();
+        $controller->{$action}($twig, $id);
+    } else {
+        $controller = new $controllerClassName();
+        $controller->{$action}($twig);
+    }
 
     exit;
 } catch (ResourceNotFoundException $e) {

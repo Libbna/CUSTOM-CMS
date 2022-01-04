@@ -12,6 +12,13 @@
 			<li>
 				<a href="delete/id/{{ r.id }}" class="btn btn-primary"><i class="fas fa-trash-alt"></i></a>
 			</li>
+			<li class='text-white'>
+				<input class="user-role__input" type="text" value="{{ r.roles }}"></li>
+			{% if r.roles == "authenticated" %}
+				<a href="update-role/{{ r.id }}" class="text-white">Set User as Admin</a>
+			{% elseif r.roles == "admin"%}
+				<a href="remove-role/{{ r.id }}" class="text-white">Set User as Authenticated</a>
+			{% endif %}
 		</div>
 	{% endfor %}
 {% endblock %}

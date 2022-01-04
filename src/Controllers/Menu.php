@@ -11,6 +11,12 @@ class Menu extends ControllerBase
     public function displayMenuForm($twig){
 
         $variables = parent::preprocesspage();
+        if (!isset($_SESSION["loggedin"])) {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
@@ -44,6 +50,12 @@ class Menu extends ControllerBase
     public function displayCustomMenu($twig){
 
         $variables = parent::preprocesspage();
+        if (!isset($_SESSION["loggedin"])) {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
         $displayMenuList = new Database();
         $result = $displayMenuList->displayMenu();
         $variables['result'] = $result;

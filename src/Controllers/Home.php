@@ -18,5 +18,12 @@ class Home extends ControllerBase
         echo $twig->render('home.html.twig', $variables);
         return;
     }   
+
+    public function DemoFunc($twig, $id){
+        $variables = parent::preprocesspage();
+        echo "Hey" . $id;
+        return;
+
+    }
 }
 
