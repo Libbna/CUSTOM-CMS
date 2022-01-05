@@ -78,6 +78,7 @@ try {
         array('controller' => 'Home::getData'),
         array('id' => '[0-9]+')
     );
+  
     $delete_route = new Route(
         '/delete/id/{id}',
         array('controller' => 'Cms\Controllers\Admin::userDelete'),
