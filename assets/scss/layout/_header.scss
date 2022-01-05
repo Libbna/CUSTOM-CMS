@@ -20,23 +20,6 @@
   & .navbar-toggler {
     background-color: $primary;
   }
-
-  .user-auth-btns {
-    // width: 25%;
-    ul {
-      li a {
-        background-color: #fb885c;
-        margin-right: 1rem;
-        border-radius: 6px;
-        border: 1px solid #ff895d;
-        &:hover {
-          border: 1px solid #ff895d;
-          background: transparent;
-          color: #ff895d !important;
-        }
-      }
-    }
-  }
 }
 
 // .header {
