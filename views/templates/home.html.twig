@@ -2,17 +2,13 @@
 
 {% block body %}
 	{% if username %}
-		<div class="alert alert-success d-flex justify-content-between" role="alert">
+		<div class="alert alert-success alert-dismissible container d-flex justify-content-between fade show" role="alert">
 			<p>
 				Login Successfull, Aloha
 				{{ username }}
 				!</p>
-			<p id="alertCloseBtn">
-				close
-			</p>
-
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 		</div>
-		{# <div class="alert alert-success" role="alert">{{ role }}</div> #}
 	{% endif %}
 
 	<div class="section1">

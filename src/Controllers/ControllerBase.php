@@ -23,6 +23,6 @@ class ControllerBase{
     protected function getBaseUrl(){
         $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
         $base = explode("route", $url);
-        return $base;
+        return $base[0];
     }
 } 
