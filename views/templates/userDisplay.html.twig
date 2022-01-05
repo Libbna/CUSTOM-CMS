@@ -4,9 +4,11 @@
 	<h4>
 		Users display page
 	</h4>
+	<p>{{ message }}</p>
 	{% for r in result %}
 		<div class="info__details-item">
 			<li class='text-white'>{{ r.username }}</li>
+			<li class='text-white'>{{ r.roles }}</li>
 			<li class='text-white'>
 				<input class="user-role__input" type="text" value="{{ r.roles }}"></li>
 			{% if r.roles == "authenticated" %}
@@ -14,6 +16,9 @@
 			{% elseif r.roles == "admin"%}
 				<a href="remove-role/{{ r.id }}" class="text-white">Set User as Authenticated</a>
 			{% endif %}
+			<li>
+				<a href="delete/id/{{ r.id }}" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete {{ r.username }}?')"><i class="fas fa-trash-alt"></i></a>
+			</li>
 		</div>
 	{% endfor %}
 {% endblock %}
