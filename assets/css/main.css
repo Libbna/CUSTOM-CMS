@@ -63,13 +63,20 @@
 
 .main-nav .navbar-toggler {
   background-color: #FB885C;
+}
 
+.main-nav .user-auth-btns ul li a {
+  background-color: #fb885c;
   margin-right: 1rem;
   border-radius: 6px;
   border: 1px solid #ff895d;
 }
 
-
+.main-nav .user-auth-btns ul li a:hover {
+  border: 1px solid #ff895d;
+  background: transparent;
+  color: #ff895d !important;
+}
 
 .content-region {
   display: -webkit-box;
@@ -120,19 +127,33 @@
   max-width: 1300px;
 }
 
-.section3 {
-  height: 25%;
-  border: 1px solid saddlebrown;
-}
-
 .inner-section {
   position: relative;
   top: 3rem;
   border-radius: 15px;
 }
 
+.topicWise__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fdc9b5;
+}
+
+.topicWise__container .section3 .card {
+  margin-right: 1rem;
+}
+
 .card {
-  min-height: 50vh;
+  height: 60vh;
+  max-height: 420px;
 }
 
 .card .card-body a {
@@ -141,7 +162,8 @@
 }
 
 .card img {
-  min-height: 25vh;
+  height: 25vh;
+  max-height: 200px;
 }
 
 @media only screen and (min-width: 768px) {
