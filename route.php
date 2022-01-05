@@ -79,6 +79,7 @@ try {
         array('id' => '[0-9]+')
     );
 
+    // Admin related
     $admin_role_route = new Route(
         '/update-role/{id}',
         array('controller' => 'Cms\Controllers\Admin::updateUserRoleToAdmin'),
@@ -91,6 +92,12 @@ try {
         array('id' => '[0-9]+')
     );
 
+    // Aritcle related
+    $article_content_route = new Route(
+        "/article/{id}",
+        array('controller' => 'Cms\Controllers\Article::fetchAllArticles'),
+        array('id' => '[0-9]+')
+    );
 
     //adding route to RouteCollection
     $routes->add('root_route', $root_route);
@@ -115,6 +122,7 @@ try {
     $routes->add('admin_role_route', $admin_role_route);
     $routes->add('authenticated_role_route', $authenticated_role_route);
 
+    $routes->add('article_content_route', $article_content_route);
 
     $context->fromRequest(Request::createFromGlobals());
     $matcher = new UrlMatcher($routes, $context);
