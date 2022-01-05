@@ -65,19 +65,6 @@
   background-color: #FB885C;
 }
 
-.main-nav .user-auth-btns ul li a {
-  background-color: #fb885c;
-  margin-right: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ff895d;
-}
-
-.main-nav .user-auth-btns ul li a:hover {
-  border: 1px solid #ff895d;
-  background: transparent;
-  color: #ff895d !important;
-}
-
 .content-region {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -91,7 +78,6 @@
           flex-direction: column;
   height: 100vh;
   margin-left: 0;
-  width: 100%;
   margin-right: 0.8rem;
 }
 

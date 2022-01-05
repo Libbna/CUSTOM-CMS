@@ -87,7 +87,7 @@ class Article extends ControllerBase
             $variables['role'] = $_SESSION['role'];
         }
 
-        echo $twig->render("contact.html.twig", $variables);
+        echo $twig->render("article.html.twig", $variables);
 
     }
 }
