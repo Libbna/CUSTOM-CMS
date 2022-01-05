@@ -152,7 +152,8 @@
 }
 
 .card {
-  min-height: 50vh;
+  height: 60vh;
+  max-height: 420px;
 }
 
 .card .card-body a {
@@ -161,7 +162,8 @@
 }
 
 .card img {
-  min-height: 25vh;
+  height: 25vh;
+  max-height: 200px;
 }
 
 @media only screen and (min-width: 768px) {
