@@ -1,5 +1,6 @@
 .card {
-  min-height: 50vh;
+  height: 60vh;
+  max-height: 420px;
   .card-body {
     a {
       background-color: $primary !important;
@@ -8,6 +9,7 @@
   }
 
   img {
-    min-height: 25vh;
+    height: 25vh;
+    max-height: 200px;
   }
 }

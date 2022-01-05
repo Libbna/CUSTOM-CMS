@@ -1,27 +1,42 @@
-@import '../components/logo';
- .main-nav {
-    & .navbar-nav .nav-item:hover a{
-        color: $primary !important;
+@import "../components/logo";
+.main-nav {
+  & .navbar-nav .nav-item:hover a {
+    color: $primary !important;
+  }
+  .user-auth-btns button {
+    background-color: $primary;
+    border-radius: 6px;
+    border-color: transparent;
+    &:hover {
+      background-color: transparent;
+      color: $primary !important;
+      border-color: $primary;
     }
-    .user-auth-btns button {
-        background-color:$primary;
+    & a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  & .navbar-toggler {
+    background-color: $primary;
+  }
+
+  .user-auth-btns {
+    // width: 25%;
+    ul {
+      li a {
+        background-color: #fb885c;
+        margin-right: 1rem;
         border-radius: 6px;
-        border-color: transparent;
-        &:hover{
-            background-color: transparent;
-            color:  $primary !important;
-            border-color: $primary;
-            
+        border: 1px solid #ff895d;
+        &:hover {
+          border: 1px solid #ff895d;
+          background: transparent;
+          color: #ff895d !important;
         }
-        & a {
-            text-decoration: none;
-            color: inherit;
-            
-        }
+      }
     }
-    & .navbar-toggler {
-        background-color: $primary;
-    }
+  }
 }
 
 // .header {
@@ -48,7 +63,6 @@
 //     .navbar-links {
 //         width: 50%;
 //         background: cadetblue;
- 
 
 //     }
 //     .user-auth-btns {
@@ -68,23 +82,3 @@
 //         }
 //     }
 // }
-
-    }
-    .user-auth-btns {
-        width: 25%;
-        ul{
-            li a{
-                background-color:#FB885C;
-                margin-right: 1rem;
-                border-radius: 6px;
-                border: 1px solid #ff895d;
-                &:hover {
-                    border: 1px solid #ff895d;
-                    background: transparent;
-                    color: #ff895d !important;
-                }
-            }
-        }
-    }
-}
-
