@@ -1,24 +1,37 @@
 {% extends "layout.html.twig"%}
 
 {% block body %}
-	<h4>
-		Users display page
-	</h4>
-	<p>{{ message }}</p>
-	{% for r in result %}
-		<div class="info__details-item">
-			<li class='text-white'>{{ r.username }}</li>
-			<li class='text-white'>{{ r.roles }}</li>
-			<li class='text-white'>
-				<input class="user-role__input" type="text" value="{{ r.roles }}"></li>
-			{% if r.roles == "authenticated" %}
-				<a href="update-role/{{ r.id }}" class="text-white">Set User as Admin</a>
-			{% elseif r.roles == "admin"%}
-				<a href="remove-role/{{ r.id }}" class="text-white">Set User as Authenticated</a>
-			{% endif %}
-			<li>
-				<a href="delete/id/{{ r.id }}" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete {{ r.username }}?')"><i class="fas fa-trash-alt"></i></a>
-			</li>
+	<div class="mt-4 mb-4">
+		<h4 class="text-center">
+			Users
+		</h4>
+		<p>{{ message }}</p>
+		<div>
+			<ul class="d-flex flex-column align-items-center justify-content-center list-unstyled">
+				{% for r in result %}
+				
+					<div class="info__details-item justify-content-between  border border-dark bg-light">
+						<li class='text-black'>{{ r.username }}
+							<div>{{ r.roles }}</div>
+						</li>
+						<li class="text-end">
+							{% if r.roles == "authenticated" %}
+								<a href="update-role/{{ r.id }}" class="text-black text-decoration-none">Make Admin</a>
+							{% elseif r.roles == "admin"%}
+								<a href="remove-role/{{ r.id }}" class="text-black text-decoration-none">Make Authenticated</a>
+							{% endif %}
+
+						</li>
+						<li>
+							<a href="delete/id/{{ r.id }}" class="btn btn-dark" onclick="return confirm('Are you sure you want to delete {{ r.username }}?')">
+								<i class="fas fa-trash-alt"></i>
+							</a>
+						</li>
+					</div>
+
+
+				{% endfor %}
+			</ul>
 		</div>
-	{% endfor %}
+	</div>
 {% endblock %}
