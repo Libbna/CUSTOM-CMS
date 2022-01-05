@@ -60,16 +60,34 @@ class Article extends ControllerBase
         $articles = new ArticleModel();
         $result = $articles->fetchAllArticleData();
         $topicResult = $articles->fetchTopicWiseArticles();
+
         $variables['result'] = $result;
         $variables['topicResult'] = $topicResult;
+        $variables['title'] = $this->reverie . " | Home";
+
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];
         }
-        $variables['title'] = $this->reverie . " | Home";
+
         echo $twig->render("home.html.twig", $variables);
     }
 
 
+    public function getArticleById($twig, $blog_id){
+        $variables = parent::preprocesspage();
+        $article = new ArticleModel();
+        $result = $article->fetchArticleById($blog_id);
+        $variables['result'] = $result;
+
+        if (isset($_SESSION["user_id"])){
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+
+        echo $twig->render("article.html.twig", $variables);
+
+    }
 }

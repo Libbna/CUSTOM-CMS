@@ -62,4 +62,13 @@ class ArticleModel
         return $ans;
     }
 
+
+    public function fetchArticleById($blog_id){
+        $query = $this->conn->prepare("SELECT * FROM articles WHERE id = ?");
+        $query->bind_param("i", $blog_id);
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
 }

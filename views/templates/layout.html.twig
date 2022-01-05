@@ -24,10 +24,10 @@
 		<div class="content-region">
 			{% block body %}
 			{% endblock %}
+			{% include "footer.html.twig" with nav_links %}
 		</div>
 
 		
-			{% include "footer.html.twig" with nav_links %}
 		
 		
 		<script src="assets/js/ck_editor.js"/>
