@@ -20,13 +20,16 @@
 	</head>
 	<body>
 		{% include "header.html.twig" with nav_links %}
-		
+    		
 		<div class="content-region">
 			{% block body %}
 			{% endblock %}
-		{% include "footer.html.twig" with nav_links %}
 		</div>
 
-		<script src="assets/js/ck_editor.js"></script>
+		
+			{% include "footer.html.twig" with nav_links %}
+		
+		
+		<script src="assets/js/ck_editor.js"/>
 	</body>
 </html>
