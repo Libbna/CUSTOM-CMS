@@ -76,8 +76,6 @@ class Admin extends ControllerBase
         $variables = parent::preprocesspage();
         $deleteUser = new AdminModel();
         $deleteUser->deleteUser($id);
-        $result = $displayUsers->displayUsers();
-        $variables['result'] = $result;
         $variables['message'] = "User deleted successfully";
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
