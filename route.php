@@ -84,7 +84,7 @@ try {
         array('controller' => 'Cms\Controllers\Admin::userDelete'),
         array('id' => '[0-9]+')
     );
-
+  
     // Admin related
     $admin_role_route = new Route(
         '/update-role/{id}',
