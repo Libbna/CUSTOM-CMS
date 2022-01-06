@@ -1,0 +1,91 @@
+root_route:
+  path: /
+  defaults: { controller: 'Cms\Controllers\Article::fetchAllArticles' }
+
+home_route: 
+  path: /home
+  defaults: { controller: 'Cms\Controllers\Article::fetchAllArticles' }
+
+block_route: 
+  path: /block-form
+  defaults: { controller: 'Cms\Controllers\CustomBlock::displayForm' }
+
+block_info_route: 
+  path: /block-info
+  defaults: { controller: 'Cms\Controllers\CustomBlock::displayCustomBlock' }
+
+block_insert_route: 
+  path: /block-insert
+  defaults: { controller: 'Cms\Controllers\CustomBlock::insertCustomBlock' }
+
+register_form_route:
+  path: /register
+  defaults: { controller: 'Cms\Controllers\Db_auth::getRegisterForm' }
+
+registerInsert_form_route:
+  path: /register-insert
+  defaults: { controller: 'Cms\Controllers\Db_auth::userRegistration' }
+
+login_form_route:
+  path: /login
+  defaults: { controller: 'Cms\Controllers\Db_auth::getLoginForm' }
+
+login_insert_form_route:
+  path: /login-insert
+  defaults: { controller: 'Cms\Controllers\Db_auth::userAuth' }
+
+logout:
+  path: /logout
+  defaults: { controller: 'Cms\Controllers\Db_auth::logout' }
+
+user_auth_route:
+  path: /user-auth
+  defaults: { controller: 'Cms\Controllers\Db_auth::userAuth' }
+
+article_form_route:
+  path: /articleForm
+  defaults: { controller: 'Cms\Controllers\Article::getArticleForm' }
+
+article_insert_route:
+  path: /article-insert
+  defaults: { controller: 'Cms\Controllers\Article::insertArticle' }
+
+menu_route:
+  path: /menu-form
+  defaults: { controller: 'Cms\Controllers\Menu::displayMenuForm' }
+
+menu_info_route:
+  path: /menu-info
+  defaults: { controller: 'Cms\Controllers\Menu::displayCustomMenu' }
+
+menu_insert_route:
+  path: /menu-insert
+  defaults: { controller: 'Cms\Controllers\Menu::insertCustomMenu' }
+
+user_info_route:
+  path: /user-info
+  defaults: { controller: 'Cms\Controllers\Admin::displayUserDetails' }
+
+delete_route:
+  path: /delete/id/{id}
+  defaults: { controller: 'Cms\Controllers\Admin::userDelete' }
+  requirements:
+    id: '[0-9]+'
+  
+admin_role_route:
+  path: /update-role/{id}
+  defaults: { controller: 'Cms\Controllers\Admin::updateUserRoleToAdmin' }
+  requirements:
+    id: '[0-9]+'
+
+authenticated_role_route:
+  path: /remove-role/{id}
+  defaults: { controller: 'Cms\Controllers\Admin::updateUserRoleToAuth' }
+  requirements:
+    id: '[0-9]+'
+
+article_content_route:
+  path: /article/{id}
+  defaults: { controller: 'Cms\Controllers\Article::getArticleById' }
+  requirements:
+    id: '[0-9]+'
