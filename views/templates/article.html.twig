@@ -26,8 +26,27 @@
 								{{ r.category }}
 							</p>
 						</div>
-						<div class="article__related text-center">
-							related articles
+						<div class="article__relatedContainer">
+							<div class="home__heading">
+								<h4 class="p-4">RELATED ARTICLES</h4>
+							</div>
+							<div class="article__related text-center d-flex justify-content-around mt-4 mb-4">
+								{% for r in relatedBlogs %}
+
+									<div>
+
+										<div class="card" style="width: 15rem; height: 18rem;">
+
+											<img class="card-img-top" src="{{ r.image }}" alt="Card image cap">
+
+											<div class="card-body">
+												<h5 class="card-title">{{ r.title }}</h5>
+												<a href="article/{{ r.id }}" class="btn btn-primary">Go somewhere</a>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
 						</div>
 
 					</div>
