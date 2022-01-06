@@ -1,4 +1,13 @@
+.article__section{
+    display: flex;
+    justify-content: center;
+    .article__main{
+        max-width: 1300px;
+    }
+}
+
 .articlecontent__wrapper{
+    max-width: 1300px;
     width: 100vw;
     flex-direction: column;
 
@@ -14,7 +23,7 @@
 
 @media only screen and (min-width: 1024px){
     .articlecontent__wrapper{
-        width: 10   0%;
+        width: 100%;
         flex-direction: row;
     
         .article__container{
