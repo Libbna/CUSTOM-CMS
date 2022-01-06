@@ -71,4 +71,13 @@ class ArticleModel
         return $ans;
     }
 
+    public function fetchRelatedArticles(){
+        $query = $this->conn->prepare("SELECT * FROM articles ORDER BY id DESC LIMIT ?");
+        $query->bind_param("i", $count);
+        $count = 3;
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
 }

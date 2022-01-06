@@ -79,7 +79,9 @@ class Article extends ControllerBase
         $variables = parent::preprocesspage();
         $article = new ArticleModel();
         $result = $article->fetchArticleById($blog_id);
+        $relatedBlogs = $article->fetchRelatedArticles();
         $variables['result'] = $result;
+        $variables['relatedBlogs'] = $relatedBlogs;
 
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
