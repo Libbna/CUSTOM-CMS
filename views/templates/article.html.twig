@@ -2,18 +2,42 @@
 
 {% block body %}
 
-<div class = ""> 
-    <div class = "row">
-        <div class = "article-content col-8">
-            hello
-        </div>
+	{% for r in result %}
+		<div class="">
+			<div class="">
+				<div class="article__image">
+					<img src="{{ r.image }}" alt="">
+				</div>
+				<div class="articlecontent__wrapper d-flex">
 
-        <div class = "sidebar-content col-4">
-            {% include "sidebar.html.twig" %}
-        </div>
-    </div>
-</div>
+					<div class="article__container">
 
+
+						<div class="article__title">
+							<h3 class="display-6 pt-4 pb-2">{{ r.title }}</h3>
+						</div>
+						<div class="article__body">
+							<p class="lead p-4">
+								{{ r.body }}
+							</p>
+						</div>
+						<div class="article__category">
+							<p class="display-4 p-4 text-white">
+								{{ r.category }}
+							</p>
+						</div>
+						<div class="article__related text-center">
+							related articles
+						</div>
+
+					</div>
+					<div class="sidebar-content">
+						{% include "sidebar.html.twig" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
 
 
 {% endblock %}
