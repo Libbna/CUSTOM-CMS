@@ -1,0 +1,17 @@
+{% extends "layout.html.twig"%}
+
+
+{% block body %}
+    <details class="logo_details mt-2 mb-2 border rounded">
+        <h5>Logo Image</h5>
+        <div class="js-form-item form-item js-form-type-file form-type-file js-form-item-files-logo-upload form-item-files-logo-upload">
+          <form enctype="multipart/form-data" action="config" class="p-4" method="POST">
+				<input data-drupal-selector="edit-logo-upload" aria-describedby="edit-logo-upload--description" type="file" id="edit-logo-upload" name="logo_upload" size="60" class="js-form-file form-file">
+                <button type="submit" name="submitBtn" class="btn sumbit-btn">Submit</button>
+    	  </form>
+        </div>
+    </details>
+{% endblock %}
+
+
+
