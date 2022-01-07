@@ -87,4 +87,11 @@ class ArticleModel
         return $ans;
     }
 
+    public function fetchPopularPosts(){
+        $query = $this->conn->prepare("SELECT * FROM articles ORDER BY id ASC LIMIT 3 ");
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
 }

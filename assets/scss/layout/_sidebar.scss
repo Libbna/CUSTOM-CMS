@@ -3,6 +3,36 @@
     font-size: 15px;
 }
 
+.post__box{
+    width: 100%;
+    .post__image{
+        height: 4rem;
+        width: 6rem;
+        margin-right: 1rem;
+        
+        img{
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+        }
+    }
+
+    .post__title{
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+
+            &:hover{
+                color: $primary;
+            }
+        }
+    }
+}
+
+
+
 .social-icons {
     .fab {
         padding: 0.5rem;
