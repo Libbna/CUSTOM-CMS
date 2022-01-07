@@ -28,11 +28,11 @@ class Article extends ControllerBase
     public function insertArticle($twig)
     {
         $variables = parent::preprocesspage();
-        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category'])){
+        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category'])) {
             $variables['message'] = "Enter all the article details!";
             echo $twig->render("error.html.twig", $variables);
             return;
-        } 
+        }
 
         $article_title = $_POST['article-title'];
         $article_body = strip_tags($_POST['article-description']);
@@ -42,7 +42,7 @@ class Article extends ControllerBase
         $contact = new ArticleModel();
         $ans = $contact->insertArticleData($article_title, $article_body, $_SESSION['user_id'], $article_category, $article_image);
 
-        if (empty($ans) == 1){
+        if (empty($ans) == 1) {
             $variables['status'] = "true";
             $variables['message'] = "Article posted successfully!";
             $variables['role'] = $_SESSION['role'];
@@ -51,10 +51,10 @@ class Article extends ControllerBase
             return;
         }
         return;
-
     }
-    
-    public function fetchAllArticles($twig){
+
+    public function fetchAllArticles($twig)
+    {
 
         $variables = parent::preprocesspage();
         $articles = new ArticleModel();
@@ -65,7 +65,7 @@ class Article extends ControllerBase
         $variables['topicResult'] = $topicResult;
         $variables['title'] = $this->reverie . " | Home";
 
-        if (isset($_SESSION["user_id"])){
+        if (isset($_SESSION["user_id"])) {
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];
@@ -75,21 +75,44 @@ class Article extends ControllerBase
     }
 
 
-    public function getArticleById($twig, $blog_id){
+    public function getArticleById($twig, $blog_id)
+    {
         $variables = parent::preprocesspage();
         $article = new ArticleModel();
         $result = $article->fetchArticleById($blog_id);
         $relatedBlogs = $article->fetchRelatedArticles();
+        $categoryList = $article->fetchCategoryList();
+
         $variables['result'] = $result;
         $variables['relatedBlogs'] = $relatedBlogs;
+        $variables['categoryList'] = $categoryList;
 
-        if (isset($_SESSION["user_id"])){
+        if (isset($_SESSION["user_id"])) {
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];
         }
 
-        echo $twig->render("article.html.twig", $variables);
+        $res_assoc = mysqli_fetch_assoc($result);
+        $variables['title'] = $this->reverie . " | " . $res_assoc['title'];
 
+        echo $twig->render("article.html.twig", $variables);
+    }
+
+    public function getCategoryList($twig)
+    {
+        $variables = parent::preprocesspage();
+        $article = new ArticleModel();
+        $result = $article->fetchCategoryList();
+
+        $variables['result'] = $result;
+
+        if (isset($_SESSION["user_id"])) {
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+
+        echo $twig->render("sidebar.html.twig", $variables);
     }
 }

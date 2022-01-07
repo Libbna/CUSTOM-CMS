@@ -82,7 +82,6 @@ body {
           flex-direction: column;
   height: 100vh;
   margin-left: 0;
-  margin-right: 0.8rem;
 }
 
 .section1 {
@@ -283,9 +282,33 @@ body {
   background-color: #FB885C;
 }
 
+.article__container .article__related {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.article__container .article__related .card {
+  margin-bottom: 1.2rem;
+}
+
+.article__container .article__related .card .card-img-top {
+  height: 8rem;
+}
+
 @media only screen and (min-width: 768px) {
   .article__container .article__body p {
     font-size: 1.1rem;
+  }
+  .article__container .article__related {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
 }
 
@@ -293,6 +316,20 @@ body {
   .article__container .article__body p {
     font-size: 1.2rem;
     padding: 0 2rem !important;
+  }
+  .article__container .article__related {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .article__container .article__related .card {
+    width: 13rem !important;
+    height: 16rem !important;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .article__container .article__related .card {
+    width: 16rem !important;
   }
 }
 
@@ -330,6 +367,11 @@ body {
 .social-icons .fa-linkedin {
   background: #007bb5;
   color: white;
+}
+
+.sidebar__categoryContainer .list-group .list-group-item:hover {
+  color: white;
+  background-color: #FB885C;
 }
 
 .block-wrapper h3 {

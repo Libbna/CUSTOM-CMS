@@ -34,3 +34,14 @@
         color: white;
     }
 }
+
+.sidebar__categoryContainer{
+    .list-group{
+        .list-group-item{
+            &:hover{
+                color: white;
+                background-color: $primary;
+            }
+        }
+    }
+}
