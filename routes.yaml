@@ -89,3 +89,8 @@ article_content_route:
   defaults: { controller: 'Cms\Controllers\Article::getArticleById' }
   requirements:
     id: '[0-9]+'
+
+config_route:
+  path: /config
+  defaults: { controller: 'Cms\Controllers\Admin::configDetails' }
+
