@@ -80,4 +80,11 @@ class ArticleModel
         return $ans;
     }
 
+    public function fetchCategoryList(){
+        $query = $this->conn->prepare("SELECT DISTINCT category FROM articles LIMIT 5");
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
 }
