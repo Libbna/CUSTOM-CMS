@@ -1,0 +1,38 @@
+.article__section{
+    display: flex;
+    justify-content: center;
+    .article__main{
+        max-width: 1300px;
+    }
+}
+
+.articlecontent__wrapper{
+    max-width: 1300px;
+    width: 100vw;
+    flex-direction: column;
+
+    .article__container{
+        width: 100%;
+    }
+
+    .sidebar-content{
+        width: 100%;
+    }
+}
+
+
+@media only screen and (min-width: 1024px){
+    .articlecontent__wrapper{
+        width: 100%;
+        flex-direction: row;
+    
+        .article__container{
+            width: 70%;
+        }
+    
+        .sidebar-content{
+            width: 30%;
+        }
+    }
+}
+

@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 .admin__navbarContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -65,19 +69,6 @@
   background-color: #FB885C;
 }
 
-.main-nav .user-auth-btns ul li a {
-  background-color: #fb885c;
-  margin-right: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ff895d;
-}
-
-.main-nav .user-auth-btns ul li a:hover {
-  border: 1px solid #ff895d;
-  background: transparent;
-  color: #ff895d !important;
-}
-
 .content-region {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -91,7 +82,6 @@
           flex-direction: column;
   height: 100vh;
   margin-left: 0;
-  width: 100%;
   margin-right: 0.8rem;
 }
 
@@ -211,6 +201,99 @@
   border: 1px solid #ff895d;
   background: transparent;
   color: #ff895d;
+}
+
+.article__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.article__section .article__main {
+  max-width: 1300px;
+}
+
+.articlecontent__wrapper {
+  max-width: 1300px;
+  width: 100vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.articlecontent__wrapper .article__container {
+  width: 100%;
+}
+
+.articlecontent__wrapper .sidebar-content {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1024px) {
+  .articlecontent__wrapper {
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .articlecontent__wrapper .article__container {
+    width: 70%;
+  }
+  .articlecontent__wrapper .sidebar-content {
+    width: 30%;
+  }
+}
+
+.article__image {
+  width: 100%;
+  height: 55vh;
+  max-height: 450px;
+}
+
+.article__image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.article__container .article__title h3 {
+  text-align: center;
+  color: #FB885C;
+  font-weight: 400;
+}
+
+.article__container .article__body p {
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.article__container .article__category {
+  margin: 0 2rem;
+}
+
+.article__container .article__category p {
+  font-size: 1.7rem;
+  text-align: center;
+  background-color: #FB885C;
+}
+
+@media only screen and (min-width: 768px) {
+  .article__container .article__body p {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .article__container .article__body p {
+    font-size: 1.2rem;
+    padding: 0 2rem !important;
+  }
 }
 
 .search-box {

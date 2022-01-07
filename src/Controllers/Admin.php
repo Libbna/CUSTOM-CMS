@@ -88,6 +88,29 @@ class Admin extends ControllerBase
         echo $twig->render('userDisplay.html.twig', $variables);
         return;
     }
+    public function configDetails($twig) {
+        $variables = parent::preprocessPage();
+
+        $logo_upld = $_POST['logo_upload'];
+
+        $insertLogo = new AdminModel();
+        $ans = $insertLogo->insertLogo($logo_upld);
+        if ($_SESSION['role'] == 'admin') {
+            if (isset($_SESSION["user_id"])) {
+                if (empty($ans) == 1) {
+                    $variables['username'] = $_SESSION['username'];
+                    $variables['authenticated_userId'] = $_SESSION['user_id'];
+                    $variables['role'] = $_SESSION['role'];
+                    echo $twig->render('config.html.twig', $variables);
+                    return;
+                }
+                return;
+            }
+            
+        }
+        
+    }
+
 
     
 }

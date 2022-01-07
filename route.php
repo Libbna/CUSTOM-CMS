@@ -101,7 +101,7 @@ try {
     // Aritcle related
     $article_content_route = new Route(
         "/article/{id}",
-        array('controller' => 'Cms\Controllers\Article::fetchAllArticles'),
+        array('controller' => 'Cms\Controllers\Article::getArticleById'),
         array('id' => '[0-9]+')
     );
 
