@@ -76,12 +76,15 @@ class Admin extends ControllerBase
         $variables = parent::preprocesspage();
         $deleteUser = new AdminModel();
         $deleteUser->deleteUser($id);
-        $variables['message'] = "User deleted successfully";
         if (isset($_SESSION["user_id"])){
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];
         }
+        $displayUsers = new AdminModel();
+        $result = $displayUsers->displayUsers();
+        $variables['result'] = $result;
+        $variables['message'] = "User deleted successfully";
         echo $twig->render('userDisplay.html.twig', $variables);
         return;
     }
