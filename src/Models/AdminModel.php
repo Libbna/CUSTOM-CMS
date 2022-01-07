@@ -73,7 +73,7 @@ class AdminModel
         $file_ext_stored = array('jpeg', 'png', 'jpg');
 
         if (in_array($filecheck, $file_ext_stored)) {
-            $destinationFile = 'assets/images/' . $file;
+            $destinationFile = 'assets/images/logo/' . $file;
             move_uploaded_file($file_tmp, $destinationFile);
         }
         $query = $this->conn->prepare("INSERT INTO config(logo) VALUES(?)");
