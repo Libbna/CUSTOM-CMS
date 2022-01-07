@@ -82,10 +82,12 @@ class Article extends ControllerBase
         $result = $article->fetchArticleById($blog_id);
         $relatedBlogs = $article->fetchRelatedArticles();
         $categoryList = $article->fetchCategoryList();
+        $popularPosts = $article->fetchPopularPosts();
 
         $variables['result'] = $result;
         $variables['relatedBlogs'] = $relatedBlogs;
         $variables['categoryList'] = $categoryList;
+        $variables['popularPosts'] = $popularPosts;
 
         if (isset($_SESSION["user_id"])) {
             $variables['username'] = $_SESSION['username'];
@@ -114,5 +116,9 @@ class Article extends ControllerBase
         }
 
         echo $twig->render("sidebar.html.twig", $variables);
+    }
+
+    public function getPopularPosts($twig){
+
     }
 }

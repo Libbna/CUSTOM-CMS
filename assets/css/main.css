@@ -141,7 +141,7 @@ body {
 }
 
 .card {
-  height: 60vh;
+  height: 64vh;
   max-height: 420px;
 }
 
@@ -335,6 +335,34 @@ body {
 
 .search-box {
   font-size: 15px;
+}
+
+.post__box {
+  width: 100%;
+}
+
+.post__box .post__image {
+  height: 4rem;
+  width: 6rem;
+  margin-right: 1rem;
+}
+
+.post__box .post__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.post__box .post__title a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}
+
+.post__box .post__title a:hover {
+  color: #FB885C;
 }
 
 .social-icons .fab {
