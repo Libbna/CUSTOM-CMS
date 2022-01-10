@@ -118,7 +118,27 @@ class Article extends ControllerBase
         echo $twig->render("sidebar.html.twig", $variables);
     }
 
-    public function getPopularPosts($twig){
+    public function deleteArticle($twig, $article_id){
+        $variables = parent::preprocesspage();
+        $article = new ArticleModel();
+        $result = $article->deleteArticleById($article_id);
+
+        if (isset($_SESSION["user_id"])) {
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+
+        if (empty($ans) == 1) {
+            $variables['status'] = "true";
+            $variables['message'] = "Article deleted successfully!";
+            $variables['role'] = $_SESSION['role'];
+            $variables['title'] = $this->reverie . " | Article";
+            echo $twig->render("home.html.twig", $variables);
+            return;
+        }
+
+        return;
 
     }
 }

@@ -282,6 +282,10 @@ body {
   background-color: #FB885C;
 }
 
+.article__container .article__actions a button {
+  margin-right: 10px !important;
+}
+
 .article__container .article__related {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

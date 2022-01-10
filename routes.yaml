@@ -90,6 +90,12 @@ article_content_route:
   requirements:
     id: '[0-9]+'
 
+article_delete_route:
+  path: /article-delete/{id}
+  defaults: { controller: 'Cms\Controllers\Article::deleteArticle' }
+  requirements:
+    id: '[0-9]+'
+
 config_route:
   path: /config
   defaults: { controller: 'Cms\Controllers\Admin::configDetails' }

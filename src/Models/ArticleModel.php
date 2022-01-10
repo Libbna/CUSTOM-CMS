@@ -94,4 +94,12 @@ class ArticleModel
         return $ans;
     }
 
+    public function deleteArticleById($id){
+        $query = $this->conn->prepare("DELETE FROM articles WHERE id = ? ");
+        $query->bind_param('i', $id);
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
 }
