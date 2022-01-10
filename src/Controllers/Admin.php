@@ -85,6 +85,8 @@ class Admin extends ControllerBase
         $result = $displayUsers->displayUsers();
         $variables['result'] = $result;
         $variables['message'] = "User deleted successfully";
+        $baseUrl = $variables['base_url'];
+        header("Location:".$baseUrl."user-info");
         echo $twig->render('userDisplay.html.twig', $variables);
         return;
     }

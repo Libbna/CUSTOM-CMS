@@ -40,6 +40,8 @@ class CustomBlock extends ControllerBase
         $variables['result'] = $result;
         $variables['authenticated_userId'] = $_SESSION['user_id'];
         $variables['title'] = $this->reverie . " | Block";
+        $baseUrl = $variables['base_url'];
+        header("Location:".$baseUrl."block-form");
         echo $twig->render('block.html.twig');
         return;
     }

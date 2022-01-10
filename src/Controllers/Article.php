@@ -65,6 +65,8 @@ class Article extends ControllerBase
             $variables['message'] = "Article posted successfully!";
             $variables['role'] = $_SESSION['role'];
             $variables['title'] = $this->reverie . " | Article";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."articleForm");
             echo $twig->render("articleForm.html.twig", $variables);
             return;
         }
@@ -153,6 +155,8 @@ class Article extends ControllerBase
             $variables['message'] = "Article deleted successfully!";
             $variables['role'] = $_SESSION['role'];
             $variables['title'] = $this->reverie . " | Article";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."article/{$article_id}");
             echo $twig->render("home.html.twig", $variables);
             return;
         }
@@ -209,6 +213,8 @@ class Article extends ControllerBase
             $variables['message'] = "Article edited successfully!";
             $variables['role'] = $_SESSION['role'];
             $variables['title'] = $this->reverie . " | Home";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."article/{$id}");
             echo $twig->render("home.html.twig", $variables);
             return;
         }
