@@ -26,6 +26,23 @@
 								{{ r.category }}
 							</p>
 						</div>
+
+						{% if (authenticated_userId == r.user_id) %}
+							<div class="article__actions d-flex justify-content-center mb-5 mt-5">
+								<a href="article-editForm/{{ r.id }}">
+									<button type="button" class="btn btn-outline-secondary mr-3">
+										<i class="fas fa-edit"></i>
+										Edit
+									</button>
+								</a>
+								<a href="article-delete/{{ r.id }}">
+									<button type="button" class="btn btn-outline-danger">
+										<i class="fas fa-trash-alt"></i>
+										Delete
+									</button>
+								</a>
+							</div>
+						{% endif %}
 						<div class="article__relatedContainer">
 							<div class="home__heading">
 								<h4 class="p-4">RELATED ARTICLES</h4>

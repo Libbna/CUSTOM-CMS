@@ -35,6 +35,12 @@
     }
   }
 
+  .article__actions{
+    a button{
+      margin-right: 10px !important;
+    }
+  }
+
   .article__related {
     flex-direction: column;
     align-items: center;
