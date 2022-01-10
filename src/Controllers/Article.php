@@ -145,6 +145,14 @@ class Article extends ControllerBase
     public function getEditForm($twig, $article_id)
     {
         $variables = parent::preprocessPage();
+
+        if (isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] == true) {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
+        
         $article = new ArticleModel();
         $result = $article->fetchArticleById($article_id);
         $variables['result'] = $result;
