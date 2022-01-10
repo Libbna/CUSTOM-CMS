@@ -96,6 +96,19 @@ article_delete_route:
   requirements:
     id: '[0-9]+'
 
+article_editForm_route:
+  path: /article-editForm/{id}
+  defaults: { controller: 'Cms\Controllers\Article::getEditForm' }
+  requirements:
+    id: '[0-9]+'
+
+article_edit_route:
+  path: /article-edit/{id}
+  defaults: { controller: 'Cms\Controllers\Article::editArticle' }
+  requirements:
+    id: '[0-9]+'
+
+
 config_route:
   path: /config
   defaults: { controller: 'Cms\Controllers\Admin::configDetails' }

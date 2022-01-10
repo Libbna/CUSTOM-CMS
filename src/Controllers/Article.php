@@ -118,8 +118,9 @@ class Article extends ControllerBase
         echo $twig->render("sidebar.html.twig", $variables);
     }
 
-    public function deleteArticle($twig, $article_id){
-        $variables = parent::preprocesspage();
+    public function deleteArticle($twig, $article_id)
+    {
+        $variables = parent::preprocessPage();
         $article = new ArticleModel();
         $result = $article->deleteArticleById($article_id);
 
@@ -139,6 +140,53 @@ class Article extends ControllerBase
         }
 
         return;
+    }
 
+    public function getEditForm($twig, $article_id)
+    {
+        $variables = parent::preprocessPage();
+        $article = new ArticleModel();
+        $result = $article->fetchArticleById($article_id);
+        $variables['result'] = $result;
+
+        if (isset($_SESSION["user_id"])) {
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+
+        $res_assoc = mysqli_fetch_assoc($result);
+        $variables['title'] = $this->reverie . " | " . $res_assoc['title'];
+
+        echo $twig->render("articleEdit.html.twig", $variables);
+
+        return;
+    }
+
+    public function editArticle($twig, $id)
+    {
+        $variables = parent::preprocessPage();
+        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category'])) {
+            $variables['message'] = "Enter all the article details!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
+
+        $article_title = $_POST['article-title'];
+        $article_body = strip_tags($_POST['article-description']);
+        $article_category = $_POST['article-category'];
+
+        $contact = new ArticleModel();
+        $ans = $contact->editArticleById($id, $article_title, $article_body, $article_category);
+
+        if (empty($ans) == 1) {
+            $variables['status'] = "true";
+            $variables['message'] = "Article edited successfully!";
+            $variables['role'] = $_SESSION['role'];
+            $variables['title'] = $this->reverie . " | Home";
+            echo $twig->render("home.html.twig", $variables);
+            return;
+        }
+        return;
     }
 }

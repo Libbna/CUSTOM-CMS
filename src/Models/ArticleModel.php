@@ -102,4 +102,12 @@ class ArticleModel
         return $ans;
     }
 
+    public function editArticleById($id, $title, $body, $category){
+        $query = $this->conn->prepare("UPDATE articles SET title = ?, body = ?, category = ? WHERE id = ? ");
+        $query->bind_param('sssi', $title, $body, $category, $id);
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
 }
