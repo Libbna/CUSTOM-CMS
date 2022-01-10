@@ -22,7 +22,7 @@ class ControllerBase{
     }
     protected function getBaseUrl(){
         $url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-        $base = explode("route", $url);
+        $base = explode("load_route", $url);
         return $base[0];
     }
 } 
