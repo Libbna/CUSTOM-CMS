@@ -140,6 +140,20 @@ body {
   margin-right: 1rem;
 }
 
+.content__container .heading {
+  color: #FB885C;
+}
+
+.content__container .content__item {
+  border-bottom: 1px dotted grey;
+}
+
+.content-type-btn:hover {
+  color: white !important;
+  border-color: #FB885C;
+  background-color: #FB885C !important;
+}
+
 .card {
   height: 64vh;
   max-height: 420px;
