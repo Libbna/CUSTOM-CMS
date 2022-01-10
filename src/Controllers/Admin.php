@@ -7,6 +7,19 @@ use Cms\Models\AdminModel;
 
 class Admin extends ControllerBase
 {
+    public function displayAddUserForm($twig){
+        $variables = parent::preprocessPage();
+        if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != true) {
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
+        $variables['role'] = $_SESSION['role'];
+        $variables['authenticated_userId'] = $_SESSION['user_id'];
+        $variables['title'] = $this->reverie . " | Add Users";
+        echo $twig->render("userForm.html.twig", $variables);
+        return;
+    }
 
     public function displayUserDetails($twig){
 

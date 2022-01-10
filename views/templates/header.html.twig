@@ -20,6 +20,11 @@
 						Config
 					</a>
 				</li>
+				<li>
+					<a href="user-form" class="nav-link text-white">
+						Add Users
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -47,12 +52,6 @@
 							{{ nav_link.title }}</a>
 					</li>
 				{% endfor %}
-				{% if authenticated_userId %}
-					<li class="nav-item">
-						<a href="content-page" class="nav-link active text-dark">
-							Add Content</a>
-					</li>
-				{% endif %}
 			</ul>
 			<div class="d-lg-block d-flex flex-column user-auth-btns">
 				{% if authenticated_userId %}
