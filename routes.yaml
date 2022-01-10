@@ -93,4 +93,6 @@ article_content_route:
 config_route:
   path: /config
   defaults: { controller: 'Cms\Controllers\Admin::configDetails' }
-
+config_route_form: 
+  path: /config-form
+  defaults: { controller: 'Cms\Controllers\Admin::getConfigForm' }
