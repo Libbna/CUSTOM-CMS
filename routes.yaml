@@ -2,19 +2,19 @@ root_route:
   path: /
   defaults: { controller: 'Cms\Controllers\Article::fetchAllArticles' }
 
-home_route: 
+home_route:
   path: /home
   defaults: { controller: 'Cms\Controllers\Article::fetchAllArticles' }
 
-block_route: 
+block_route:
   path: /block-form
   defaults: { controller: 'Cms\Controllers\CustomBlock::displayForm' }
 
-block_info_route: 
+block_info_route:
   path: /block-info
   defaults: { controller: 'Cms\Controllers\CustomBlock::displayCustomBlock' }
 
-block_insert_route: 
+block_insert_route:
   path: /block-insert
   defaults: { controller: 'Cms\Controllers\CustomBlock::insertCustomBlock' }
 
@@ -70,48 +70,46 @@ delete_route:
   path: /delete/id/{id}
   defaults: { controller: 'Cms\Controllers\Admin::userDelete' }
   requirements:
-    id: '[0-9]+'
-  
+    id: "[0-9]+"
+
 admin_role_route:
   path: /update-role/{id}
   defaults: { controller: 'Cms\Controllers\Admin::updateUserRoleToAdmin' }
   requirements:
-    id: '[0-9]+'
+    id: "[0-9]+"
 
 authenticated_role_route:
   path: /remove-role/{id}
   defaults: { controller: 'Cms\Controllers\Admin::updateUserRoleToAuth' }
   requirements:
-    id: '[0-9]+'
+    id: "[0-9]+"
 
 article_content_route:
   path: /article/{id}
   defaults: { controller: 'Cms\Controllers\Article::getArticleById' }
   requirements:
-    id: '[0-9]+'
+    id: "[0-9]+"
 
 article_delete_route:
   path: /article-delete/{id}
   defaults: { controller: 'Cms\Controllers\Article::deleteArticle' }
   requirements:
-    id: '[0-9]+'
+    id: "[0-9]+"
 
 article_editForm_route:
   path: /article-editForm/{id}
   defaults: { controller: 'Cms\Controllers\Article::getEditForm' }
   requirements:
-    id: '[0-9]+'
+    id: "[0-9]+"
 
 article_edit_route:
   path: /article-edit/{id}
   defaults: { controller: 'Cms\Controllers\Article::editArticle' }
   requirements:
-    id: '[0-9]+'
-
-
+    id: "[0-9]+"
 config_route:
   path: /config
   defaults: { controller: 'Cms\Controllers\Admin::configDetails' }
-config_route_form: 
+config_route_form:
   path: /config-form
   defaults: { controller: 'Cms\Controllers\Admin::getConfigForm' }
