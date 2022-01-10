@@ -108,6 +108,10 @@ article_edit_route:
   requirements:
     id: '[0-9]+'
 
+content_route:
+  path: /content-page
+  defaults: { controller: 'Cms\Controllers\Article::getContentPage' }
+
 
 config_route:
   path: /config

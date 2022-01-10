@@ -1,0 +1,17 @@
+.content__container{
+    .heading{
+        color: $primary;
+    }
+
+    .content__item{
+        border-bottom: 1px dotted grey;
+    }
+}
+
+.content-type-btn{
+    &:hover{
+        color: white !important;
+        border-color: $primary;
+        background-color: $primary !important;
+    }
+}

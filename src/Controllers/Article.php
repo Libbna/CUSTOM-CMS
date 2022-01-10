@@ -9,6 +9,24 @@ use Cms\Models\ArticleModel;
 class Article extends ControllerBase
 {
 
+    public function getContentPage($twig){
+
+        if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != true) {
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
+
+        $variables = parent::preprocesspage();
+
+        if (isset($_SESSION["user_id"])) {
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+
+        echo $twig->render('content.html.twig', $variables);
+    }
 
     public function getArticleForm($twig)
     {
