@@ -4,6 +4,7 @@ namespace Cms\Controllers;
 session_start();
 
 use Cms\Models\AdminModel;
+use mysqli;
 
 class Admin extends ControllerBase
 {
@@ -105,7 +106,10 @@ class Admin extends ControllerBase
         $site_name = $_POST['site_name'];
 
         $updateLogo = new AdminModel();
-        $ans = $updateLogo->updateLogo($site_name);
+        $result = $updateLogo->displayLogo();
+        $configRes = mysqli_fetch_assoc($result);
+        $configId = $configRes['id'];
+        $ans = $updateLogo->updateLogo($site_name, $configId);
         if ($_SESSION['role'] == 'admin') {
             if (isset($_SESSION['user_id'])) {
                 if (empty($ans) == 1) {
