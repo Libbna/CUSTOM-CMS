@@ -45,6 +45,12 @@ class Admin extends ControllerBase
             $variables['status'] = "true";
             $variables['message'] = "User is now an Administrator!";
             $variables['title'] = $this->reverie . " | Users";
+            $displayUsers = new AdminModel();
+            $users = $displayUsers->displayUsers();
+            $variables['result'] = $users;
+            $variables['message'] = "User deleted successfully";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."user-info");
             echo $twig->render("userDisplay.html.twig", $variables);
             return;
         }
@@ -67,6 +73,12 @@ class Admin extends ControllerBase
             $variables['status'] = "true";
             $variables['message'] = "User is now an Administrator!";
             $variables['title'] = $this->reverie . " | Users";
+            $displayUsers = new AdminModel();
+            $users = $displayUsers->displayUsers();
+            $variables['result'] = $users;
+            $variables['message'] = "User deleted successfully";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."user-info");
             echo $twig->render("userDisplay.html.twig", $variables);
             return;
         }
