@@ -1,89 +1,97 @@
 <footer>
+  <div class="footer-wrapper">
+    <div class="footer__container">
+      <div class="footer__box1">
+        <div class="logo__container mb-4">
+          <a href="home">
+            {% for r in logo %}
+              <img src="{{ r.logo }}" alt="logo" />
+            {% endfor %}
+          </a>
+        </div>
 
-	<div class="footer-wrapper">
+        <div class="footerBox1__aboutInfo mb-4">
+          <p class="text-white">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a magna
+            leo. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas. In accumsan facilisis vehicula.
+            Nam nec orci tellus. Maecenas pulvinar quam sollicitudin magna
+            molestie pretium. Maecenas eros est, sollicitudin sit amet eros in,
+            viverra maximus neque.
+          </p>
+        </div>
+        <div class="footerBox1__socialBox">
+          <div class="socialBox__container">
+            <ul>
+              <li>
+                <a href="https://www.instagram.com/">
+                  <i class="fab fa-2x fa-instagram" target="_blank"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/">
+                  <i class="fab fa-2x fa-facebook" target="_blank"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/" target="_blank">
+                  <i class="fab fa-2x fa-youtube"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/" target="_blank">
+                  <i class="fab fa-2x fa-linkedin" target="_blank"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-		<div class="footer__container">
+      <div class="footer__box2">
+        <div class="menuBox pt-3">
+          <ul class="">
+            {% for nav_link in nav_links %}
+              <li class="nav-item">
+                <a href="{{ nav_link.link }}"
+                  class="nav-link active text-white">
+                  {{ nav_link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="menuBox pt-3">
+          <ul class="">
+            {% for nav_link in nav_links %}
+              <li class="nav-item">
+                <a href="{{ nav_link.link }}"
+                  class="nav-link active text-white">
+                  {{ nav_link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="menuBox pt-3">
+          <ul class="">
+            {% for nav_link in nav_links %}
+              <li class="nav-item">
+                <a href="{{ nav_link.link }}"
+                  class="nav-link active text-white">
+                  {{ nav_link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
 
-
-			<div class="footer__box1">
-
-				<div class="logo__container mb-4">
-					<a href="home">
-						<img src="assets/images/logo/logo.png" alt="">
-					</a>
-				</div>
-
-				<div class="footerBox1__aboutInfo mb-4">
-					<p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut a magna leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In accumsan facilisis vehicula. Nam nec orci tellus. Maecenas pulvinar quam sollicitudin magna molestie pretium. Maecenas eros est, sollicitudin sit amet eros in, viverra maximus neque.</p>
-				</div>
-				<div class="footerBox1__socialBox">
-					<div class="socialBox__container">
-						<ul>
-							<li>
-								<a href="https://www.instagram.com/">
-									<i class="fab fa-2x fa-instagram" target="_blank"></i>
-								</a>
-							</li>
-							<li>
-								<a href="https://www.facebook.com/">
-									<i class="fab fa-2x fa-facebook" target="_blank"></i>
-								</a></li>
-							<li>
-								<a href="https://www.youtube.com/" target="_blank">
-									<i class="fab fa-2x fa-youtube"></i></a>
-							</li>
-							<li>
-								<a href="https://www.linkedin.com/" target="_blank">
-									<i class="fab fa-2x fa-linkedin" target="_blank"></i>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="footer__box2">
-				<div class="menuBox pt-3">
-					<ul class="">
-						{% for nav_link in nav_links %}
-							<li class="nav-item">
-								<a href="{{ nav_link.link }}" class="nav-link active text-white">
-									{{ nav_link.title }}
-								</a>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
-				<div class="menuBox pt-3">
-					<ul class="">
-						{% for nav_link in nav_links %}
-							<li class="nav-item">
-								<a href="{{ nav_link.link }}" class="nav-link active text-white">
-									{{ nav_link.title }}
-								</a>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
-				<div class="menuBox pt-3">
-					<ul class="">
-						{% for nav_link in nav_links %}
-							<li class="nav-item">
-								<a href="{{ nav_link.link }}" class="nav-link active text-white">
-									{{ nav_link.title }}
-								</a>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="footer__copyrightContainer">
-			<p class="text-white">Copyright © 2022 All rights reserved | Reverie CMS</p>
-		</div>
-
-	</div>
+    <div class="footer__copyrightContainer">
+      <p class="text-white">
+        Copyright © 2022 All rights reserved | Reverie CMS
+      </p>
+    </div>
+  </div>
 </footer>
