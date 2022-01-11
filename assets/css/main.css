@@ -80,12 +80,11 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100vh;
   margin-left: 0;
 }
 
 .section1 {
-  height: 50%;
+  height: 55vh;
   max-height: 400px;
   display: -webkit-box;
   display: -ms-flexbox;
