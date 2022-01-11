@@ -1,83 +1,74 @@
 {# Admin Navbar Menu #}
 {% if role == 'admin' %}
-
-	<div class="admin__navbarContainer">
-		<div class="admin__navbar p-2 bg-dark">
-
-			<ul class="nav d-flex justify-content-start">
-				<li>
-					<a href="home" class="nav-link text-white">
-						{{ username }}
-					</a>
-				</li>
-				<li>
-					<a href="user-info" class="nav-link text-white">
-						Users
-					</a>
-				</li>
-				<li>
-					<a href="config" class="nav-link text-white">
-						Config
-					</a>
-				</li>
-				<li>
-					<a href="user-form" class="nav-link text-white">
-						Add Users
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-
+  <div class="admin__navbarContainer">
+    <div class="admin__navbar p-2 bg-dark">
+      <ul class="nav d-flex justify-content-start">
+        <li><a href="home" class="nav-link text-white">{{ username }}</a></li>
+        <li><a href="user-info" class="nav-link text-white">Users</a></li>
+        <li><a href="config" class="nav-link text-white">Config</a></li>
+      </ul>
+    </div>
+  </div>
 {% endif %}
 
 <header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-5 main-nav">
+    <div class="logo bg-light">
+      <div class="logo__container">
+        <a href="home">
+          {% for r in logo %}
+            <img src="{{ r.logo }}" alt="logo" />
+          {% endfor %}
+        </a>
+      </div>
+    </div>
+    <button class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="true"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto d-flex justify-content-between">
+        {% for nav_link in nav_links %}
+          <li class="nav-item">
+            <a href="{{ nav_link.link }}" class="nav-link active text-dark">
+              {{ nav_link.title }}
+            </a>
+          </li>
+        {% endfor %}
+        {% if authenticated_userId %}
+          <li class="nav-item">
+            <a href="content-page" class="nav-link active text-dark">
+              Add Content
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+      <div class="d-lg-block d-flex flex-column user-auth-btns">
+        {% if authenticated_userId %}
+          <button class="btn btn-primary mt-2 mt-lg-0 text-white">
+            <a href="home">{{ username }}</a>
+          </button>
+        {% else %}
+          <button class="btn btn-primary mt-2 mt-lg-0 text-white">
+            <a href="login">Login</a>
+          </button>
+        {% endif %}
 
-
-	<nav class="navbar navbar-expand-lg navbar-light bg-light px-5 main-nav">
-		<div class="logo bg-light">
-			<div class="logo__container">
-				<a href="home">
-					<img src="assets/images/logo/logo.png" alt="logo"></a>
-			</div>
-		</div>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mx-auto d-flex justify-content-between">
-				{% for nav_link in nav_links %}
-					<li class="nav-item">
-						<a href="{{ nav_link.link }}" class="nav-link active text-dark">
-							{{ nav_link.title }}</a>
-					</li>
-				{% endfor %}
-			</ul>
-			<div class="d-lg-block d-flex flex-column user-auth-btns">
-				{% if authenticated_userId %}
-					<button class="btn btn-primary mt-2 mt-lg-0 text-white ">
-						<a href="home">
-							{{ username }}</a>
-					</button>
-				{% else %}
-					<button class="btn btn-primary mt-2 mt-lg-0 text-white ">
-						<a href="login">Login</a>
-					</button>
-				{% endif %}
-
-				{% if authenticated_userId %}
-					<button class="btn btn-primary mt-2 mt-lg-0 text-white ">
-						<a href="logout">
-							Logout</a>
-					</button>
-				{% else %}
-					<button class="btn btn-primary mt-2 mt-lg-0 text-white ">
-						<a href="register">
-							Register</a>
-					</button>
-				{% endif %}
-			</div>
-		</div>
-	</nav>
-
+        {% if authenticated_userId %}
+          <button class="btn btn-primary mt-2 mt-lg-0 text-white">
+            <a href="logout">Logout</a>
+          </button>
+        {% else %}
+          <button class="btn btn-primary mt-2 mt-lg-0 text-white">
+            <a href="register">Register</a>
+          </button>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
 </header>

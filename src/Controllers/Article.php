@@ -209,7 +209,9 @@ class Article extends ControllerBase
             $variables['message'] = "Article edited successfully!";
             $variables['role'] = $_SESSION['role'];
             $variables['title'] = $this->reverie . " | Home";
-            echo $twig->render("home.html.twig", $variables);
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."article/{$id}");
+            echo $twig->render("article.html.twig", $variables);
             return;
         }
         return;
