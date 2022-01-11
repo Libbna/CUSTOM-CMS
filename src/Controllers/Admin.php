@@ -42,17 +42,17 @@ class Admin extends ControllerBase
 
         $userRole = new AdminModel();
         $result = $userRole->setUserToAdmin($id);
-        if (empty($result) == 1){
-            $variables['status'] = "true";
-            $variables['message'] = "User is now an Administrator!";
-            $variables['title'] = $this->reverie . " | Users";
+        if (empty($result) == 1) {
+            $variables['status'] = 'true';
+            $variables['message'] = 'User is now an Administrator!';
+            $variables['title'] = $this->reverie . ' | Users';
             $displayUsers = new AdminModel();
             $users = $displayUsers->displayUsers();
             $variables['result'] = $users;
-            $variables['message'] = "User deleted successfully";
+            $variables['message'] = 'User deleted successfully';
             $baseUrl = $variables['base_url'];
-            header("Location:".$baseUrl."user-info");
-            echo $twig->render("userDisplay.html.twig", $variables);
+            header('Location:' . $baseUrl . 'user-info');
+            echo $twig->render('userDisplay.html.twig', $variables);
             return;
         }
         return;
@@ -71,17 +71,17 @@ class Admin extends ControllerBase
 
         $userRole = new AdminModel();
         $result = $userRole->setUserToAuth($id);
-        if (empty($result) == 1){
-            $variables['status'] = "true";
-            $variables['message'] = "User is now an Administrator!";
-            $variables['title'] = $this->reverie . " | Users";
+        if (empty($result) == 1) {
+            $variables['status'] = 'true';
+            $variables['message'] = 'User is now an Administrator!';
+            $variables['title'] = $this->reverie . ' | Users';
             $displayUsers = new AdminModel();
             $users = $displayUsers->displayUsers();
             $variables['result'] = $users;
-            $variables['message'] = "User deleted successfully";
+            $variables['message'] = 'User deleted successfully';
             $baseUrl = $variables['base_url'];
-            header("Location:".$baseUrl."user-info");
-            echo $twig->render("userDisplay.html.twig", $variables);
+            header('Location:' . $baseUrl . 'user-info');
+            echo $twig->render('userDisplay.html.twig', $variables);
             return;
         }
         return;
@@ -99,9 +99,9 @@ class Admin extends ControllerBase
         $displayUsers = new AdminModel();
         $result = $displayUsers->displayUsers();
         $variables['result'] = $result;
-        $variables['message'] = "User deleted successfully";
+        $variables['message'] = 'User deleted successfully';
         $baseUrl = $variables['base_url'];
-        header("Location:".$baseUrl."user-info");
+        header('Location:' . $baseUrl . 'user-info');
         echo $twig->render('userDisplay.html.twig', $variables);
         return;
     }
@@ -130,6 +130,7 @@ class Admin extends ControllerBase
                     $variables['username'] = $_SESSION['username'];
                     $variables['authenticated_userId'] = $_SESSION['user_id'];
                     $variables['role'] = $_SESSION['role'];
+                    $variables['title'] = $this->reverie . ' | Config';
                     echo $twig->render('config.html.twig', $variables);
                     return;
                 }
