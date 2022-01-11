@@ -58,6 +58,8 @@ class Db_auth extends ControllerBase
                 $variables['authenticated_userId'] = $_SESSION['user_id'];
                 $variables['message'] = "Login Successful, Welcome";
                 $variables['title'] = $this->reverie . " | Welcome";
+                $baseUrl = $variables['base_url'];
+                header("Location:".$baseUrl."home");
                 echo $twig->render("home.html.twig", $variables);
                 return;
             } else {
@@ -65,6 +67,8 @@ class Db_auth extends ControllerBase
                 $variables['status'] = "false";
                 $variables['message'] = "Login Successful, Welcome";
                 $variables['title'] = $this->reverie . " | Login";
+                $baseUrl = $variables['base_url'];
+                header("Location:".$baseUrl."login");
                 echo $twig->render("loginForm.html.twig", $variables);
                 return;
             }
@@ -101,12 +105,16 @@ class Db_auth extends ControllerBase
             $variables['status'] = "true";
             $variables['message'] = "Registeration successful";
             $variables['title'] = $this->reverie . " | Register";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."login");
             echo $twig->render("loginForm.html.twig", $variables);
             return;
         } else {
             $variables['status'] = "false";
             $variables['message'] = "Registeration not successful";
             $variables['title'] = $this->reverie . " | Register";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."register");
             echo $twig->render("registerForm.html.twig", $variables);
             return;
         }
@@ -149,6 +157,8 @@ class Db_auth extends ControllerBase
         $variables['status'] = "true";
         $variables['message'] = "You have logged out!";
         $variables['title'] = $this->reverie . " | Logout";
+        $baseUrl = $variables['base_url'];
+        header("Location:".$baseUrl."login");
         echo $twig->render("loginForm.html.twig", $variables);
         return;
     }
