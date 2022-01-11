@@ -42,11 +42,17 @@ class Admin extends ControllerBase
 
         $userRole = new AdminModel();
         $result = $userRole->setUserToAdmin($id);
-        if (empty($result) == 1) {
-            $variables['status'] = 'true';
-            $variables['message'] = 'User is now an Administrator!';
-            $variables['title'] = $this->reverie . ' | Users';
-            echo $twig->render('userDisplay.html.twig', $variables);
+        if (empty($result) == 1){
+            $variables['status'] = "true";
+            $variables['message'] = "User is now an Administrator!";
+            $variables['title'] = $this->reverie . " | Users";
+            $displayUsers = new AdminModel();
+            $users = $displayUsers->displayUsers();
+            $variables['result'] = $users;
+            $variables['message'] = "User deleted successfully";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."user-info");
+            echo $twig->render("userDisplay.html.twig", $variables);
             return;
         }
         return;
@@ -65,11 +71,17 @@ class Admin extends ControllerBase
 
         $userRole = new AdminModel();
         $result = $userRole->setUserToAuth($id);
-        if (empty($result) == 1) {
-            $variables['status'] = 'true';
-            $variables['message'] = 'User is now an Administrator!';
-            $variables['title'] = $this->reverie . ' | Users';
-            echo $twig->render('userDisplay.html.twig', $variables);
+        if (empty($result) == 1){
+            $variables['status'] = "true";
+            $variables['message'] = "User is now an Administrator!";
+            $variables['title'] = $this->reverie . " | Users";
+            $displayUsers = new AdminModel();
+            $users = $displayUsers->displayUsers();
+            $variables['result'] = $users;
+            $variables['message'] = "User deleted successfully";
+            $baseUrl = $variables['base_url'];
+            header("Location:".$baseUrl."user-info");
+            echo $twig->render("userDisplay.html.twig", $variables);
             return;
         }
         return;
