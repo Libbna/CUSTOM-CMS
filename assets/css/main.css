@@ -453,6 +453,7 @@ footer {
       -ms-flex-pack: center;
           justify-content: center;
   background-color: #2B252C;
+  margin: 0 auto;
 }
 
 .footer-wrapper {
@@ -468,7 +469,7 @@ footer {
 
 .footer__container .footer__box1 {
   padding: 2rem;
-  width: 35%;
+  width: 50%;
   height: 100%;
 }
 
@@ -478,7 +479,6 @@ footer {
 
 .footer__container .footer__box1 .logo__container img {
   height: 100%;
-  width: 100%;
 }
 
 .footer__container .footer__box1 .footerBox1__socialBox .socialBox__container ul {
@@ -508,27 +508,56 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 2rem;
-  width: 65%;
+  width: 50%;
 }
 
-.footer__container .footer__box2 .menuBox {
-  width: 100%;
+.footer__container .footer__box2 p, .footer__container .footer__box2 i {
+  color: white;
 }
 
-.footer__container .footer__box2 .menuBox ul li {
-  list-style: none;
+.footer__container .footer__box2 p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.1rem;
+  min-width: 300px;
 }
 
-.footer__container .footer__box2 .menuBox ul li a {
-  -webkit-transition: 0.25s ease-in;
-  transition: 0.25s ease-in;
+.footer__container .footer__box2 p i {
+  font-size: 1.2rem;
+  width: 50px;
+  height: 50px;
+  padding: 9px 15px;
+  margin-right: 1rem;
+  background-color: #403b41;
+  border-radius: 100%;
 }
 
-.footer__container .footer__box2 .menuBox ul li a:hover {
-  color: #FB885C !important;
+.footer__container .footer__box2 .address span {
+  display: -ms-inline-grid;
+  display: inline-grid;
+}
+
+.footer__container .footer__box2 .contact span {
+  font-weight: 600;
+  padding-left: 5px;
+}
+
+.footer__container .footer__box2 .mail a {
+  font-weight: 600;
+  color: #7952b3;
+  text-decoration: none;
 }
 
 .footer__copyrightContainer {
@@ -555,14 +584,14 @@ footer {
   }
   .footer__container .footer__box1,
   .footer__container .footer__box2 {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 426px) {
-  .footer__container .footer__box2 {
-    padding: 0.5rem;
-  }
   .footer__copyrightContainer {
     padding: 2rem;
   }
