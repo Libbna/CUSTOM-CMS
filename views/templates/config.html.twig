@@ -1,6 +1,9 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
+	{% if (status == "true" or status == "false") %}
+		<i>{{ message }}</i>
+	{% endif %}
   <details class="logo_details mt-2 mb-2 border rounded d-flex">
     <h5>
       Logo Image
