@@ -107,7 +107,7 @@ class Db_auth extends ControllerBase
             $variables['message'] = "Registeration successful";
             $variables['title'] = $this->reverie . " | Register";
             $baseUrl = $variables['base_url'];
-            if($_SESSION['role'] == 'admin'){
+            if(isset($_SESSION['role'])){
                 header("Location:".$baseUrl."user-form");
                 echo $twig->render("userForm.html.twig", $variables);
             }else{
@@ -120,7 +120,7 @@ class Db_auth extends ControllerBase
             $variables['message'] = "Registeration not successful";
             $variables['title'] = $this->reverie . " | Register";
             $baseUrl = $variables['base_url'];
-            if($_SESSION['role'] == 'admin'){
+            if(isset($_SESSION['role'])){
                 header("Location:".$baseUrl."user-form");
                 echo $twig->render("userForm.html.twig", $variables);
             }else{
@@ -161,7 +161,7 @@ class Db_auth extends ControllerBase
 
     public function logout($twig)
     {
-        // session_start();
+        session_start();
         session_unset();
         session_destroy();
         $variables = parent::preprocesspage();
