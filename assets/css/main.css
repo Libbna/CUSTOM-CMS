@@ -419,6 +419,16 @@ body {
   background-color: #FB885C;
 }
 
+.config_div form {
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .config_div form {
+    width: 50%;
+  }
+}
+
 .block-wrapper h3 {
   font-size: 30px;
   font-family: "Poppins", Arial, sans-serif;
