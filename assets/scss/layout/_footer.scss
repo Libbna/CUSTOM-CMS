@@ -2,6 +2,7 @@ footer {
   display: flex;
   justify-content: center;
   background-color: $footer;
+  margin: 0 auto;
 
 }
 
@@ -16,14 +17,13 @@ footer {
 
   .footer__box1 {
     padding: 2rem;
-    width: 35%;
+    width: 50%;
     height: 100%;
 
     .logo__container {
       width: 20%;
       img {
         height: 100%;
-        width: 100%;
       }
     }
 
@@ -51,23 +51,43 @@ footer {
 
   .footer__box2 {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
-    width: 65%;
+    width: 50%;
 
-
-    .menuBox {
-      width: 100%;
-      ul li {
-        list-style: none;
-        a {
-          transition: 0.25s ease-in;
-          &:hover {
-            color: $primary !important;
-          }
-        }
+    & p,i {
+      color: white;
+    }
+    & p  {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      min-width: 300px;
+      & i {
+        font-size: 1.2rem;
+        width: 50px;
+        height: 50px;
+        padding: 9px 15px;
+        margin-right: 1rem;
+        background-color: #403b41;
+        border-radius: 100%;
       }
     }
+    & .address span {
+      display: inline-grid;
+    }
+    .contact span{
+      font-weight: 600;
+      padding-left: 5px;
+    }
+
+    .mail a{
+      font-weight: 600;
+      color: #7952b3;
+      text-decoration: none;
+    }
+
   }
 }
 
@@ -87,6 +107,7 @@ footer {
     flex-direction: column;
     .footer__box1,
     .footer__box2 {
+      align-items: flex-start;
       width: 100%;
     }
 
@@ -94,11 +115,6 @@ footer {
 }
 
 @media only screen and (max-width: 426px) {
-  .footer__container{
-    .footer__box2{
-      padding: 0.5rem;
-    }
-  }
 
   .footer__copyrightContainer{
     padding:2rem;
