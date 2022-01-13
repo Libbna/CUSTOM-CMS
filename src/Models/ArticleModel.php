@@ -140,7 +140,7 @@ class ArticleModel
     
     public function searchQuery($query){
         $sqlQuery = $this->conn->prepare(
-            "SELECT * FROM articles JOIN userauth ON (articles.user_id = userauth.id) WHERE category LIKE '".$query."' OR soundex(category) = soundex('$query') OR body LIKE'".$query."' OR title LIKE '".$query."' OR username LIKE '".$query."'"
+            "SELECT * FROM userauth JOIN articles ON (userauth.id = articles.user_id) WHERE category LIKE '".$query."' OR soundex(category) = soundex('$query') OR body LIKE'".$query."' OR title LIKE '".$query."' OR username LIKE '".$query."'"
         );
        
         $sqlQuery->execute();

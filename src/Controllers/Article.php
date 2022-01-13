@@ -228,7 +228,8 @@ class Article extends ControllerBase
         $search = new ArticleModel();
         $result = $search->searchQuery($searchItem);
         $variables['result'] = $result;
-
+        $variables['query'] = $searchQuery;
+        
         $variables['len'] = mysqli_num_rows($result);
         echo $twig->render("searchResults.html.twig", $variables);
         return;
