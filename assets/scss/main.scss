@@ -1,4 +1,4 @@
-body{
+body {
     overflow-x: hidden;
 }
 
@@ -12,6 +12,7 @@ body{
 @import "layout/_articleLayout";
 @import "components/articleComponent";
 @import "./layout/sidebar";
+@import "./layout/config";
 @import "./layout/block";
 @import "./layout/footer";
 
