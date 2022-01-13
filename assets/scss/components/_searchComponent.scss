@@ -1,0 +1,22 @@
+.search__form{
+    width: 20%;
+    // display: none;
+    margin-right: 4px;
+    border: none !important;
+
+    button{
+        margin-left: 0.3rem;
+        background-color: $primary;
+        border: 1px solid $primary;
+        i{
+            color: white;
+        }
+        &:hover{
+            border: 1px solid $primary;
+            background-color: white !important;
+            i{
+                color: $primary;
+            }
+        }
+    }
+}
