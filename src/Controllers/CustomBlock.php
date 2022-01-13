@@ -22,6 +22,7 @@ class CustomBlock extends ControllerBase
         $variables['role'] = $_SESSION['role'];
         $variables['authenticated_userId'] = $_SESSION['user_id'];
         $variables['title'] = $this->reverie . " | Block";
+        $baseUrl = $variables['base_url'];
         echo $twig->render('block.html.twig', $variables);
         return;
     }
@@ -46,6 +47,7 @@ class CustomBlock extends ControllerBase
         $baseUrl = $variables['base_url'];
         $variables['status'] = "true";
         $variables['message'] = '"' . $block_title . '" Block Created Successfully!';
+        header("Location:".$baseUrl."block-form");
         echo $twig->render('block.html.twig', $variables);
         return;
     }

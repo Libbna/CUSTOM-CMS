@@ -46,6 +46,7 @@ class Menu extends ControllerBase
         $baseUrl = $variables['base_url'];
         $variables['status'] = "true";
         $variables['message'] = '"' . $menu_title . '" Menu Created Successfully!';
+        header("Location:".$baseUrl."menu-form");
         echo $twig->render('menu.html.twig', $variables);
         return;
     }
