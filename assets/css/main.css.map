@@ -7,6 +7,7 @@
         "../scss/components/_adminNavbar.scss",
         "../scss/layout/_header.scss",
         "../scss/components/_logo.scss",
+        "../scss/components/_searchComponent.scss",
         "../scss/layout/_content.scss",
         "../scss/abstract/_colors.scss",
         "../scss/components/_topicWiseBlogs.scss",

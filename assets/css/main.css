@@ -78,6 +78,31 @@ body {
   background-color: #FB885C;
 }
 
+.search__form {
+  width: 20%;
+  margin-right: 4px;
+  border: none !important;
+}
+
+.search__form button {
+  margin-left: 0.3rem;
+  background-color: #FB885C;
+  border: 1px solid #FB885C;
+}
+
+.search__form button i {
+  color: white;
+}
+
+.search__form button:hover {
+  border: 1px solid #FB885C;
+  background-color: white !important;
+}
+
+.search__form button:hover i {
+  color: #FB885C;
+}
+
 .content-region {
   display: -webkit-box;
   display: -ms-flexbox;
