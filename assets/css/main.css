@@ -44,6 +44,15 @@ body {
           transform: rotate(360deg);
 }
 
+@media (min-width: 1200px) {
+  .main-nav {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+  }
+}
+
 .main-nav .navbar-nav .nav-item:hover a {
   color: #FB885C !important;
 }
