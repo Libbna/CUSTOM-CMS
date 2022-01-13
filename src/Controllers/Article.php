@@ -217,4 +217,20 @@ class Article extends ControllerBase
         }
         return;
     }
+
+    public function search($twig){
+
+        $variables = parent::preprocessPage();
+
+        $searchQuery = $_POST['searchBox'];
+        $searchItem = '%'.$searchQuery.'%';
+
+        $search = new ArticleModel();
+        $result = $search->searchQuery($searchItem);
+        $variables['result'] = $result;
+
+        $variables['len'] = mysqli_num_rows($result);
+        echo $twig->render("searchResults.html.twig", $variables);
+        return;
+    }
 }

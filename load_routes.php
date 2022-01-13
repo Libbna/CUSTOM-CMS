@@ -27,11 +27,14 @@ try
     $parameters = $matcher->match($context->getPathInfo());
     
     list($controllerClassName, $action) = explode('::', $parameters['controller']);
-    
     if (isset($parameters['id'])) {
         $id = $parameters['id'];
         $controller = new $controllerClassName();
         $controller->{$action}($twig, $id);
+    } else if (isset($parameters['query'])){
+        $query = $parameters['query'];
+        $controller = new $controllerClassName();
+        $controller->{$action}($twig, $query);
     } else {
         $controller = new $controllerClassName();
         $controller->{$action}($twig);

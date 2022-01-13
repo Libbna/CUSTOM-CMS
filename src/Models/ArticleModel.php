@@ -137,4 +137,14 @@ class ArticleModel
         $ans = $query->get_result();
         return $ans;
     }
+    
+    public function searchQuery($query){
+        $sqlQuery = $this->conn->prepare(
+            "SELECT * FROM articles JOIN userauth ON (articles.user_id = userauth.id) WHERE category LIKE '".$query."' OR soundex(category) = soundex('$query') OR body LIKE'".$query."' OR title LIKE '".$query."' OR username LIKE '".$query."'"
+        );
+       
+        $sqlQuery->execute();
+        $ans = $sqlQuery->get_result();
+        return $ans;
+    }
 }
