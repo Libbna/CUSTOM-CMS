@@ -1,4 +1,5 @@
 <?php
+
 namespace Cms\Controllers;
 
 session_start();
@@ -7,7 +8,8 @@ use Cms\Models\Database;
 
 class CustomBlock extends ControllerBase
 {
-    public function displayForm($twig){
+    public function displayForm($twig)
+    {
 
         $variables = parent::preprocesspage();
         if (!isset($_SESSION["loggedin"])) {
@@ -24,13 +26,14 @@ class CustomBlock extends ControllerBase
         return;
     }
 
-    public function insertCustomBlock($twig){
+    public function insertCustomBlock($twig)
+    {
 
         $variables = parent::preprocesspage();
         $block_title = $_POST['block-title'];
         $block_body = strip_tags($_POST['block-description']);
 
-        if (!isset($block_title) and !isset($block_body)){
+        if (!isset($block_title) and !isset($block_body)) {
             echo $twig->render('error.html.twig');
             return;
         }
@@ -41,17 +44,19 @@ class CustomBlock extends ControllerBase
         $variables['authenticated_userId'] = $_SESSION['user_id'];
         $variables['title'] = $this->reverie . " | Block";
         $baseUrl = $variables['base_url'];
-        header("Location:".$baseUrl."block-form");
-        echo $twig->render('block.html.twig');
+        $variables['status'] = "true";
+        $variables['message'] = '"' . $block_title . '" Block Created Successfully!';
+        echo $twig->render('block.html.twig', $variables);
         return;
     }
 
-    public function displayCustomBlock($twig){
+    public function displayCustomBlock($twig)
+    {
         $variables = parent::preprocesspage();
         $displayBlockList = new Database();
         $result = $displayBlockList->displayBlock();
         $variables['result'] = $result;
-        if (isset($_SESSION["user_id"])){
+        if (isset($_SESSION["user_id"])) {
             $variables['username'] = $_SESSION['username'];
             $variables['authenticated_userId'] = $_SESSION['user_id'];
             $variables['role'] = $_SESSION['role'];

@@ -44,7 +44,8 @@ class Menu extends ControllerBase
         $variables['role'] = $_SESSION['role'];
         $variables['title'] = $this->reverie . " | Menu";
         $baseUrl = $variables['base_url'];
-        header("Location:".$baseUrl."menu-form");
+        $variables['status'] = "true";
+        $variables['message'] = '"' . $menu_title . '" Menu Created Successfully!';
         echo $twig->render('menu.html.twig', $variables);
         return;
     }

@@ -1,18 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
+	{% if (status == "true" or status == "false") %}
+		<i>{{ message }}</i>
+	{% endif %}
 
 	<div class="block-wrapper mt-5">
 		<h3 class="text-center text-uppercase">Create a Block here!</h3>
 		<div class="home__form mt-5 d-flex justify-content-center">
 			<form action="block-insert" class="p-4" method="POST">
-				<div
-					class="home__input mb-3">
+				<div class="home__input mb-3">
 					<input type="text" name="block-title" class="form-control" placeholder="Title" autocomplete="off"/>
 				</div>
 
-				<div
-					class="home__input mb-3">
+				<div class="home__input mb-3">
 					<textarea class="form-control" name="block-description" id="editor" placeholder="Body"></textarea>
 				</div>
 
@@ -21,5 +22,5 @@
 		</div>
 	</div>
 
-	
+
 {% endblock %}
