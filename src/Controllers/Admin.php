@@ -163,4 +163,13 @@ class Admin extends ControllerBase
 
         return;
     }
+    public function displayAddUserForm($twig){
+        $variables = parent::preprocessPage();
+        $variables['username'] = $_SESSION['username'];
+        $variables['role'] = $_SESSION['role'];
+        $variables['authenticated_userId'] = $_SESSION['user_id'];
+        $variables['title'] = $this->reverie . ' | Add User';
+        echo $twig->render('userForm.html.twig', $variables);
+        return;
+    }
 }
