@@ -66,6 +66,14 @@ user_info_route:
   path: /user-info
   defaults: { controller: 'Cms\Controllers\Admin::displayUserDetails' }
 
+user_form_route:
+  path: /user-form
+  defaults: { controller: 'Cms\Controllers\Admin::displayAddUserForm' }
+
+user_insert_route:
+  path: /user-insert
+  defaults: { controller: 'Cms\Controllers\Db_auth::userRegistration' }
+
 delete_route:
   path: /delete/id/{id}
   defaults: { controller: 'Cms\Controllers\Admin::userDelete' }

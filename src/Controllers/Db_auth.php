@@ -2,7 +2,7 @@
 
 namespace Cms\Controllers;
 
-session_start();
+// session_start();
 
 use Cms\User\DatabaseUserProvider;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -47,7 +47,7 @@ class Db_auth extends ControllerBase
             if (password_verify($password, $hashed_password)) {
                 $auth_user = $user->getUsername();
 
-                session_start();
+                // session_start();
                 $_SESSION['loggedin'] = true;
                 $_SESSION['user_id'] = $user->getUserId();
                 $_SESSION['username'] = $auth_user;
@@ -88,6 +88,7 @@ class Db_auth extends ControllerBase
             $username = $_POST['userName'];
             $password = $_POST['userPassword'];
             $confirmPassword = $_POST['userConfirmPassword'];
+            $role = $_POST['role'];
         } else {
             $variables['message'] = "Enter all the details!";
             echo $twig->render("error.html.twig", $variables);
@@ -99,23 +100,33 @@ class Db_auth extends ControllerBase
         }
 
         $userProvider = new DatabaseUserProvider($this->conn);
-        $insertUser = $userProvider->insertUser($username, $hash_password);
+        $insertUser = $userProvider->insertUser($username, $hash_password, $role);
     
         if ($insertUser) {
             $variables['status'] = "true";
             $variables['message'] = "Registeration successful";
             $variables['title'] = $this->reverie . " | Register";
             $baseUrl = $variables['base_url'];
-            header("Location:".$baseUrl."login");
-            echo $twig->render("loginForm.html.twig", $variables);
+            if(isset($_SESSION['role'])){
+                header("Location:".$baseUrl."user-form");
+                echo $twig->render("userForm.html.twig", $variables);
+            }else{
+                header("Location:".$baseUrl."login");
+                echo $twig->render("loginForm.html.twig", $variables);
+            }
             return;
         } else {
             $variables['status'] = "false";
             $variables['message'] = "Registeration not successful";
             $variables['title'] = $this->reverie . " | Register";
             $baseUrl = $variables['base_url'];
-            header("Location:".$baseUrl."register");
-            echo $twig->render("registerForm.html.twig", $variables);
+            if(isset($_SESSION['role'])){
+                header("Location:".$baseUrl."user-form");
+                echo $twig->render("userForm.html.twig", $variables);
+            }else{
+                header("Location:".$baseUrl."register");
+                echo $twig->render("registerForm.html.twig", $variables);
+            }
             return;
         }
     }
