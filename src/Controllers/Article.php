@@ -234,8 +234,6 @@ class Article extends ControllerBase
         } else {
             $searchQuery = $query;
         }
-
-        // $searchQuery = $_POST['searchBox'];
         
         $searchItem = '%'.$searchQuery.'%';
 
@@ -243,6 +241,12 @@ class Article extends ControllerBase
         $result = $search->searchQuery($searchItem);
         $variables['result'] = $result;
         $variables['query'] = $searchQuery;
+
+        if (isset($_SESSION["user_id"])) {
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
         
         $variables['len'] = mysqli_num_rows($result);
         echo $twig->render("searchResults.html.twig", $variables);
