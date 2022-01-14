@@ -41,7 +41,7 @@
 				</div>
 				<ul class="list-group">
 					{% for r in categoryList %}
-						<a href="#" class="list-group-item">
+						<a href="search?searchBox={{ r.category }}" class="list-group-item">
 							{{ r.category }}
 						</a>
 					{% endfor %}
