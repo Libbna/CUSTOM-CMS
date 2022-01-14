@@ -2,34 +2,72 @@
 
 namespace Cms\Controllers;
 
+session_start();
+
 use Cms\Models\Database;
 
-class Menu
+class Menu extends ControllerBase
 {
-
     public function displayMenuForm($twig){
 
-        echo $twig->render('menu.html.twig');
+        $variables = parent::preprocesspage();
+        if (!isset($_SESSION["loggedin"])) {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
+        if (isset($_SESSION["user_id"])){
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+        $variables['title'] = $this->reverie . " | Enter Menu";
+        echo $twig->render('menu.html.twig', $variables);
         return;
     }
-    public function displayMenus($twig){
-        $menuDisplay = new Database();
-        $result = $menuDisplay->displayMenu();
-        echo $twig->render('menuDisplay.html.twig', ['result' => $result]);
-        return;
-    }
-    public function insertMenu($twig){
-        $title = $_POST['menu-title'];
-        $desc = strip_tags($_POST['menu-description']);
 
-        if (!isset($title) and !isset($desc)){
+    public function insertCustomMenu($twig){
+
+        $variables = parent::preprocesspage();
+        $menu_title = $_POST['menu-title'];
+        $menu_link = $_POST['menu-link'];
+
+        if (!isset($menu_title) and !isset($menu_link)){
             echo $twig->render('error.html.twig');
             return;
         }
 
         $newMenu = new Database();
-        $result = $newMenu->insertMenuDetails($title, $desc);
-        echo $twig->render('menu.html.twig');
+        $result = $newMenu->insertMenuDetails($menu_title, $menu_link);
+        $variables['result'] = $result; 
+        $variables['role'] = $_SESSION['role'];
+        $variables['title'] = $this->reverie . " | Menu";
+        $baseUrl = $variables['base_url'];
+        header("Location:".$baseUrl."menu-form");
+        echo $twig->render('menu.html.twig', $variables);
+        return;
+    }
+
+    public function displayCustomMenu($twig){
+
+        $variables = parent::preprocesspage();
+        if (!isset($_SESSION["loggedin"])) {
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['message'] = "Access Prohibited!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
+        $displayMenuList = new Database();
+        $result = $displayMenuList->displayMenu();
+        $variables['result'] = $result;
+        if (isset($_SESSION["user_id"])){
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+        $variables['title'] = $this->reverie . " | Menus";
+        echo $twig->render('menuDisplay.html.twig', $variables);
         return;
     }
 }

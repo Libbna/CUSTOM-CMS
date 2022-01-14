@@ -1,0 +1,79 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+	{% for r in result %}
+		<div class="article__section">
+			<div class="article__main">
+				<div class="article__image">
+					<img src="{{ r.image }}" alt="">
+				</div>
+				<div class="articlecontent__wrapper d-flex">
+
+					<div class="article__container">
+
+
+						<div class="article__title">
+							<h3 class="display-6 pt-4 pb-2">{{ r.title }}</h3>
+						</div>
+						<div class="article__body">
+							<p class="lead p-4">
+								{{ r.body }}
+							</p>
+						</div>
+						<div class="article__category">
+							<p class="display-4 p-4 text-white">
+								{{ r.category }}
+							</p>
+						</div>
+
+						{% if (authenticated_userId == r.user_id) %}
+							<div class="article__actions d-flex justify-content-center mb-5 mt-5">
+								<a href="article-editForm/{{ r.id }}">
+									<button type="button" class="btn btn-outline-secondary mr-3">
+										<i class="fas fa-edit"></i>
+										Edit
+									</button>
+								</a>
+								<a href="article-delete/{{ r.id }}">
+									<button type="button" class="btn btn-outline-danger">
+										<i class="fas fa-trash-alt"></i>
+										Delete
+									</button>
+								</a>
+							</div>
+						{% endif %}
+						<div class="article__relatedContainer">
+							<div class="home__heading">
+								<h4 class="p-4">RELATED ARTICLES</h4>
+							</div>
+							<div class="article__related text-center d-flex justify-content-around mt-4 mb-4">
+								{% for r in relatedBlogs %}
+
+									<div>
+
+										<div class="card" style="width: 15rem; height: 18rem;">
+
+											<img class="card-img-top" src="{{ r.image }}" alt="Card image cap">
+
+											<div class="card-body">
+												<h5 class="card-title">{{ r.title }}</h5>
+												<a href="article/{{ r.id }}" class="btn btn-primary">Go somewhere</a>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+
+					</div>
+					<div class="sidebar-content">
+						{% include "sidebar.html.twig" %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+
+
+{% endblock %}

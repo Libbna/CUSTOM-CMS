@@ -1,4 +1,6 @@
 /vendor
 routes/test.php
 dbconfig.php
+/Models/dbconfig.php
+/src/Controllers/dbconfig.php
 /node_modules

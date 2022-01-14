@@ -1,0 +1,19 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+	<div class="home__form mt-5 d-flex justify-content-center">
+		<form action="home-contact-insert" class="p-4 mb-4" method="POST">
+			<div class="home__input mb-3">
+				<label class="form-label">Name</label>
+				<input type="text" name="userName" class="form-control" autocomplete="off"/>
+			</div>
+
+			<div class="home__input mb-3">
+				<label>Phone Number</label>
+				<input type="text" name="userPhone" class="form-control" autocomplete="off"/>
+			</div>
+
+			<button type="submit" name="submitBtn" class="btn btn-secondary">Submit</button>
+		</form>
+	</div>
+{% endblock %}

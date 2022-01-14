@@ -1,26 +1,35 @@
-.header {
-    width: 100%;
-    display: flex;
-    background: aliceblue;
-}
-.header-wrapper {
-    width: 100%;
-}
-.block-region-header {
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-around;
-    text-align: center;
+@import "../components/logo";
 
-    .logo {
-        width: 25%;
-        background: antiquewhite;
+.main-nav {
+  @media (min-width: 1200px) {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+  }
+
+  & .navbar-nav .nav-item:hover a {
+    color: $primary !important;
+  }
+
+  .user-auth-btns button {
+    background-color: $primary;
+    border-radius: 6px;
+    border-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      color: $primary !important;
+      border-color: $primary;
     }
-    .navbar-links {
-        width: 50%;
-        background: cadetblue;
+
+    & a {
+      text-decoration: none;
+      color: inherit;
     }
-    .user-auth-btns {
-        width: 25%;
-    }
+  }
+
+  & .navbar-toggler {
+    background-color: $primary;
+  }
 }

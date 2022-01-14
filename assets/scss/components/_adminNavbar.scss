@@ -1,0 +1,8 @@
+.admin__navbarContainer {
+  display: flex;
+  justify-content: center;
+  .admin__navbar {
+      width: 100%;
+      max-width: 1300px;
+  }
+}

@@ -1,0 +1,38 @@
+{% extends 'layout.html.twig'%}
+
+{% block body %}
+
+
+	<div class="content__container p-5">
+
+		<div class="heading mb-4">
+            <h4>Contents</h4>
+        </div>
+
+		<div class="content__item mb-4">
+			<a href="articleForm">
+				<button type="button" class="btn btn-outline-dark content-type-btn">Article</button>
+			</a>
+			<blockquote class="mt-2">Use
+				<i>article</i>
+				to publish your thoughts and views.</blockquote>
+		</div>
+		<div class="content__item mb-4">
+			<a href="block-form">
+				<button type="button" class="btn btn-outline-dark content-type-btn">Block</button>
+			</a>
+			<blockquote class="mt-2">Create a
+				<i>custom block</i>
+				that contains some additional information.</blockquote>
+		</div>
+		<div class="content__item mb-4">
+			<a href="menu-form">
+				<button type="button" class="btn btn-outline-dark content-type-btn">Menu</button>
+			</a>
+			<blockquote class="mt-2">Add your own custom
+				<i>navbar menus</i>
+				to ease your users experience.</blockquote>
+		</div>
+	</div>
+
+{% endblock %}

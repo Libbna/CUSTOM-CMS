@@ -2,6 +2,6 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ route.php?url=$1 [L]
+RewriteRule ^ load_routes.php?url=$1 [L]
 
 

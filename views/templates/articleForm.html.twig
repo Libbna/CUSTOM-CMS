@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+	{% if (status == "true" or status == "false") %}
+		<i>{{ message }}</i>
+	{% endif %}
+
+	<div class = "block-wrapper mt-5">
+		<h3 class="text-center text-uppercase">Create your Article here!</h3>
+		<div class="home__form mt-5 d-flex justify-content-center">
+			<form enctype="multipart/form-data" action="article-insert" class="p-4" method="POST">
+				<div class="home__input mb-3">
+					<input type="text" name="article-title" class="form-control" autocomplete="off" placeholder="Title"/>
+				</div>
+
+				<div class="home__input mb-3">
+					<textarea class="form-control" name="article-description" id="editor" cols="30" rows="10" placeholder="Body"></textarea>
+				</div>
+
+				<div class="home__input mb-3">
+					<input type="text" name="article-category" class="form-control" autocomplete="off" placeholder="Category"/>
+				</div>
+
+				<div class="home__input mb-3">
+					<label>Image</label>
+					<input type="file" name="article_image" class = "form-control">
+				</div>
+
+				<button type="submit" name="submitBtn" class="btn sumbit-btn">Submit</button>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

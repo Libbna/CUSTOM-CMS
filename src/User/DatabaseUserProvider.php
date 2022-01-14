@@ -1,6 +1,8 @@
 <?php
 namespace Cms\User;
 
+session_start();
+
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
@@ -28,6 +30,7 @@ class DatabaseUserProvider implements UserProviderInterface
         $stmt->execute();
         $ans = $stmt->get_result();
         $row = $ans->fetch_assoc();
+        $id = $row['id'];
 
 
 
@@ -39,13 +42,12 @@ class DatabaseUserProvider implements UserProviderInterface
         }
         else
         {
-            return new User($row['username'], $row['password'], $row['roles']);
+            return new User($row['username'], $row['password'], $row['roles'], $id);
         }
     }
 
-    public function insertUser($username, $password){
+    public function insertUser($username, $password, $role){
         $stmt = $this->connection->prepare("INSERT INTO userauth(username, password, roles) VALUES(?, ?, ?)");
-        $role = "authenticated";
         $stmt->bind_param("sss", $username, $password, $role);
         $stmt->execute();
         $ans = $stmt->get_result();
