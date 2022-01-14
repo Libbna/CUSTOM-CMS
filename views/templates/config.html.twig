@@ -1,31 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-  <div class="block-wrapper config_div mt-5 mb-3 d-flex justify-content-center">
-    <form enctype="multipart/form-data"
-      action="config"
-      class="p-4"
-      method="POST">
-      <h3 class="text-uppercase mb-3">
-        Configuration
-      </h3>
-      <label for="edit-logo-upload" class="form-label text-uppercase fw-bolder">
-        Upload Logo
-      </label>
-      <input aria-describedby="edit-logo-upload--description"
-        type="file"
-        id="edit-logo-upload"
-        name="logo_upload"
-        size="60"
-        class="form-control" />
-      <input id="edit-site-name"
-        name="site_name"
-        class="form-control mt-3 mb-3"
-        placeholder="Site Name"
-        autocomplete="off" />
-      <button type="submit" name="submitBtn" class="btn sumbit-btn">
-        Submit
-      </button>
-    </form>
-  </div>
+	<div class="block-wrapper config_div mt-5 mb-3 d-flex justify-content-center">
+		<form enctype="multipart/form-data" action="config" class="p-4" method="POST">
+			<h3 class="text-uppercase mb-3">
+				Configuration
+			</h3>
+			<label for="edit-logo-upload" class="form-label text-uppercase fw-bolder">
+				Upload Logo
+			</label>
+			<input aria-describedby="edit-logo-upload--description" type="file" id="edit-logo-upload" name="logo_upload" size="60" class="form-control"/>
+			<input id="edit-site-name" name="site_name" class="form-control mt-3 mb-3" placeholder="Site Name" autocomplete="off"/>
+			<button type="submit" name="submitBtn" class="btn sumbit-btn">
+				Submit
+			</button>
+		</form>
+	</div>
 {% endblock %}

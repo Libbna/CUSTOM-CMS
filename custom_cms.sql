@@ -146,6 +146,46 @@ INSERT INTO `userauth` (`id`, `username`, `password`, `roles`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `menus`
+--
+
+CREATE TABLE `menus` (
+  `menu_id` int NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `menus`
+--
+
+INSERT INTO `menus` (`menu_id`, `title`, `description`) VALUES
+(1, 'home', 'link to homepage'),
+(2, 'contact', 'link to contact details page'),
+(3, 'block', 'Link to block details page');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userauth`
+--
+
+CREATE TABLE `userauth` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `roles` enum('admin','authenticated') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `userauth`
+--
+
+INSERT INTO `userauth` (`username`, `password`, `roles`) VALUES
+('Vivek', '$2y$10$NS1WRopghpnkEzVUX2Rr9OJxntxJV.4Quig7wEJ9SxlBT5Gs7VVae', 'authenticated');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -192,8 +232,8 @@ ALTER TABLE `config`
 --
 -- Indexes for table `customBlock`
 --
-ALTER TABLE `customBlock`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `menus`
+  ADD PRIMARY KEY (`menu_id`);
 
 --
 -- Indexes for table `menus`
@@ -212,8 +252,7 @@ ALTER TABLE `userauth`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
