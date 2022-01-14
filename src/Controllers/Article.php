@@ -48,7 +48,7 @@ class Article extends ControllerBase
     public function insertArticle($twig)
     {
         $variables = parent::preprocesspage();
-        if (empty($_POST['article-title']) || empty($_POST['article-description']) || empty($_POST['article-category']) || empty($_POST['article_image'])) {
+        if (empty($_POST['article-title']) || empty($_POST['article-description'])) {
             $variables['message'] = "Enter all the article details!";
             echo $twig->render("error.html.twig", $variables);
             return;
