@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
-<<<<<<< HEAD
--- Generation Time: Dec 26, 2021 at 02:34 PM
-=======
 -- Generation Time: Jan 11, 2022 at 06:45 PM
->>>>>>> origin/master
 -- Server version: 8.0.27-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
