@@ -1,3 +1,4 @@
+html,
 body {
   overflow-x: hidden;
 }
@@ -259,11 +260,6 @@ body {
 .card .card-body a {
   background-color: #FB885C !important;
   border: none;
-}
-
-.card img {
-  height: 25vh;
-  max-height: 200px;
 }
 
 @media only screen and (min-width: 768px) {
