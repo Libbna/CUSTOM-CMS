@@ -48,14 +48,14 @@ class Article extends ControllerBase
     public function insertArticle($twig)
     {
         $variables = parent::preprocesspage();
-        if (empty($_POST['article-title']) || empty($_POST['article-description']) || empty($_POST['article-category']) || empty($_POST['article_image'])) {
+        if (empty($_POST['article-title']) || empty($_POST['article-description'])) {
             $variables['message'] = "Enter all the article details!";
             echo $twig->render("error.html.twig", $variables);
             return;
         }
 
         $article_title = $_POST['article-title'];
-        $article_body = strip_tags($_POST['article-description']);
+        $article_body = $_POST['article-description'];
         $article_category = $_POST['article-category'];
         $article_image = $_POST['article_image'];
 
@@ -80,6 +80,7 @@ class Article extends ControllerBase
         $articles = new ArticleModel();
         $result = $articles->fetchAllArticleData();
         $topicResult = $articles->fetchTopicWiseArticles();
+
 
         $variables['result'] = $result;
         $variables['topicResult'] = $topicResult;
@@ -200,7 +201,7 @@ class Article extends ControllerBase
         }
 
         $article_title = $_POST['article-title'];
-        $article_body = strip_tags($_POST['article-description']);
+        $article_body = $_POST['article-description'];
         $article_category = $_POST['article-category'];
 
         $contact = new ArticleModel();
