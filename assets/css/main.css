@@ -253,8 +253,7 @@ body {
 }
 
 .card {
-  height: 64vh;
-  max-height: 420px;
+  min-height: 420px;
 }
 
 .card .card-body a {
