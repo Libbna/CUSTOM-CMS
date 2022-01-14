@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+	{% if len > 0 %}
+		<h3 class="lead search__heading text-center p-4">Results for :
+			<span>{{ query }}</span>
+		</h3>
+	{% endif %}
+
+	{% if len == 0 %}
+		<h3 class="lead search__heading text-center no_results p-4">No results found for :
+			<span>{{ query }}</span>
+		</h3>
+	{% endif %}
+
+	<div class="search__wrapper d-flex justify-content-center">
+
+
+		<div class="search__container">
+			{% for r in result %}
+				<h4 class="title pt-4">
+					<a href="article/{{ r.id }}">{{ r.title }}</a>
+				</h4>
+				<div class="search__item d-flex">
+					<div class="image">
+						<a href="article/{{ r.id }}">
+							<img src="{{ r.image }}" alt="" srcset="">
+						</a>
+					</div>
+
+					<div class="body">
+						<a href="article/{{ r.id }}">{{ r.body|slice(0, 250) ~ '...' }}
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}

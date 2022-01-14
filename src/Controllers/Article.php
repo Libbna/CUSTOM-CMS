@@ -5,6 +5,7 @@ namespace Cms\Controllers;
 session_start();
 
 use Cms\Models\ArticleModel;
+use Symfony\Component\HttpFoundation\Request;
 
 class Article extends ControllerBase
 {
@@ -215,6 +216,40 @@ class Article extends ControllerBase
             echo $twig->render("article.html.twig", $variables);
             return;
         }
+        return;
+    }
+
+    public function search($twig){
+
+        $variables = parent::preprocessPage();
+
+        $request = Request::createFromGlobals();
+        $uri = $request->getRequestUri();
+        $params = explode("=", $uri);
+        $query = $params[1];
+        
+        if (str_contains($query, '+')){
+            $filteredQuery = str_replace('+', ' ', $query);
+            $searchQuery = $filteredQuery;
+        } else {
+            $searchQuery = $query;
+        }
+        
+        $searchItem = '%'.$searchQuery.'%';
+
+        $search = new ArticleModel();
+        $result = $search->searchQuery($searchItem);
+        $variables['result'] = $result;
+        $variables['query'] = $searchQuery;
+
+        if (isset($_SESSION["user_id"])) {
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+        
+        $variables['len'] = mysqli_num_rows($result);
+        echo $twig->render("searchResults.html.twig", $variables);
         return;
     }
 }

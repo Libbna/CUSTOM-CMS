@@ -107,6 +107,67 @@ body {
   color: #FB885C;
 }
 
+.search__heading span {
+  color: #FB885C;
+  font-weight: 600;
+}
+
+.no_results {
+  height: 60vh;
+}
+
+.search__wrapper {
+  width: 100%;
+  max-width: 1300px;
+}
+
+.search__wrapper .search__container {
+  width: 70%;
+  margin-bottom: 10vh;
+}
+
+.search__wrapper .search__container h4 a {
+  color: #FB885C;
+  text-decoration: none;
+  -webkit-transition: .15s ease-in;
+  transition: .15s ease-in;
+}
+
+.search__wrapper .search__container h4 a:hover {
+  color: grey;
+}
+
+.search__item {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px dotted grey;
+}
+
+.search__item .image {
+  width: 20%;
+  height: 20vh;
+}
+
+.search__item .image img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+
+.search__item .body {
+  margin: 0 2rem;
+  width: 80%;
+}
+
+.search__item .body a {
+  color: grey;
+  text-decoration: none;
+}
+
 .content-region {
   display: -webkit-box;
   display: -ms-flexbox;
