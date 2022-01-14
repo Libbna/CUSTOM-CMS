@@ -44,6 +44,15 @@ body {
           transform: rotate(360deg);
 }
 
+@media (min-width: 1200px) {
+  .main-nav {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+  }
+}
+
 .main-nav .navbar-nav .nav-item:hover a {
   color: #FB885C !important;
 }
@@ -67,6 +76,31 @@ body {
 
 .main-nav .navbar-toggler {
   background-color: #FB885C;
+}
+
+.search__form {
+  width: 20%;
+  margin-right: 4px;
+  border: none !important;
+}
+
+.search__form button {
+  margin-left: 0.3rem;
+  background-color: #FB885C;
+  border: 1px solid #FB885C;
+}
+
+.search__form button i {
+  color: white;
+}
+
+.search__form button:hover {
+  border: 1px solid #FB885C;
+  background-color: white !important;
+}
+
+.search__form button:hover i {
+  color: #FB885C;
 }
 
 .content-region {
@@ -417,6 +451,16 @@ body {
 .sidebar__categoryContainer .list-group .list-group-item:hover {
   color: white;
   background-color: #FB885C;
+}
+
+.config_div form {
+  width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .config_div form {
+    width: 50%;
+  }
 }
 
 .block-wrapper h3 {

@@ -1,10 +1,11 @@
-body{
+body {
     overflow-x: hidden;
 }
 
 @import "abstract/colors";
 @import "components/adminNavbar";
 @import "layout/header";
+@import "components/_searchComponent";
 @import "./layout/content";
 @import "components/_contentPage";
 @import "components/card";
@@ -12,6 +13,7 @@ body{
 @import "layout/_articleLayout";
 @import "components/articleComponent";
 @import "./layout/sidebar";
+@import "./layout/config";
 @import "./layout/block";
 @import "./layout/footer";
 

@@ -109,8 +109,16 @@ class Admin extends ControllerBase
     public function getConfigForm($twig)
     {
         $variables = parent::preprocessPage();
-        echo $twig->render('config.html.twig', $variables);
-        return;
+        if ($_SESSION['role'] == 'admin') {
+            if (isset($_SESSION['user_id'])) {
+                $variables['username'] = $_SESSION['username'];
+                $variables['authenticated_userId'] = $_SESSION['user_id'];
+                $variables['role'] = $_SESSION['role'];
+                $variables['title'] = $this->reverie . ' | Config';
+                echo $twig->render('config.html.twig', $variables);
+                return;
+            }
+        }
     }
 
     public function configDetails($twig)
@@ -130,7 +138,11 @@ class Admin extends ControllerBase
                     $variables['username'] = $_SESSION['username'];
                     $variables['authenticated_userId'] = $_SESSION['user_id'];
                     $variables['role'] = $_SESSION['role'];
+                    $variables['message'] = "Logo is added";
+                    $variables['status'] = 'true';
                     $variables['title'] = $this->reverie . ' | Config';
+                    $baseUrl = $variables['base_url'];
+                    header('Location:' . $baseUrl . 'config-form');
                     echo $twig->render('config.html.twig', $variables);
                     return;
                 }
@@ -149,6 +161,15 @@ class Admin extends ControllerBase
 
         echo $twig->render('header.html.twig', $variables);
 
+        return;
+    }
+    public function displayAddUserForm($twig){
+        $variables = parent::preprocessPage();
+        $variables['username'] = $_SESSION['username'];
+        $variables['role'] = $_SESSION['role'];
+        $variables['authenticated_userId'] = $_SESSION['user_id'];
+        $variables['title'] = $this->reverie . ' | Add User';
+        echo $twig->render('userForm.html.twig', $variables);
         return;
     }
 }
