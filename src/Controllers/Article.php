@@ -5,6 +5,7 @@ namespace Cms\Controllers;
 session_start();
 
 use Cms\Models\ArticleModel;
+use Symfony\Component\HttpFoundation\Request;
 
 class Article extends ControllerBase
 {
@@ -222,7 +223,20 @@ class Article extends ControllerBase
 
         $variables = parent::preprocessPage();
 
-        $searchQuery = $_POST['searchBox'];
+        $request = Request::createFromGlobals();
+        $uri = $request->getRequestUri();
+        $params = explode("=", $uri);
+        $query = $params[1];
+        
+        if (str_contains($query, '+')){
+            $filteredQuery = str_replace('+', ' ', $query);
+            $searchQuery = $filteredQuery;
+        } else {
+            $searchQuery = $query;
+        }
+
+        // $searchQuery = $_POST['searchBox'];
+        
         $searchItem = '%'.$searchQuery.'%';
 
         $search = new ArticleModel();
