@@ -36,7 +36,7 @@
     'database' => 'DB_name',
     ];
 
-- after that import this sql file https://github.com/Libbna/CUSTOM-CMS/blob/master/custom_cms.sql .
+- after that import this sql file https://github.com/Libbna/CUSTOM-CMS/blob/master/custom_cms.sql
 
 For Lando Setup:
 
