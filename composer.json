@@ -23,6 +23,7 @@
         "symfony/security": "^4.4",
         "doctrine/dbal": "^3.2",
         "squizlabs/php_codesniffer": "3.*",
-        "intervention/image": "^2.7"
+        "intervention/image": "^2.7",
+        "ckeditor/ckeditor": "^4.17"
     }
 }

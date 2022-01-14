@@ -126,3 +126,7 @@ config_route:
 config_route_form:
   path: /config-form
   defaults: { controller: 'Cms\Controllers\Admin::getConfigForm' }
+
+search_route:
+  path: /search
+  defaults: { controller: 'Cms\Controllers\Article::search' }

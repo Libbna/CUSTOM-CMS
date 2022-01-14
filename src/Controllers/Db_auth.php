@@ -30,7 +30,7 @@ class Db_auth extends ControllerBase
 
         try {
             $variables = parent::preprocesspage();
-            if (isset($_POST['userName']) and isset($_POST['userPassword'])) {
+            if (!empty($_POST['userName']) && !empty($_POST['userPassword'])) {
 
                 $username = $_POST['userName'];
                 $password = $_POST['userPassword'];
@@ -83,7 +83,7 @@ class Db_auth extends ControllerBase
     public function userRegistration($twig)
     {
         $variables = parent::preprocesspage();
-        if (isset($_POST['userName']) and isset($_POST['userPassword']) and $_POST['userConfirmPassword']) {
+        if (!empty($_POST['userName']) && !empty($_POST['userPassword']) && !empty($_POST['userConfirmPassword']) && !empty($_POST['role'])) {
 
             $username = $_POST['userName'];
             $password = $_POST['userPassword'];

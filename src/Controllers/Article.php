@@ -5,6 +5,7 @@ namespace Cms\Controllers;
 session_start();
 
 use Cms\Models\ArticleModel;
+use Symfony\Component\HttpFoundation\Request;
 
 class Article extends ControllerBase
 {
@@ -47,7 +48,7 @@ class Article extends ControllerBase
     public function insertArticle($twig)
     {
         $variables = parent::preprocesspage();
-        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category'])) {
+        if (empty($_POST['article-title']) || empty($_POST['article-description']) || empty($_POST['article-category']) || empty($_POST['article_image'])) {
             $variables['message'] = "Enter all the article details!";
             echo $twig->render("error.html.twig", $variables);
             return;
@@ -192,7 +193,7 @@ class Article extends ControllerBase
     public function editArticle($twig, $id)
     {
         $variables = parent::preprocessPage();
-        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category'])) {
+        if (empty($_POST['article-title']) && empty($_POST['article-description']) && empty($_POST['article-category'])) {
             $variables['message'] = "Enter all the article details!";
             echo $twig->render("error.html.twig", $variables);
             return;
@@ -215,6 +216,40 @@ class Article extends ControllerBase
             echo $twig->render("article.html.twig", $variables);
             return;
         }
+        return;
+    }
+
+    public function search($twig){
+
+        $variables = parent::preprocessPage();
+
+        $request = Request::createFromGlobals();
+        $uri = $request->getRequestUri();
+        $params = explode("=", $uri);
+        $query = $params[1];
+        
+        if (str_contains($query, '+')){
+            $filteredQuery = str_replace('+', ' ', $query);
+            $searchQuery = $filteredQuery;
+        } else {
+            $searchQuery = $query;
+        }
+        
+        $searchItem = '%'.$searchQuery.'%';
+
+        $search = new ArticleModel();
+        $result = $search->searchQuery($searchItem);
+        $variables['result'] = $result;
+        $variables['query'] = $searchQuery;
+
+        if (isset($_SESSION["user_id"])) {
+            $variables['username'] = $_SESSION['username'];
+            $variables['authenticated_userId'] = $_SESSION['user_id'];
+            $variables['role'] = $_SESSION['role'];
+        }
+        
+        $variables['len'] = mysqli_num_rows($result);
+        echo $twig->render("searchResults.html.twig", $variables);
         return;
     }
 }
