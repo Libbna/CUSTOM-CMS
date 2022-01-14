@@ -28,10 +28,11 @@ class CustomBlock extends ControllerBase
 
         $variables = parent::preprocesspage();
         $block_title = $_POST['block-title'];
-        $block_body = strip_tags($_POST['block-description']);
+        $block_body = $_POST['block-description'];
 
-        if (!isset($block_title) and !isset($block_body)){
-            echo $twig->render('error.html.twig');
+        if (empty($block_title) || empty($block_body)){
+            $variables['message'] = "Enter all the details";
+            echo $twig->render('error.html.twig', $variables);
             return;
         }
 

@@ -11,28 +11,20 @@
 			<div class="home__form mt-5 d-flex justify-content-center">
 				<form enctype="multipart/form-data" action="article-edit/{{ r.id }}" class="p-4" method="POST">
 					<div class="home__input mb-3">
-						<input type="text" name="article-title" class="form-control" autocomplete="off" placeholder="Title"
-                        value="{{ r.title }}"
-                        />
+						<input type="text" name="article-title" class="form-control" autocomplete="off" placeholder="Title" value="{{ r.title }}"/>
 					</div>
 
 					<div class="home__input mb-3">
-						<textarea class="form-control" name="article-description" id="editor" cols="30" rows="10" placeholder="Body"
-                        
-                        >{{ r.body }}</textarea>
+						<textarea class="form-control" name="article-description" id="editor" cols="30" rows="10" placeholder="Body">{{ r.body }}</textarea>
 					</div>
 
 					<div class="home__input mb-3">
-						<input type="text" name="article-category" class="form-control" autocomplete="off" placeholder="Category"
-                        value={{ r.category }}
-                        />
+						<input type="text" name="article-category" class="form-control" autocomplete="off" placeholder="Category" value={{ r.category }}/>
 					</div>
 
 					<div class="home__input mb-3">
 						<label>Image</label>
-						<input type="file" name="article_image" class="form-control"
-                        disabled
-                        >
+						<input type="file" name="article_image" class="form-control" disabled>
 					</div>
 
 					<button type="submit" name="submitBtn" class="btn sumbit-btn">Edit</button>
