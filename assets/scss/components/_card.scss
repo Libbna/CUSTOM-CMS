@@ -1,14 +1,10 @@
 .card {
   min-height: 420px;
+
   .card-body {
     a {
       background-color: $primary !important;
       border: none;
     }
-  }
-
-  img {
-    height: 25vh;
-    max-height: 200px;
   }
 }
