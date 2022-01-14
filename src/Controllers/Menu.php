@@ -33,8 +33,9 @@ class Menu extends ControllerBase
         $menu_title = $_POST['menu-title'];
         $menu_link = $_POST['menu-link'];
 
-        if (!isset($menu_title) and !isset($menu_link)){
-            echo $twig->render('error.html.twig');
+        if (empty($menu_title) || empty($menu_link)){
+            $variables['message'] = "Enter all the details";
+            echo $twig->render('error.html.twig', $variables);
             return;
         }
 

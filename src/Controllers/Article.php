@@ -48,7 +48,7 @@ class Article extends ControllerBase
     public function insertArticle($twig)
     {
         $variables = parent::preprocesspage();
-        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category'])) {
+        if (empty($_POST['article-title']) || empty($_POST['article-description']) || empty($_POST['article-category']) || empty($_POST['article_image'])) {
             $variables['message'] = "Enter all the article details!";
             echo $twig->render("error.html.twig", $variables);
             return;
@@ -194,7 +194,7 @@ class Article extends ControllerBase
     public function editArticle($twig, $id)
     {
         $variables = parent::preprocessPage();
-        if (!isset($_POST['article-title']) and !isset($_POST['article-body']) and !isset($_POST['article-category'])) {
+        if (empty($_POST['article-title']) && empty($_POST['article-description']) && empty($_POST['article-category'])) {
             $variables['message'] = "Enter all the article details!";
             echo $twig->render("error.html.twig", $variables);
             return;

@@ -1,26 +1,8 @@
-
 {% extends 'layout.html.twig' %}
 
 
 {% block body %}
-	{# <div class="home__form mt-5 d-flex justify-content-center">
-		<form action="register-insert" class = "p-4 mb-4" method = "POST">
-			<h5 class='mb-4 text-muted'>Register</h5>
-			<div class="home__input mb-3">
-			</div>
 
-			<div class="home__input mb-3">
-				<label>Password</label>
-			</div>
-
-            <div class="home__input mb-3">
-				<label>Confirm Password</label>
-				<input type="password" name="userConfirmPassword" class="form-control" autocomplete="off"/>
-			</div>
-
-			<button type="submit" name="submitBtn" class="btn btn-secondary">Register</button>
-		</form>
-	</div> #}
 	<div class="container mt-5 login_container">
 		<div class="col-md-6 order-md-last pr-md-5">
 			<h1 class="text-center">REGISTER</h1>
@@ -37,7 +19,6 @@
 				<div class="form-group mb-3">
 					<input type="hidden" name="role" value="authenticated"/>
 				</div>
-
 				<div class="form-group">
 					<input type="submit" name="submitBtn" value="Register" class="btn btn-primary py-3 px-5 sumbit-btn">
 				</div>

@@ -126,6 +126,11 @@ class Admin extends ControllerBase
         $variables = parent::preprocessPage();
 
         $site_name = $_POST['site_name'];
+        if (empty($site_name)) {
+            $variables['message'] = "Please enter the site name!";
+            echo $twig->render("error.html.twig", $variables);
+            return;
+        }
 
         $updateLogo = new AdminModel();
         $result = $updateLogo->displayLogo();
