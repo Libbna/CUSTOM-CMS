@@ -1,30 +1,29 @@
-
 {% extends 'layout.html.twig' %}
 
 
 {% block body %}
 	<div class="container mt-5 login_container">
-	{% if (status == "true" or status == "false") %}
-		<i>{{ message }}</i>
-	{% endif %}
+		{% if (status == "true" or status == "false") %}
+			<i>{{ message }}</i>
+		{% endif %}
 		<div class="col-md-6 order-md-last pr-md-5">
 			<h1 class="text-center">Add User</h1>
 			<form action="user-insert" method="POST" class="border-0 login-form">
-                <div class="form-group mb-3">
-					<input type="text" name="userName" class="form-control rounded-0 frm_input" placeholder="Username" autocomplete="off" />
+				<div class="form-group mb-3">
+					<input type="text" name="userName" class="form-control rounded-0 frm_input" placeholder="Username" autocomplete="off"/>
 				</div>
 				<div class="form-group mb-3">
-					<input type="password" name="userPassword" class="form-control rounded-0 frm_input" placeholder="Password" />
+					<input type="password" name="userPassword" class="form-control rounded-0 frm_input" placeholder="Password"/>
 				</div>
 				<div class="form-group mb-3">
-					<input type="password" name="userConfirmPassword" class="form-control rounded-0 frm_input" placeholder="Confirm Password" />
+					<input type="password" name="userConfirmPassword" class="form-control rounded-0 frm_input" placeholder="Confirm Password"/>
 				</div>
 				<div class="form-group mb-3">
 					<select class="form-select" name="role" aria-label="Default select example">
-					<option selected>Select a role</option>
-					<option value="admin">Admin</option>
-					<option value="authenticated">Authenticated</option>
-					</select>				
+						<option selected>Select a role</option>
+						<option value="admin">Admin</option>
+						<option value="authenticated">Authenticated</option>
+					</select>
 				</div>
 				<div class="form-group">
 					<input type="submit" name="submitBtn" value="Add User" class="btn btn-primary py-3 px-5 sumbit-btn">
