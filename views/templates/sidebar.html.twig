@@ -1,84 +1,66 @@
 <div class="sidebar-region mt-4 container">
-	<div class="sidebar-block-region">
-		<div class="position-sticky" style="top: 2rem;">
-			<div class="sidebar-search">
-				<form action="#" class="search-form">
-					<div class="form-group d-flex flex-row-reverse">
-						<span class="fas fa-search"></span>
-						<input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-					</div>
-				</form>
-			</div>
+  <div class="sidebar-block-region">
+    <div class="position-sticky" style="top: 2rem;">
+      <div class="popularPost__section pt-4 pb-4 mb-3 bg-light rounded">
+        <div class="heading mb-3">
+          <h5>
+            POPULAR POSTS
+          </h5>
+        </div>
+        {% for r in popularPosts %}
+          <div class="post__box d-flex align-items-center mb-5">
+            <div class="post__image">
+              <a href="article/{{ r.id }}">
+                <img src="{{ r.image }}" alt="" />
+              </a>
+            </div>
+            <div class="post__title">
+              <a href="article/{{ r.id }}" class="lead">{{ r.title }}</a>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="heading">
+          <h5>
+            ABOUT
+          </h5>
+        </div>
+        <p class="mb-0">
+          A content management system (CMS) is a computer software used to
+          manage the creation and modification of digital content (content
+          management).[1][2][3] A CMS is typically used for enterprise content
+          management (ECM) and web content management (WCM).
+        </p>
+      </div>
 
-			<div class="popularPost__section pt-4 pb-4 mb-3 bg-light rounded">
-				<div class="heading mb-3">
-					<h5>POPULAR POSTS</h5>
-				</div>
-				{% for r in popularPosts %}
-					<div class="post__box d-flex align-items-center mb-5">
-						<div class="post__image">
-							<a href="article/{{ r.id }}">
-								<img src="{{ r.image }}" alt="">
-							</a>
-						</div>
-						<div class="post__title">
+      <div class="sidebar__categoryContainer mb-5 mt-2">
+        <div class="heading mb-2">
+          <h6>
+            TRENDING TOPICS
+          </h6>
+        </div>
+        <ul class="list-group">
+          {% for r in categoryList %}
+            <a href="search?searchBox={{ r.category }}" class="list-group-item">
+              {{ r.category }}
+            </a>
+          {% endfor %}
+        </ul>
+      </div>
 
-							<a href="article/{{ r.id }}" class="lead">{{ r.title }}</a>
-
-						</div>
-					</div>
-				{% endfor %}
-				<div class="heading">
-					<h5>ABOUT</h5>
-				</div>
-				<p class="mb-0">A content management system (CMS) is a computer software used to manage the creation and modification of digital content (content management).[1][2][3] A CMS is typically used for enterprise content management (ECM) and web content management (WCM).</p>
-
-			</div>
-
-			<div class="sidebar__categoryContainer mb-5 mt-2">
-				<div class="heading mb-2">
-					<h6>TRENDING TOPICS</h6>
-				</div>
-				<ul class="list-group">
-					{% for r in categoryList %}
-						<a href="search?searchBox={{ r.category }}" class="list-group-item">
-							{{ r.category }}
-						</a>
-					{% endfor %}
-
-				</ul>
-
-			</div>
-
-			<div class=" social-icons">
-				<div class="heading">
-					<h5>Elsewhere</h5>
-				</div>
-				<ol class="list-unstyled d-flex justify-content-evenly">
-					<li>
-						<a href="#">
-							<i class="fab fa-twitter"></i>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fab fa-facebook"></i>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fab fa-google"></i>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fab fa-linkedin"></i>
-						</a>
-					</li>
-				</ol>
-			</div>
-
-
-		</div>
-	</div>
-	<div>
+      <div class="social-icons">
+        <div class="heading">
+          <h5>
+            Elsewhere
+          </h5>
+        </div>
+        <ol class="list-unstyled d-flex justify-content-evenly">
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-google"></i></a></li>
+          <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div></div>
+</div>
