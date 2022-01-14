@@ -1,13 +1,20 @@
 {% extends "layout.html.twig"%}
 
 {% block body %}
-	<h4>
+	<h4 class="text-center">
 		Custom Block display page
 	</h4>
-	{% for r in result %}
-		<div class="info__details-item">
-			<li class='text-white'>{{ r.block_title }}</li>
-			<li class='text-white'>{{ r.block_desc }}</li>
-		</div>
-	{% endfor %}
+	<ul class="d-flex flex-column align-items-center justify-content-center list-unstyled">
+		{% for r in result %}
+			<div class="info__details-item justify-content-between  border border-dark bg-light">
+				<li class='text-black'>{{ r.block_title }}</li>
+				<li class='text-black'>{{ r.block_desc }}</li>
+				<li>
+					<a href="block-delete/id/{{ r.id }}" class="btn btn-dark" onclick="return confirm('Are you sure you want to delete {{ r.username }}?')">
+						<i class="fas fa-trash-alt"></i>
+					</a>
+				</li>
+			</div>
+		{% endfor %}
+	</ul>
 {% endblock %}
