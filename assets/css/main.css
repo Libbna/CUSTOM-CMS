@@ -61,6 +61,7 @@ body {
   background-color: #FB885C;
   border-radius: 6px;
   border-color: transparent;
+  padding: 0;
 }
 
 .main-nav .user-auth-btns button:hover {
@@ -70,6 +71,9 @@ body {
 }
 
 .main-nav .user-auth-btns button a {
+  display: inline-block;
+  width: 100%;
+  padding: 7px 12px;
   text-decoration: none;
   color: inherit;
 }
