@@ -5,6 +5,7 @@ namespace Cms\Controllers;
 // session_start();
 
 use Cms\User\DatabaseUserProvider;
+use Cms\Models\AdminModel;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 class Db_auth extends ControllerBase
@@ -59,7 +60,7 @@ class Db_auth extends ControllerBase
                 $variables['message'] = "Login Successful, Welcome";
                 $variables['title'] = $this->reverie . " | Welcome";
                 $baseUrl = $variables['base_url'];
-                header("Location:".$baseUrl."home");
+                header("Location:" . $baseUrl . "home");
                 echo $twig->render("home.html.twig", $variables);
                 return;
             } else {
@@ -68,7 +69,7 @@ class Db_auth extends ControllerBase
                 $variables['message'] = "Login Successful, Welcome";
                 $variables['title'] = $this->reverie . " | Login";
                 $baseUrl = $variables['base_url'];
-                header("Location:".$baseUrl."login");
+                header("Location:" . $baseUrl . "login");
                 echo $twig->render("loginForm.html.twig", $variables);
                 return;
             }
@@ -99,19 +100,28 @@ class Db_auth extends ControllerBase
             $hash_password = password_hash($password, PASSWORD_DEFAULT);
         }
 
+        $userTableEmpty = new AdminModel();
+        $result = $userTableEmpty->usersEmpty();
+        $noOfRows = mysqli_num_rows($result);
+
         $userProvider = new DatabaseUserProvider($this->conn);
-        $insertUser = $userProvider->insertUser($username, $hash_password, $role);
-    
-        if ($insertUser) {
+
+        if ($noOfRows == 0) {
+            $insertMainUser = $userProvider->insertUser($username, $hash_password, "admin");
+        } else {
+            $insertUser = $userProvider->insertUser($username, $hash_password, $role);
+        }
+
+        if ($insertUser || $insertMainUser) {
             $variables['status'] = "true";
             $variables['message'] = "Registeration successful";
             $variables['title'] = $this->reverie . " | Register";
             $baseUrl = $variables['base_url'];
-            if(isset($_SESSION['role'])){
-                header("Location:".$baseUrl."user-form");
+            if (isset($_SESSION['role'])) {
+                header("Location:" . $baseUrl . "user-form");
                 echo $twig->render("userForm.html.twig", $variables);
-            }else{
-                header("Location:".$baseUrl."login");
+            } else {
+                header("Location:" . $baseUrl . "login");
                 echo $twig->render("loginForm.html.twig", $variables);
             }
             return;
@@ -120,11 +130,11 @@ class Db_auth extends ControllerBase
             $variables['message'] = "Registeration not successful";
             $variables['title'] = $this->reverie . " | Register";
             $baseUrl = $variables['base_url'];
-            if(isset($_SESSION['role'])){
-                header("Location:".$baseUrl."user-form");
+            if (isset($_SESSION['role'])) {
+                header("Location:" . $baseUrl . "user-form");
                 echo $twig->render("userForm.html.twig", $variables);
-            }else{
-                header("Location:".$baseUrl."register");
+            } else {
+                header("Location:" . $baseUrl . "register");
                 echo $twig->render("registerForm.html.twig", $variables);
             }
             return;
@@ -169,7 +179,7 @@ class Db_auth extends ControllerBase
         $variables['message'] = "You have logged out!";
         $variables['title'] = $this->reverie . " | Logout";
         $baseUrl = $variables['base_url'];
-        header("Location:".$baseUrl."login");
+        header("Location:" . $baseUrl . "login");
         echo $twig->render("loginForm.html.twig", $variables);
         return;
     }
