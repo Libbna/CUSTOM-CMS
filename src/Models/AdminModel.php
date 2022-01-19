@@ -128,4 +128,14 @@ class AdminModel
         $ans = $query->get_result();
         return $ans;
     }
+
+    public function usersEmpty()
+    {
+        $query = $this->conn->prepare(
+            'SELECT * FROM userauth'
+        );
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
 }
