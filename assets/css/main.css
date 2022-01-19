@@ -262,32 +262,22 @@ body {
   border: none;
 }
 
-@media only screen and (min-width: 768px) {
-  .login_container {
-    padding-left: 8rem;
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .login_container {
-    padding-left: 22rem;
-  }
+.login_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .login_container h1 {
   font-weight: 600;
   color: #fb885c;
-  margin-left: 3rem;
 }
 
 .login_container .login-form {
-  width: 19rem;
-}
-
-@media only screen and (min-width: 768px) {
-  .login_container .login-form {
-    width: 28rem;
-  }
+  width: 100%;
 }
 
 .login_container .frm_input {
@@ -297,7 +287,10 @@ body {
 }
 
 .login_container .sumbit-btn {
-  border-radius: 30px;
+  min-width: 100px;
+  height: 50px;
+  font-weight: 600;
+  border-radius: 6px;
   background: #ff895d;
   border: 1px solid #ff895d;
   color: #fff;
