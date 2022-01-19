@@ -81,7 +81,7 @@ class AdminModel
     }
 
     // funtion insert logo
-    public function updateLogo($site_name, $configId)
+    public function updateLogo($site_name, $alt_text, $configId)
     {
         $logo = $_FILES['logo_upload'];
         $file = $logo['name'];
@@ -110,9 +110,9 @@ class AdminModel
             move_uploaded_file($img, $resized_loc);
         }
         $query = $this->conn->prepare(
-            'UPDATE config SET logo = ?, siteName = ? WHERE id = ?'
+            'UPDATE config SET logo = ?, alt_text = ? ,siteName = ? WHERE id = ?'
         );
-        $query->bind_param('ssi', $resized_loc, $site_name, $configId);
+        $query->bind_param('sssi', $resized_loc, $alt_text, $site_name, $configId);
         $query->execute();
         $ans = $query->get_result();
         return $ans;

@@ -126,6 +126,7 @@ class Admin extends ControllerBase
         $variables = parent::preprocessPage();
 
         $site_name = $_POST['site_name'];
+        $alt_text = $_POST['alt_text'];
         if (empty($site_name)) {
             $variables['message'] = "Please enter the site name!";
             echo $twig->render("error.html.twig", $variables);
@@ -136,7 +137,7 @@ class Admin extends ControllerBase
         $result = $updateLogo->displayLogo();
         $configRes = mysqli_fetch_assoc($result);
         $configId = $configRes['id'];
-        $ans = $updateLogo->updateLogo($site_name, $configId);
+        $ans = $updateLogo->updateLogo($site_name, $alt_text, $configId);
         if ($_SESSION['role'] == 'admin') {
             if (isset($_SESSION['user_id'])) {
                 if (empty($ans) == 1) {

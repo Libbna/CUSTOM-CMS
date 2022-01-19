@@ -18,7 +18,7 @@
 			<div class="logo__container">
 				<a href="home">
 					{% for r in logo %}
-						<img src="{{ r.logo }}" alt="logo"/>
+						<img src="{{ r.logo }}" alt="{{ r.alt_text }}"/>
 					{% endfor %}
 				</a>
 			</div>
