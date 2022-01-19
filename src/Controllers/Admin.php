@@ -128,7 +128,7 @@ class Admin extends ControllerBase
         $site_name = $_POST['site_name'];
         $alt_text = $_POST['alt_text'];
         if (empty($site_name)) {
-            $variables['message'] = "Please enter the site name!";
+            $variables['message'] = "Please enter all the fields!";
             echo $twig->render("error.html.twig", $variables);
             return;
         }
