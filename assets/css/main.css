@@ -83,6 +83,12 @@ body {
   background-color: #FB885C;
 }
 
+@media only screen and (max-width: 992px) {
+  .main-nav .search__form {
+    width: 100%;
+  }
+}
+
 .search__form {
   width: 20%;
   margin-right: 4px;
