@@ -271,6 +271,10 @@ body {
   min-height: 160px;
 }
 
+.card .card-body .card-text {
+  min-height: 96px;
+}
+
 .card .card-body a {
   background-color: #FB885C !important;
   border: none;
