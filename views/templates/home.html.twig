@@ -27,7 +27,7 @@
 
 					<img class="card-img-top" src="{{ r.image }}" alt="Card image cap">
 
-					<div class="card-body">
+					<div class="card-body d-flex flex-column justify-content-around">
 						<h5 class="card-title">{{ r.title }}</h5>
 						<p class="card-text">{{ r.body|striptags|slice(0, 120) ~ '...' }}</p>
 						<a href="article/{{ r.id }}" class="btn btn-primary">Go somewhere</a>

@@ -75,23 +75,7 @@
         padding: 0 2rem !important;
       }
     }
-
-    .article__related {
-      justify-content: space-around;
-      .card {
-        width: 13rem !important;
-        height: 16rem !important;
-      }
-    }
   }
 }
 
-@media only screen and (min-width: 1440px) {
-  .article__container {
-    .article__related {
-      .card {
-        width: 16rem !important;
-      }
-    }
-  }
-}
+
