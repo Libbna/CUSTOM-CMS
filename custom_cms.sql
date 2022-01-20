@@ -63,8 +63,7 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`id`, `logo`, `siteName`) VALUES
-(1, 'assets/images/logo/logo.png', ''),
-(3, 'assets/images/logo/resized_r.png', 'Reverie');
+(1, 'assets/images/logo/logo.png', 'Reverie');
 
 -- --------------------------------------------------------
 
