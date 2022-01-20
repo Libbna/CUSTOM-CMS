@@ -1,23 +1,13 @@
 .login_container {
-    @media only screen and (min-width: 768px) {
-        padding-left: 8rem;
-    }
-    @media only screen and (min-width: 1200px) {
-        padding-left: 22rem;
-    }
+    display: flex;
+    justify-content: center;
 
     h1 {
         font-weight: 600;
         color: #fb885c;
-        margin-left: 3rem;
     }
-
     .login-form {
-        width: 19rem;
-        @media only screen and (min-width: 768px) {
-            width: 28rem;
-        }
-        
+        width: 100%;
     }
 
     .frm_input {
@@ -27,7 +17,10 @@
     }
     
     .sumbit-btn {
-        border-radius: 30px;
+        min-width: 100px;
+        height: 50px;
+        font-weight: 600;
+        border-radius: 6px;
         background: #ff895d;
         border: 1px solid #ff895d;
         color: #fff;
