@@ -5,7 +5,7 @@
         <div class="logo__container mb-4">
           <a href="home">
             {% for r in logo %}
-              <img src="{{ r.logo }}" alt="logo" />
+              <img src="{{ r.logo }}" alt="{{ r.alt_text }}" />
             {% endfor %}
           </a>
         </div>
