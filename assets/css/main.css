@@ -260,12 +260,31 @@ body {
 }
 
 .card {
-  min-height: 420px;
+  min-height: 300px;
+}
+
+.card .card-title {
+  min-height: 50px;
+}
+
+.card .card-img-top {
+  min-height: 160px;
+}
+
+.card .card-body .card-text {
+  min-height: 96px;
 }
 
 .card .card-body a {
   background-color: #FB885C !important;
   border: none;
+  border: 1px solid transparent;
+}
+
+.card .card-body a:hover {
+  background-color: transparent !important;
+  color: #FB885C !important;
+  border: 1px solid #FB885C !important;
 }
 
 .login_container {
@@ -426,20 +445,6 @@ body {
   .article__container .article__body p {
     font-size: 1.2rem;
     padding: 0 2rem !important;
-  }
-  .article__container .article__related {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
-  }
-  .article__container .article__related .card {
-    width: 13rem !important;
-    height: 16rem !important;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .article__container .article__related .card {
-    width: 16rem !important;
   }
 }
 
