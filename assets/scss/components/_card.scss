@@ -1,10 +1,27 @@
 .card {
-  min-height: 420px;
+  min-height: 300px;
+
+  .card-title {
+    min-height: 50px;
+  }
+
+  .card-img-top {
+    min-height: 160px;
+  }
 
   .card-body {
+    .card-text {
+      min-height: 96px;
+    }
     a {
       background-color: $primary !important;
       border: none;
+      border: 1px solid transparent;
+    }
+    a:hover {
+      background-color: transparent !important;
+      color: $primary !important;
+      border: 1px solid $primary !important;
     }
   }
 }
