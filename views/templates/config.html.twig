@@ -15,39 +15,49 @@
 				<input
 				id="edit-site-name" name="site_name" class="form-control mt-3 mb-3" placeholder="Site Name" autocomplete="off" required/>
 			{# <button type="submit" name="submitBtn" class="btn sumbit-btn">
-											Submit
-										</button> #}
+																	Submit
+																</button> #}
 			</div>
 
+
 			<div>
-				<label for="edit-logo-upload" class="form-label text-uppercase fw-bolder">
-					Footer Details
-				</label>
-				<div>
-					<label>Description</label>
-					<textarea id="edit-site-name" name="site_name" class="form-control mt-1 mb-3" placeholder="Footer Description" autocomplete="off" rows="8" required></textarea>
-				</div>
+				{% for r in footer %}
+					<label for="edit-logo-upload" class="form-label text-uppercase fw-bolder">
+						Footer Details
+					</label>
+					<div>
+						<label>Description</label>
+						<textarea id="edit-site-name" name="footer_desc" class="form-control mt-1 mb-3" placeholder="Footer Description" autocomplete="off" rows="8" required>{{ r.description }}</textarea>
+					</div>
 
-				<div>
-					<label>Location</label>
-					<input id="edit-site-name" name="site_name" class="form-control mt-1 mb-3" placeholder="Location" autocomplete="off" required/>
-				</div>
+					<div>
+						<label>Location</label>
+						<input id="edit-site-name" name="footer_location" class="form-control mt-1 mb-3" placeholder="Location" 
+						value = {{ r.location }}
+						autocomplete="off" required/>
+					</div>
 
-				<div>
-					<label>Contact</label>
-					<input id="edit-site-name" name="site_name" class="form-control mt-1 mb-3" placeholder="Contact Number" autocomplete="off" required/>
-				</div>
+					<div>
+						<label>Contact</label>
+						<input id="edit-site-name" name="footer_contact" class="form-control mt-1 mb-3" placeholder="Contact Number"
+						value = {{ r.contact }}
+						 autocomplete="off" required/>
+					</div>
 
-				<div>
-					<label>Email ID</label>
-					<input id="edit-site-name" name="site_name" class="form-control mt-1 mb-3" placeholder="Email" autocomplete="off" required/>
-				</div>
+					<div>
+						<label>Email ID</label>
+						<input id="edit-site-name" name="footer_email" class="form-control mt-1 mb-3" placeholder="Email" 
+						value = {{ r.email }}
+						autocomplete="off" required/>
+					</div>
 
+				{% endfor %}
 
 				<button type="submit" name="submitBtn" class="btn sumbit-btn">
 					Submit
 				</button>
 			</div>
+
 		</form>
 	</div>
 {% endblock %}
