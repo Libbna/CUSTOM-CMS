@@ -708,6 +708,12 @@ footer {
   }
 }
 
+@media only screen and (min-width: 1200px) {
+  .banner img {
+    padding: 30px;
+  }
+}
+
 .region-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
