@@ -6,15 +6,48 @@
 			<h3 class="text-uppercase mb-3">
 				Configuration
 			</h3>
-			<label for="edit-logo-upload" class="form-label text-uppercase fw-bolder">
-				Upload Logo
-			</label>
-			<input aria-describedby="edit-logo-upload--description" type="file" id="edit-logo-upload" name="logo_upload" size="60" class="form-control" required/>
-			<input name="alt_text" class="form-control mt-3 mb-3" placeholder="Alternative text" autocomplete="off" required/>
-			<input id="edit-site-name" name="site_name" class="form-control mt-3 mb-3" placeholder="Site Name" autocomplete="off" required/>
-			<button type="submit" name="submitBtn" class="btn sumbit-btn">
-				Submit
-			</button>
+			<div>
+				<label for="edit-logo-upload" class="form-label text-uppercase fw-bolder">
+					Upload Logo
+				</label>
+				<input aria-describedby="edit-logo-upload--description" type="file" id="edit-logo-upload" name="logo_upload" size="60" class="form-control" required/>
+				<input name="alt_text" class="form-control mt-3 mb-3" placeholder="Alternative text" autocomplete="off" required/>
+				<input
+				id="edit-site-name" name="site_name" class="form-control mt-3 mb-3" placeholder="Site Name" autocomplete="off" required/>
+			{# <button type="submit" name="submitBtn" class="btn sumbit-btn">
+											Submit
+										</button> #}
+			</div>
+
+			<div>
+				<label for="edit-logo-upload" class="form-label text-uppercase fw-bolder">
+					Footer Details
+				</label>
+				<div>
+					<label>Description</label>
+					<textarea id="edit-site-name" name="site_name" class="form-control mt-1 mb-3" placeholder="Footer Description" autocomplete="off" rows="8" required></textarea>
+				</div>
+
+				<div>
+					<label>Location</label>
+					<input id="edit-site-name" name="site_name" class="form-control mt-1 mb-3" placeholder="Location" autocomplete="off" required/>
+				</div>
+
+				<div>
+					<label>Contact</label>
+					<input id="edit-site-name" name="site_name" class="form-control mt-1 mb-3" placeholder="Contact Number" autocomplete="off" required/>
+				</div>
+
+				<div>
+					<label>Email ID</label>
+					<input id="edit-site-name" name="site_name" class="form-control mt-1 mb-3" placeholder="Email" autocomplete="off" required/>
+				</div>
+
+
+				<button type="submit" name="submitBtn" class="btn sumbit-btn">
+					Submit
+				</button>
+			</div>
 		</form>
 	</div>
 {% endblock %}
