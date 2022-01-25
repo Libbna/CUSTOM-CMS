@@ -714,6 +714,17 @@ footer {
   }
 }
 
+.banner .carousel-item.active,
+.banner .carousel-item {
+  height: 480px;
+  background-size: cover;
+}
+
+.banner .carousel-control-prev-icon,
+.banner .carousel-control-next-icon {
+  background-color: #6c6b6b;
+}
+
 .region-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
