@@ -79,18 +79,11 @@
     /**
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    
     var disqus_config = function () {
     const pageUrl=window.location.href;
 	const URL = pageUrl.split('article');
-	this.page.url = URL[0];
 	this.page.identifier = `/article${URL[1]}`;
-	console.log(this.page.url);
-	console.log(this.page.identifier);
-	//this.page.url = 'http://localhost/';  // Replace PAGE_URL with your page's canonical URL variable #}
-	//this.page.identifier = 'article/21'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
-    
     (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
     s.src = 'https://reverie-1.disqus.com/embed.js';
