@@ -1,0 +1,19 @@
+.banner {
+    img {
+        @media only screen and (min-width: 1200px) {
+            // height: 35rem;
+            padding: 30px;
+        }
+    }
+
+    .carousel-item.active,
+    .carousel-item {
+        height: 480px;
+        background-size: cover;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: #6c6b6b;
+    }
+}
