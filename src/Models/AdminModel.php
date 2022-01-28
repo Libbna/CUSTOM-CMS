@@ -118,11 +118,30 @@ class AdminModel
         return $ans;
     }
 
+    public function updateFooter($desc, $location, $contact, $email){
+        $query = $this->conn->prepare(
+            'UPDATE footerDetails SET description = ?, location = ?, contact = ?, email = ?'
+        );
+        $query->bind_param('ssss', $desc, $location, $contact, $email);
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans; 
+    }
+
     // display logo
     public function displayLogo()
     {
         $query = $this->conn->prepare(
             'SELECT * FROM config ORDER BY id DESC LIMIT 1'
+        );
+        $query->execute();
+        $ans = $query->get_result();
+        return $ans;
+    }
+
+    public function getFooterDetails(){
+        $query = $this->conn->prepare(
+            'SELECT * FROM footerDetails'
         );
         $query->execute();
         $ans = $query->get_result();
