@@ -340,6 +340,12 @@ body {
   max-width: 1300px;
 }
 
+#disqus_thread_wrapper {
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .articlecontent__wrapper {
   max-width: 1300px;
   width: 100vw;
