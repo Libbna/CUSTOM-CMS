@@ -14,6 +14,7 @@ class ControllerBase
         $this->page['nav_links'] = $this->getNavLinks();
         $this->page['base_url'] = $this->getBaseUrl();
         $this->page['logo'] = $this->getLogoDisplay();
+        $this->page['footer'] = $this->getFooterDisplay();
         return $this->page;
     }
     protected function getNavLinks()
@@ -31,6 +32,12 @@ class ControllerBase
     {
         $displayLogo = new AdminModel();
         $result = $displayLogo->displayLogo();
+        return $result;
+    }
+    protected function getFooterDisplay()
+    {
+        $displayFooter = new AdminModel();
+        $result = $displayFooter->getFooterDetails();
         return $result;
     }
 }

@@ -19,7 +19,8 @@
         "../scss/layout/_sidebar.scss",
         "../scss/layout/_config.scss",
         "../scss/layout/_block.scss",
-        "../scss/layout/_footer.scss"
+        "../scss/layout/_footer.scss",
+        "../scss/components/_banner.scss"
     ],
     "names": [],
     "file": "main.css"

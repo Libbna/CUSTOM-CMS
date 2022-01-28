@@ -133,18 +133,26 @@ class Admin extends ControllerBase
             return;
         }
 
-        $updateLogo = new AdminModel();
-        $result = $updateLogo->displayLogo();
+        $footer_desc = $_POST['footer_desc'];
+        $footer_location = $_POST['footer_location'];
+        $footer_contact = $_POST['footer_contact'];
+        $footer_email = $_POST['footer_email'];
+
+        $updateConfig = new AdminModel();
+        $result = $updateConfig->displayLogo();
         $configRes = mysqli_fetch_assoc($result);
-        $configId = $configRes['id'];
-        $ans = $updateLogo->updateLogo($site_name, $alt_text, $configId);
+        $configId = $configRes['id'];    
+        $LogoAns = $updateConfig->updateLogo($site_name, $alt_text, $configId);
+
+        $footerResult = $updateConfig->updateFooter($footer_desc, $footer_location, $footer_contact, $footer_email);
+
         if ($_SESSION['role'] == 'admin') {
             if (isset($_SESSION['user_id'])) {
-                if (empty($ans) == 1) {
+                if (empty($LogoAns) == 1 && empty($footerResult == 1)) {
                     $variables['username'] = $_SESSION['username'];
                     $variables['authenticated_userId'] = $_SESSION['user_id'];
                     $variables['role'] = $_SESSION['role'];
-                    $variables['message'] = "Logo is added";
+                    $variables['message'] = "Config is added";
                     $variables['status'] = 'true';
                     $variables['title'] = $this->reverie . ' | Config';
                     $baseUrl = $variables['base_url'];
