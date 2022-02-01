@@ -6,7 +6,8 @@
   }
 
   .card-img-top {
-    min-height: 160px;
+    height: 160px;
+    object-fit: cover;
   }
 
   .card-body {
