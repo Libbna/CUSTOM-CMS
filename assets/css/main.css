@@ -273,6 +273,11 @@ body {
      object-fit: cover;
 }
 
+.card .card-img-top:hover {
+  -webkit-filter: brightness(0.6);
+          filter: brightness(0.6);
+}
+
 .card .card-body .card-text {
   min-height: 96px;
 }

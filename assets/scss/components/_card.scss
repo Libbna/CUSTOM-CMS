@@ -1,6 +1,5 @@
 .card {
   min-height: 300px;
-
   .card-title {
     min-height: 50px;
   }
@@ -8,6 +7,9 @@
   .card-img-top {
     height: 160px;
     object-fit: cover;
+    &:hover {
+      filter: brightness(0.6);
+    }
   }
 
   .card-body {
