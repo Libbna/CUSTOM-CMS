@@ -4,56 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "27289d7bdb13aefa533aac5e6827a5f1",
+    "content-hash": "9b1a93e6b1d17585213645b69ba63534",
     "packages": [
-        {
-            "name": "ckeditor/ckeditor",
-            "version": "4.17.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ckeditor/ckeditor4-releases.git",
-                "reference": "b71b8bf724174f2feaf53f64ee424bf1f5ba61fa"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor4-releases/zipball/b71b8bf724174f2feaf53f64ee424bf1f5ba61fa",
-                "reference": "b71b8bf724174f2feaf53f64ee424bf1f5ba61fa",
-                "shasum": ""
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+",
-                "LGPL-2.1+",
-                "MPL-1.1+"
-            ],
-            "authors": [
-                {
-                    "name": "CKSource",
-                    "homepage": "https://cksource.com"
-                }
-            ],
-            "description": "JavaScript WYSIWYG web text editor.",
-            "homepage": "https://ckeditor.com/ckeditor-4/",
-            "keywords": [
-                "CKEditor",
-                "ckeditor4",
-                "editor",
-                "fckeditor",
-                "html",
-                "javascript",
-                "richtext",
-                "text",
-                "wysiwyg"
-            ],
-            "support": {
-                "forum": "https://stackoverflow.com/tags/ckeditor",
-                "issues": "https://github.com/ckeditor/ckeditor4/issues",
-                "source": "https://github.com/ckeditor/ckeditor4",
-                "wiki": "https://ckeditor.com/docs/ckeditor4/latest/"
-            },
-            "time": "2021-11-17T16:15:01+00:00"
-        },
         {
             "name": "composer/package-versions-deprecated",
             "version": "1.11.99.4",
@@ -1144,16 +1096,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v5.4.2",
+            "version": "v5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "2e082dae50da563c639119b7b52347a2a3db4ba5"
+                "reference": "d65e1bd990c740e31feb07d2b0927b8d4df9956f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/2e082dae50da563c639119b7b52347a2a3db4ba5",
-                "reference": "2e082dae50da563c639119b7b52347a2a3db4ba5",
+                "url": "https://api.github.com/repos/symfony/config/zipball/d65e1bd990c740e31feb07d2b0927b8d4df9956f",
+                "reference": "d65e1bd990c740e31feb07d2b0927b8d4df9956f",
                 "shasum": ""
             },
             "require": {
@@ -1203,7 +1155,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/config/tree/v5.4.2"
+                "source": "https://github.com/symfony/config/tree/v5.4.3"
             },
             "funding": [
                 {
@@ -1219,7 +1171,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-15T11:06:13+00:00"
+            "time": "2022-01-03T09:50:52+00:00"
         },
         {
             "name": "symfony/debug",
@@ -1288,6 +1240,95 @@
                 }
             ],
             "time": "2021-11-29T08:40:48+00:00"
+        },
+        {
+            "name": "symfony/dependency-injection",
+            "version": "v5.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dependency-injection.git",
+                "reference": "974580fd67f14d65b045c11b09eb149cd4b13df5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/974580fd67f14d65b045c11b09eb149cd4b13df5",
+                "reference": "974580fd67f14d65b045c11b09eb149cd4b13df5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "psr/container": "^1.1.1",
+                "symfony/deprecation-contracts": "^2.1|^3",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/polyfill-php81": "^1.22",
+                "symfony/service-contracts": "^1.1.6|^2"
+            },
+            "conflict": {
+                "ext-psr": "<1.1|>=2",
+                "symfony/config": "<5.3",
+                "symfony/finder": "<4.4",
+                "symfony/proxy-manager-bridge": "<4.4",
+                "symfony/yaml": "<4.4"
+            },
+            "provide": {
+                "psr/container-implementation": "1.0",
+                "symfony/service-implementation": "1.0|2.0"
+            },
+            "require-dev": {
+                "symfony/config": "^5.3|^6.0",
+                "symfony/expression-language": "^4.4|^5.0|^6.0",
+                "symfony/yaml": "^4.4|^5.0|^6.0"
+            },
+            "suggest": {
+                "symfony/config": "",
+                "symfony/expression-language": "For using expressions in service container configuration",
+                "symfony/finder": "For using double-star glob patterns or when GLOB_BRACE portability is required",
+                "symfony/proxy-manager-bridge": "Generate service proxies to lazy load them",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\DependencyInjection\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Allows you to standardize and centralize the way objects are constructed in your application",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/dependency-injection/tree/v5.4.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-26T16:28:35+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3175,16 +3216,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v5.4.2",
+            "version": "v5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "b9eb163846a61bb32dfc147f7859e274fab38b58"
+                "reference": "e80f87d2c9495966768310fc531b487ce64237a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/b9eb163846a61bb32dfc147f7859e274fab38b58",
-                "reference": "b9eb163846a61bb32dfc147f7859e274fab38b58",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/e80f87d2c9495966768310fc531b487ce64237a2",
+                "reference": "e80f87d2c9495966768310fc531b487ce64237a2",
                 "shasum": ""
             },
             "require": {
@@ -3230,7 +3271,7 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/yaml/tree/v5.4.2"
+                "source": "https://github.com/symfony/yaml/tree/v5.4.3"
             },
             "funding": [
                 {
@@ -3246,7 +3287,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-16T21:58:21+00:00"
+            "time": "2022-01-26T16:32:32+00:00"
         },
         {
             "name": "twig/twig",

@@ -2,6 +2,8 @@
 
 namespace Cms\Controllers;
 
+use Cms\Services\Container;
+
 session_start();
 
 class Home extends ControllerBase
@@ -19,9 +21,12 @@ class Home extends ControllerBase
         return;
     }   
 
-    public function DemoFunc($twig, $id){
+    public function DemoFunc($twig){
         $variables = parent::preprocesspage();
-        echo "Hey" . $id;
+        $serviceOne = new Container();
+        $result = $serviceOne->yaml_service();
+        echo $result->currentDate();
+        die;
         return;
 
     }
