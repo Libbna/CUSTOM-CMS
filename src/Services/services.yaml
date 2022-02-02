@@ -1,6 +1,8 @@
 services:
   demo.service:
-    class: \Cms\Services\DemoService
+    class: \Cms\Services\ServicesClass\DemoService
   
   current_date.service:
-    class: \Cms\Services\DemoService
+    class: \Cms\Services\ServicesClass\DateService
+  
+  

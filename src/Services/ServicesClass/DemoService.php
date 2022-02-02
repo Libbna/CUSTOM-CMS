@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Cms\Services;
+namespace Cms\Services\ServicesClass;
 
 class DemoService
 {

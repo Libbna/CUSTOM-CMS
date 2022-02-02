@@ -24,7 +24,7 @@ class Container
         return $demoService;
     }
 
-    public function yaml_service()
+    public function yaml_service($service)
     {
         // init service container
         $containerBuilder = new ContainerBuilder();
@@ -36,7 +36,7 @@ class Container
         $loader->load('services.yaml');
 
         // fetch service from the service container
-        $serviceOne = $containerBuilder->get('demo.service');
+        $serviceOne = $containerBuilder->get($service);
         return $serviceOne;
     }
 }
