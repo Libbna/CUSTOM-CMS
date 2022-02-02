@@ -1,0 +1,14 @@
+#!/bin/bash
+
+STANDARD="Drupal,DrupalPractice"
+BIN="./vendor/bin"
+
+echo "~ ~ RUNNING PRE-COMMIT HOOKS ~ ~"
+echo "RUNNING COMPOSER VALIDATE"
+composer validate
+
+echo "RUNNING phpcbf"
+vendor/bin/phpcbf --standard=$STANDARD src
+
+echo "RUNNING phpcs"
+vendor/bin/phpcs --standard=$STANDARD src
