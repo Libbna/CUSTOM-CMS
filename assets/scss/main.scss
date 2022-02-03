@@ -25,3 +25,8 @@ body {
     display: flex;
     padding: 10px;
 }
+.required::after{
+    content: "*Field required";
+    color: red;
+    font-size: 12px;
+}

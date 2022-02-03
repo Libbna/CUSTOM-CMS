@@ -11,9 +11,9 @@
 					Upload Logo
 				</label>
 				<input aria-describedby="edit-logo-upload--description" type="file" id="edit-logo-upload" name="logo_upload" size="60" class="form-control" required/>
-				<input name="alt_text" class="form-control mt-3 mb-3" placeholder="Alternative text" autocomplete="off" required/>
+				<input name="alt_text" class="form-control mt-3 mb-3" placeholder="Alternative text*" autocomplete="off" required/>
 				<input
-				id="edit-site-name" name="site_name" class="form-control mt-3 mb-3" placeholder="Site Name" autocomplete="off" required/>
+				id="edit-site-name" name="site_name" class="form-control mt-3 mb-3 required" placeholder="Site Name" autocomplete="off" required/>
 			{# <button type="submit" name="submitBtn" class="btn sumbit-btn">
 																	Submit
 																</button> #}
@@ -27,26 +27,26 @@
 					</label>
 					<div>
 						<label>Description</label>
-						<textarea id="edit-site-name" name="footer_desc" class="form-control mt-1 mb-3" placeholder="Footer Description" autocomplete="off" rows="8" required>{{ r.description }}</textarea>
+						<textarea id="edit-site-name" name="footer_desc" class="form-control mt-1 mb-3" placeholder="Footer Description*" autocomplete="off" rows="8" required>{{ r.description }}</textarea>
 					</div>
 
 					<div>
 						<label>Location</label>
-						<input id="edit-site-name" name="footer_location" class="form-control mt-1 mb-3" placeholder="Location" 
+						<input id="edit-site-name" name="footer_location" class="form-control mt-1 mb-3" placeholder="Location*" 
 						value = {{ r.location }}
 						autocomplete="off" required/>
 					</div>
 
 					<div>
 						<label>Contact</label>
-						<input id="edit-site-name" name="footer_contact" class="form-control mt-1 mb-3" placeholder="Contact Number"
+						<input id="edit-site-name" name="footer_contact" class="form-control mt-1 mb-3" placeholder="Contact Number*"
 						value = {{ r.contact }}
 						 autocomplete="off" required/>
 					</div>
 
 					<div>
 						<label>Email ID</label>
-						<input id="edit-site-name" name="footer_email" class="form-control mt-1 mb-3" placeholder="Email" 
+						<input id="edit-site-name" name="footer_email" class="form-control mt-1 mb-3" placeholder="Email*" 
 						value = {{ r.email }}
 						autocomplete="off" required/>
 					</div>
