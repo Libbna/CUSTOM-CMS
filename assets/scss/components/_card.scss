@@ -1,17 +1,20 @@
 .card {
   min-height: 300px;
-
   .card-title {
     min-height: 50px;
   }
 
   .card-img-top {
-    min-height: 160px;
+    height: 160px;
+    object-fit: cover;
+    &:hover {
+      filter: brightness(0.6);
+    }
   }
 
   .card-body {
     .card-text {
-      min-height: 96px;
+      min-height: 120px;
     }
     a {
       background-color: $primary !important;
