@@ -4,8 +4,9 @@
         "psr-4": {
             "Cms\\": "src/"
         },
-        "classmap": ["src"]
-        
+        "classmap": [
+            "src"
+        ]
     },
     "authors": [
         {
@@ -26,5 +27,10 @@
         "intervention/image": "^2.7",
         "plasticbrain/php-flash-messages": "^1.0",
         "symfony/dependency-injection": "^5.4"
+        "drupal/coder": "^8.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+    },
+    "scripts": {
+        "post-install-cmd": "git config core.hooksPath .githooks"
     }
 }
