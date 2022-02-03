@@ -1,14 +1,12 @@
 #!/bin/bash
 
 STANDARD="Drupal,DrupalPractice"
-BIN="./vendor/bin"
 
 echo "~ ~ RUNNING PRE-COMMIT HOOKS ~ ~"
 echo "RUNNING COMPOSER VALIDATE"
 composer validate
 
-echo "RUNNING phpcbf"
-vendor/bin/phpcbf --standard=$STANDARD src
+echo "If there are errors run this cmd - vendor/bin/phpcs --standard Drupal, DrupalPractice to relove them."
 
 echo "RUNNING phpcs"
 vendor/bin/phpcs --standard=$STANDARD src
