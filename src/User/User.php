@@ -1,52 +1,70 @@
 <?php
+
 namespace Cms\User;
 
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class User implements UserInterface
-{
-    private $username;
-    private $password;
-    private $roles;
+/**
+ *
+ */
+class User implements UserInterface {
+  private $username;
+  private $password;
+  private $roles;
 
-    public function __construct(string $username, string $password, string $roles, int $user_id)
-    {
-        if (empty($username))
-        {
-            throw new \InvalidArgumentException('No username provided.');
-        }
-
-        $this->username = $username;
-        $this->password = $password;
-        $this->roles = $roles;
-        $this->user_id = $user_id;
+  /**
+   *
+   */
+  public function __construct(string $username, string $password, string $roles, int $user_id) {
+    if (empty($username)) {
+      throw new \InvalidArgumentException('No username provided.');
     }
 
-    public function getUsername()
-    {
-        return $this->username;
-    }
+    $this->username = $username;
+    $this->password = $password;
+    $this->roles = $roles;
+    $this->user_id = $user_id;
+  }
 
-    public function getPassword()
-    {
-        return $this->password;
-    }
+  /**
+   *
+   */
+  public function getUsername() {
+    return $this->username;
+  }
 
-    public function getRoles()
-    {
-        $role = explode(",", $this->roles);
-        return $role[0];
-    }
+  /**
+   *
+   */
+  public function getPassword() {
+    return $this->password;
+  }
 
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
+  /**
+   *
+   */
+  public function getRoles() {
+    $role = explode(",", $this->roles);
+    return $role[0];
+  }
 
-    public function getSalt()
-    {
-        return '';
-    }
+  /**
+   *
+   */
+  public function getUserId() {
+    return $this->user_id;
+  }
 
-    public function eraseCredentials() {}
+  /**
+   *
+   */
+  public function getSalt() {
+    return '';
+  }
+
+  /**
+   *
+   */
+  public function eraseCredentials() {}
+
 }

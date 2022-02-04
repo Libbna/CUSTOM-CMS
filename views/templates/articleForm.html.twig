@@ -9,15 +9,15 @@
 		<h3 class="text-center text-uppercase">Create your Article here!</h3>
 		<div class="home__form mt-5 d-flex justify-content-center">
 			<form enctype="multipart/form-data" action="article-insert" class="p-4" method="POST">
-				<div class="home__input mb-3">
-					<input type="text" name="article-title" class="form-control" autocomplete="off" placeholder="Title"/>
+				<div class="home__input mb-3 required">
+					<input type="text" name="article-title" class="form-control" autocomplete="off" placeholder="Title" required/>
 				</div>
 
-				<div class="home__input mb-3">
+				<div class="home__input mb-3 required">
 					<textarea class="form-control" name="article-description" id="editor" cols="30" rows="10" placeholder="Body"></textarea>
 				</div>
 
-				<div class="home__input mb-3">
+				<div class="home__input mb-3 required">
 					<input type="text" name="article-category" class="form-control" autocomplete="off" placeholder="Category"/>
 				</div>
 
