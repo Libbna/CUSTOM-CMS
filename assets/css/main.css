@@ -268,11 +268,18 @@ body {
 }
 
 .card .card-img-top {
-  min-height: 160px;
+  height: 160px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card .card-img-top:hover {
+  -webkit-filter: brightness(0.6);
+          filter: brightness(0.6);
 }
 
 .card .card-body .card-text {
-  min-height: 96px;
+  min-height: 120px;
 }
 
 .card .card-body a {
