@@ -6,7 +6,7 @@
  * @package  User_Database
  * @author   Author <author@gmail.com>
  * @license  License v3
- * @link     https://github.com/Libbna/CUSTOM-CMS#readme
+ * @link     https://github.com/Libbna/CUSTOM-CMS/blob/1.3.x/src/User/DatabaseUserProvider.php
  */
 namespace Cms\User;
 
