@@ -3,27 +3,33 @@
 namespace Cms\Controllers;
 
 session_start();
+/**
+ *
+ */
+class Home extends ControllerBase {
 
-class Home extends ControllerBase
-
-{
-    public static function getData($twig)
-    {
-        $variables = parent::preprocesspage();
-        if (isset($_SESSION["user_id"])){
-            $variables['username'] = $_SESSION['username'];
-            $variables['authenticated_userId'] = $_SESSION['user_id'];
-            $variables['role'] = $_SESSION['role'];
-        }
-        echo $twig->render('home.html.twig', $variables);
-        return;
-    }   
-
-    public function DemoFunc($twig, $id){
-        $variables = parent::preprocesspage();
-        echo "Hey" . $id;
-        return;
-
+  /**
+   *
+   */
+  public static function getData($twig) {
+    $variables = parent::preprocesspage();
+    if (isset($_SESSION["user_id"])) {
+      $variables['username'] = $_SESSION['username'];
+      $variables['authenticated_userId'] = $_SESSION['user_id'];
+      $variables['role'] = $_SESSION['role'];
     }
-}
+    echo $twig->render('home.html.twig', $variables);
+    return;
+  }
 
+  /**
+   *
+   */
+  public function DemoFunc($twig, $id) {
+    $variables = parent::preprocesspage();
+    echo "Hey" . $id;
+    return;
+
+  }
+
+}

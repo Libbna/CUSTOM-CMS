@@ -2,149 +2,174 @@
 
 namespace Cms\Models;
 
-class ArticleModel
-{
-    public $conn;
-    public $result;
-    public $sql;
+/**
+ *
+ */
+class ArticleModel {
+  public $conn;
+  public $result;
+  public $sql;
 
-    //establishing database connection
-    public function __construct()
-    {
-        require './dbconfig.php';
+  /**
+   * Establishing database connection.
+   */
+  public function __construct() {
+    require './dbconfig.php';
 
-        $this->conn = mysqli_connect(
-            $database['host'],
-            $database['user'],
-            $database['password'],
-            $database['dbName']
-        );
-        if (!$this->conn) {
-            echo '<h1>Datbase connection failed</h1>';
-            return;
-        }
+    $this->conn = mysqli_connect(
+          $database['host'],
+          $database['user'],
+          $database['password'],
+          $database['dbName']
+      );
+    if (!$this->conn) {
+      echo '<h1>Datbase connection failed</h1>';
+      return;
+    }
+  }
+
+  /**
+   *
+   */
+  public function insertArticleData($title, $body, $user_id, $category) {
+    $article_image = $_FILES['article_image'];
+
+    $file = $article_image['name'];
+    $file_tmp = $article_image['tmp_name'];
+
+    $profile_ext = explode('.', $file);
+    $filecheck = strtolower(end($profile_ext));
+
+    $file_ext_stored = ['jpeg', 'png', 'jpg'];
+
+    if (in_array($filecheck, $file_ext_stored)) {
+      $destinationFile = 'assets/images/' . $file;
+      move_uploaded_file($file_tmp, $destinationFile);
     }
 
-    public function insertArticleData($title, $body, $user_id, $category)
-    {
-        $article_image = $_FILES['article_image'];
+    $query = $this->conn->prepare(
+          'INSERT INTO articles(title, body, user_id, category, image) VALUES(?, ?, ?, ?, ?)'
+      );
+    $query->bind_param(
+          'ssiss',
+          $title,
+          $body,
+          $user_id,
+          $category,
+          $destinationFile
+      );
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-        $file = $article_image['name'];
-        $file_tmp = $article_image['tmp_name'];
+  /**
+   *
+   */
+  public function fetchAllArticleData() {
+    $query = $this->conn->prepare('SELECT * FROM articles');
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-        $profile_ext = explode('.', $file);
-        $filecheck = strtolower(end($profile_ext));
+  /**
+   *
+   */
+  public function fetchTopicWiseArticles($category = 'Food') {
+    $query = $this->conn->prepare(
+          'SELECT * FROM articles WHERE category = ?'
+      );
+    $query->bind_param('s', $category);
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-        $file_ext_stored = ['jpeg', 'png', 'jpg'];
+  /**
+   *
+   */
+  public function fetchArticleById($blog_id) {
+    $query = $this->conn->prepare('SELECT * FROM articles WHERE id = ?');
+    $query->bind_param('i', $blog_id);
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-        if (in_array($filecheck, $file_ext_stored)) {
-            $destinationFile = 'assets/images/' . $file;
-            move_uploaded_file($file_tmp, $destinationFile);
-        }
+  /**
+   *
+   */
+  public function fetchRelatedArticles() {
+    $query = $this->conn->prepare(
+          'SELECT * FROM articles ORDER BY id DESC LIMIT ?'
+      );
+    $query->bind_param('i', $count);
+    $count = 3;
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-        $query = $this->conn->prepare(
-            'INSERT INTO articles(title, body, user_id, category, image) VALUES(?, ?, ?, ?, ?)'
-        );
-        $query->bind_param(
-            'ssiss',
-            $title,
-            $body,
-            $user_id,
-            $category,
-            $destinationFile
-        );
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
+  /**
+   *
+   */
+  public function fetchCategoryList() {
+    $query = $this->conn->prepare(
+          'SELECT DISTINCT category FROM articles LIMIT 5'
+      );
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-    public function fetchAllArticleData()
-    {
-        $query = $this->conn->prepare('SELECT * FROM articles');
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
+  /**
+   *
+   */
+  public function fetchPopularPosts() {
+    $query = $this->conn->prepare(
+          'SELECT * FROM articles ORDER BY id ASC LIMIT 3 '
+      );
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-    public function fetchTopicWiseArticles($category = 'Food')
-    {
-        $query = $this->conn->prepare(
-            'SELECT * FROM articles WHERE category = ?'
-        );
-        $query->bind_param('s', $category);
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
+  /**
+   *
+   */
+  public function deleteArticleById($id) {
+    $query = $this->conn->prepare('DELETE FROM articles WHERE id = ? ');
+    $query->bind_param('i', $id);
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-    public function fetchArticleById($blog_id)
-    {
-        $query = $this->conn->prepare('SELECT * FROM articles WHERE id = ?');
-        $query->bind_param('i', $blog_id);
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
+  /**
+   *
+   */
+  public function editArticleById($id, $title, $body, $category) {
+    $query = $this->conn->prepare(
+          'UPDATE articles SET title = ?, body = ?, category = ? WHERE id = ? '
+      );
+    $query->bind_param('sssi', $title, $body, $category, $id);
+    $query->execute();
+    $ans = $query->get_result();
+    return $ans;
+  }
 
-    public function fetchRelatedArticles()
-    {
-        $query = $this->conn->prepare(
-            'SELECT * FROM articles ORDER BY id DESC LIMIT ?'
-        );
-        $query->bind_param('i', $count);
-        $count = 3;
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
+  /**
+   *
+   */
+  public function searchQuery($query) {
+    $sqlQuery = $this->conn->prepare(
+          "SELECT * FROM userauth JOIN articles ON (userauth.id = articles.user_id) WHERE category LIKE '" . $query . "' OR soundex(category) = soundex('$query') OR body LIKE'" . $query . "' OR title LIKE '" . $query . "' OR username LIKE '" . $query . "'"
+      );
 
-    public function fetchCategoryList()
-    {
-        $query = $this->conn->prepare(
-            'SELECT DISTINCT category FROM articles LIMIT 5'
-        );
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
+    $sqlQuery->execute();
+    $ans = $sqlQuery->get_result();
+    return $ans;
+  }
 
-    public function fetchPopularPosts()
-    {
-        $query = $this->conn->prepare(
-            'SELECT * FROM articles ORDER BY id ASC LIMIT 3 '
-        );
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
-
-    public function deleteArticleById($id)
-    {
-        $query = $this->conn->prepare('DELETE FROM articles WHERE id = ? ');
-        $query->bind_param('i', $id);
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
-
-    public function editArticleById($id, $title, $body, $category)
-    {
-        $query = $this->conn->prepare(
-            'UPDATE articles SET title = ?, body = ?, category = ? WHERE id = ? '
-        );
-        $query->bind_param('sssi', $title, $body, $category, $id);
-        $query->execute();
-        $ans = $query->get_result();
-        return $ans;
-    }
-    
-    public function searchQuery($query){
-        $sqlQuery = $this->conn->prepare(
-            "SELECT * FROM userauth JOIN articles ON (userauth.id = articles.user_id) WHERE category LIKE '".$query."' OR soundex(category) = soundex('$query') OR body LIKE'".$query."' OR title LIKE '".$query."' OR username LIKE '".$query."'"
-        );
-       
-        $sqlQuery->execute();
-        $ans = $sqlQuery->get_result();
-        return $ans;
-    }
 }
