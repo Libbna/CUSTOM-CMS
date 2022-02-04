@@ -6,7 +6,7 @@
  * @package  User
  * @author   Author <author@gmail.com>
  * @license  License v3
- * @link     https://github.com/Libbna/CUSTOM-CMS#readme
+ * @link     https://github.com/Libbna/CUSTOM-CMS
  */
 namespace Cms\User;
 
