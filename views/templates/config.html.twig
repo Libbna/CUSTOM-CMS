@@ -11,12 +11,12 @@
 					Upload Logo
 				</label>
 				<input aria-describedby="edit-logo-upload--description" type="file" id="edit-logo-upload" name="logo_upload" size="60" class="form-control" required/>
-				<input name="alt_text" class="form-control mt-3 mb-3" placeholder="Alternative text*" autocomplete="off" required/>
-				<input
-				id="edit-site-name" name="site_name" class="form-control mt-3 mb-3 required" placeholder="Site Name" autocomplete="off" required/>
-			{# <button type="submit" name="submitBtn" class="btn sumbit-btn">
-																	Submit
-																</button> #}
+				<div class="form-group mb-3 required">
+					<input name="alt_text" class="form-control required" placeholder="Alternative text" autocomplete="off" required/>
+				</div>
+				<div class="form-group mb-3 required">
+					<input id="edit-site-name" name="site_name" class="form-control required" placeholder="Site Name" autocomplete="off" required/>
+				</div>
 			</div>
 
 
@@ -26,26 +26,26 @@
 						Footer Details
 					</label>
 					<div>
-						<label>Description</label>
+						<label class="required">Description</label>
 						<textarea id="edit-site-name" name="footer_desc" class="form-control mt-1 mb-3" placeholder="Footer Description*" autocomplete="off" rows="8" required>{{ r.description }}</textarea>
 					</div>
 
 					<div>
-						<label>Location</label>
+						<label class="required">Location</label>
 						<input id="edit-site-name" name="footer_location" class="form-control mt-1 mb-3" placeholder="Location*" 
 						value = {{ r.location }}
 						autocomplete="off" required/>
 					</div>
 
 					<div>
-						<label>Contact</label>
+						<label class="required">Contact</label>
 						<input id="edit-site-name" name="footer_contact" class="form-control mt-1 mb-3" placeholder="Contact Number*"
 						value = {{ r.contact }}
 						 autocomplete="off" required/>
 					</div>
 
 					<div>
-						<label>Email ID</label>
+						<label class="required">Email ID</label>
 						<input id="edit-site-name" name="footer_email" class="form-control mt-1 mb-3" placeholder="Email*" 
 						value = {{ r.email }}
 						autocomplete="off" required/>

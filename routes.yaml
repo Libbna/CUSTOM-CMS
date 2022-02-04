@@ -130,3 +130,8 @@ config_route_form:
 search_route:
   path: /search
   defaults: { controller: 'Cms\Controllers\Article::search' }
+
+demo_service_route:
+  path: /demo-service
+  defaults: { controller: 'Cms\Controllers\Home::DemoFunc' }
+
