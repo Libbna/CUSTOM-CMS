@@ -26,8 +26,7 @@
 								{{ r.category }}
 							</p>
 						</div>
-
-						{% if (authenticated_userId == r.user_id) %}
+						{% if (authenticated_userId == r.user_id) or (role == 'admin') %}
 							<div class="article__actions d-flex justify-content-center mb-5 mt-5">
 								<a href="article-editForm/{{ r.id }}">
 									<button type="button" class="btn btn-outline-secondary mr-3">
