@@ -11,3 +11,12 @@ services:
 proxy:
   phpmyadmin:
     - phpmyadmin.ecom.lndo.site
+tooling:
+  phpcs:
+    service: appserver
+    cmd: "/app/vendor/bin/phpcs --standard=Drupal,DrupalPractice"
+    description: Run phpcs Drupal Coding Standards against a given file or directory.
+  phpcbf:
+    service: appserver
+    cmd: "/app/vendor/bin/phpcbf --standard=Drupal"
+    description: Automatically fix Drupal coding standards suggestions
