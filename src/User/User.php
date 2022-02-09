@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Set the user details like name, password, email, etc.
  *
@@ -101,4 +102,5 @@ class User implements UserInterface
     public function eraseCredentials()
     {
     }
+
 }

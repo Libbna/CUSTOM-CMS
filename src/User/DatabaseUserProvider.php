@@ -1,13 +1,5 @@
 <?php
-/**
- * Database methods to store and fetch user details.
- *
- * @category Content_Management_System
- * @package  User_Database
- * @author   Author <author@gmail.com>
- * @license  License v3
- * @link     https://github.com/Libbna/CUSTOM-CMS/blob/1.3.x/src/User/DatabaseUserProvider.php
- */
+
 namespace Cms\User;
 
 session_start();
@@ -16,6 +8,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
+
 use Cms\User\User;
 
 /**
@@ -122,9 +115,8 @@ class DatabaseUserProvider implements UserProviderInterface
                 )
             );
         }
-
-        return $this->getUser($user->getUsername());
     }
+
     /**
      * Whether this provider supports the given user class.
      *
@@ -136,4 +128,4 @@ class DatabaseUserProvider implements UserProviderInterface
     {
         return 'Cms\User\User' === $class;
     }
-}
+
