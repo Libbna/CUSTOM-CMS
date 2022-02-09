@@ -2,12 +2,23 @@
 
 namespace Cms\Models;
 
+use Symfony\Component\HttpFoundation\Request;
+
 /**
- *
+ * Class Article is performing CRUD operations.
  */
 class ArticleModel {
+  /**
+   * {@inheritdoc}
+   */
   public $conn;
+  /**
+   * {@inheritdoc}
+   */
   public $result;
+  /**
+   * {@inheritdoc}
+   */
   public $sql;
 
   /**
@@ -29,13 +40,15 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function insertArticleData($title, $body, $user_id, $category) {
-    $article_image = $_FILES['article_image'];
+    $request = Request::createFromGlobals();
 
-    $file = $article_image['name'];
-    $file_tmp = $article_image['tmp_name'];
+    $article_image = $request->files->get('article_image');
+
+    $file = $article_image->getClientOriginalName();
+    $file_tmp = $article_image->getRealPath();
 
     $profile_ext = explode('.', $file);
     $filecheck = strtolower(end($profile_ext));
@@ -64,7 +77,7 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function fetchAllArticleData() {
     $query = $this->conn->prepare('SELECT * FROM articles');
@@ -74,7 +87,7 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function fetchTopicWiseArticles($category = 'Food') {
     $query = $this->conn->prepare(
@@ -87,7 +100,7 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function fetchArticleById($blog_id) {
     $query = $this->conn->prepare('SELECT * FROM articles WHERE id = ?');
@@ -98,7 +111,7 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function fetchRelatedArticles() {
     $query = $this->conn->prepare(
@@ -112,7 +125,7 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function fetchCategoryList() {
     $query = $this->conn->prepare(
@@ -124,7 +137,7 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function fetchPopularPosts() {
     $query = $this->conn->prepare(
@@ -136,7 +149,7 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function deleteArticleById($id) {
     $query = $this->conn->prepare('DELETE FROM articles WHERE id = ? ');
@@ -147,7 +160,7 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function editArticleById($id, $title, $body, $category) {
     $query = $this->conn->prepare(
@@ -160,11 +173,19 @@ class ArticleModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function searchQuery($query) {
     $sqlQuery = $this->conn->prepare(
-          "SELECT * FROM userauth JOIN articles ON (userauth.id = articles.user_id) WHERE category LIKE '" . $query . "' OR soundex(category) = soundex('$query') OR body LIKE'" . $query . "' OR title LIKE '" . $query . "' OR username LIKE '" . $query . "'"
+          "SELECT * FROM userauth JOIN articles ON (userauth.id = articles.user_id) WHERE category LIKE '" .
+              $query .
+              "' OR soundex(category) = soundex('$query') OR body LIKE'" .
+              $query .
+              "' OR title LIKE '" .
+              $query .
+              "' OR username LIKE '" .
+              $query .
+              "'"
       );
 
     $sqlQuery->execute();

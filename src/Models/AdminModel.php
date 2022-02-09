@@ -6,13 +6,23 @@ require 'vendor/autoload.php';
 
 use Intervention\Image\ImageManager;
 use Intervention\Image\ImageManagerStatic as Image;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- *
+ * {@inheritdoc}
  */
 class AdminModel {
+  /**
+   * {@inheritdoc}
+   */
   public $conn;
+  /**
+   * {@inheritdoc}
+   */
   public $result;
+  /**
+   * {@inheritdoc}
+   */
   public $sql;
 
   /**
@@ -44,7 +54,7 @@ class AdminModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function setUserToAdmin($user_id) {
     // UPDATE userdetails SET bio = ? WHERE user_id = ?
@@ -59,7 +69,7 @@ class AdminModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function setUserToAuth($user_id) {
     $authenticated = 'authenticated';
@@ -82,22 +92,24 @@ class AdminModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function deleteUser($id) {
     $query = $this->conn->prepare('DELETE FROM userauth WHERE id = ?');
     $query->bind_param('i', $id);
     $query->execute();
-    return;
   }
 
   /**
    * Funtion insert logo.
    */
   public function updateLogo($site_name, $alt_text, $configId) {
-    $logo = $_FILES['logo_upload'];
-    $file = $logo['name'];
-    $file_tmp = $logo['tmp_name'];
+    $request = Request::createFromGlobals();
+    $logo = $request->files->get('logo_upload');
+    // dump($logo);
+    // die();
+    $file = $logo->getClientOriginalName();
+    $file_tmp = $logo->getRealPath();
 
     $profile_ext = explode('.', $file);
     $filecheck = strtolower(end($profile_ext));
@@ -115,7 +127,7 @@ class AdminModel {
     if (in_array($filecheck, $file_ext_stored)) {
       $manager = new ImageManager(['driver' => 'gd']);
 
-      $img = Image::make($file_tmp)
+      $img = Image::make($file_tmp, $manager)
         ->resize(50, 50)
         ->save($resized_loc);
 
@@ -124,14 +136,20 @@ class AdminModel {
     $query = $this->conn->prepare(
           'UPDATE config SET logo = ?, alt_text = ? ,siteName = ? WHERE id = ?'
       );
-    $query->bind_param('sssi', $resized_loc, $alt_text, $site_name, $configId);
+    $query->bind_param(
+          'sssi',
+          $resized_loc,
+          $alt_text,
+          $site_name,
+          $configId
+      );
     $query->execute();
     $ans = $query->get_result();
     return $ans;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function updateFooter($desc, $location, $contact, $email) {
     $query = $this->conn->prepare(
@@ -156,24 +174,20 @@ class AdminModel {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function getFooterDetails() {
-    $query = $this->conn->prepare(
-          'SELECT * FROM footerDetails'
-      );
+    $query = $this->conn->prepare('SELECT * FROM footerDetails');
     $query->execute();
     $ans = $query->get_result();
     return $ans;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function usersEmpty() {
-    $query = $this->conn->prepare(
-          'SELECT * FROM userauth'
-      );
+    $query = $this->conn->prepare('SELECT * FROM userauth');
     $query->execute();
     $ans = $query->get_result();
     return $ans;
