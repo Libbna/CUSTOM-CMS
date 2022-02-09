@@ -5,14 +5,15 @@ namespace Cms\Controllers;
 session_start();
 
 use Cms\Models\AdminModel;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- *
+ * {@inheritdoc}
  */
 class Admin extends ControllerBase {
 
   /**
-   *
+   * Display user details.
    */
   public function displayUserDetails($twig) {
     $variables = parent::preprocesspage();
@@ -20,7 +21,6 @@ class Admin extends ControllerBase {
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['message'] = 'Access Prohibited!';
       echo $twig->render('error.html.twig', $variables);
-      return;
     }
     $displayUsers = new AdminModel();
     $result = $displayUsers->displayUsers();
@@ -31,11 +31,10 @@ class Admin extends ControllerBase {
       $variables['role'] = $_SESSION['role'];
     }
     echo $twig->render('userDisplay.html.twig', $variables);
-    return;
   }
 
   /**
-   *
+   * Update use role to admin.
    */
   public function updateUserRoleToAdmin($twig, $id) {
     $variables = parent::preprocesspage();
@@ -44,7 +43,6 @@ class Admin extends ControllerBase {
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['message'] = 'Access Prohibited!';
       echo $twig->render('error.html.twig', $variables);
-      return;
     }
 
     $userRole = new AdminModel();
@@ -60,13 +58,11 @@ class Admin extends ControllerBase {
       $baseUrl = $variables['base_url'];
       header('Location:' . $baseUrl . 'user-info');
       echo $twig->render('userDisplay.html.twig', $variables);
-      return;
     }
-    return;
   }
 
   /**
-   *
+   * Update user role to Authenticated.
    */
   public function updateUserRoleToAuth($twig, $id) {
     $variables = parent::preprocesspage();
@@ -75,7 +71,6 @@ class Admin extends ControllerBase {
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['message'] = 'Access Prohibited!';
       echo $twig->render('error.html.twig', $variables);
-      return;
     }
 
     $userRole = new AdminModel();
@@ -91,13 +86,11 @@ class Admin extends ControllerBase {
       $baseUrl = $variables['base_url'];
       header('Location:' . $baseUrl . 'user-info');
       echo $twig->render('userDisplay.html.twig', $variables);
-      return;
     }
-    return;
   }
 
   /**
-   *
+   * Function to delete user.
    */
   public function userDelete($twig, $id) {
     $variables = parent::preprocesspage();
@@ -115,11 +108,10 @@ class Admin extends ControllerBase {
     $baseUrl = $variables['base_url'];
     header('Location:' . $baseUrl . 'user-info');
     echo $twig->render('userDisplay.html.twig', $variables);
-    return;
   }
 
   /**
-   *
+   * To render the config form.
    */
   public function getConfigForm($twig) {
     $variables = parent::preprocessPage();
@@ -130,59 +122,62 @@ class Admin extends ControllerBase {
         $variables['role'] = $_SESSION['role'];
         $variables['title'] = $this->reverie . ' | Config';
         echo $twig->render('config.html.twig', $variables);
-        return;
       }
     }
   }
 
   /**
-   *
+   * To insert the config details.
    */
   public function configDetails($twig) {
     $variables = parent::preprocessPage();
+    $request = Request::createFromGlobals();
 
-    $site_name = $_POST['site_name'];
-    $alt_text = $_POST['alt_text'];
+    $site_name = $request->request->get('site_name');
+    $alt_text = $request->request->get('alt_text');
     if (empty($site_name)) {
-      $variables['message'] = "Please enter all the fields!";
-      echo $twig->render("error.html.twig", $variables);
-      return;
+      $variables['message'] = 'Please enter all the fields!';
+      echo $twig->render('error.html.twig', $variables);
     }
 
-    $footer_desc = $_POST['footer_desc'];
-    $footer_location = $_POST['footer_location'];
-    $footer_contact = $_POST['footer_contact'];
-    $footer_email = $_POST['footer_email'];
+    $footer_desc = $request->request->get('footer_desc');
+
+    $footer_location = $request->request->get('footer_location');
+    $footer_contact = $request->request->get('footer_contact');
+    $footer_email = $request->request->get('footer_email');
 
     $updateConfig = new AdminModel();
     $result = $updateConfig->displayLogo();
     $configRes = mysqli_fetch_assoc($result);
     $configId = $configRes['id'];
-    $LogoAns = $updateConfig->updateLogo($site_name, $alt_text, $configId);
+    $logoAns = $updateConfig->updateLogo($site_name, $alt_text, $configId);
 
-    $footerResult = $updateConfig->updateFooter($footer_desc, $footer_location, $footer_contact, $footer_email);
+    $footerResult = $updateConfig->updateFooter(
+          $footer_desc,
+          $footer_location,
+          $footer_contact,
+          $footer_email
+      );
 
     if ($_SESSION['role'] == 'admin') {
       if (isset($_SESSION['user_id'])) {
-        if (empty($LogoAns) == 1 && empty($footerResult == 1)) {
+        if (empty($logoAns) == 1 && empty($footerResult == 1)) {
           $variables['username'] = $_SESSION['username'];
           $variables['authenticated_userId'] = $_SESSION['user_id'];
           $variables['role'] = $_SESSION['role'];
-          $variables['message'] = "Config is added";
+          $variables['message'] = 'Config is added';
           $variables['status'] = 'true';
           $variables['title'] = $this->reverie . ' | Config';
           $baseUrl = $variables['base_url'];
           header('Location:' . $baseUrl . 'config-form');
           echo $twig->render('config.html.twig', $variables);
-          return;
         }
-        return;
       }
     }
   }
 
   /**
-   *
+   * To display the logo.
    */
   public function displayLogo($twig) {
     $variables = parent::preprocessPage();
@@ -192,12 +187,10 @@ class Admin extends ControllerBase {
     $variables['result'] = $result;
 
     echo $twig->render('header.html.twig', $variables);
-
-    return;
   }
 
   /**
-   *
+   * Display the add user form.
    */
   public function displayAddUserForm($twig) {
     $variables = parent::preprocessPage();
@@ -206,7 +199,6 @@ class Admin extends ControllerBase {
     $variables['authenticated_userId'] = $_SESSION['user_id'];
     $variables['title'] = $this->reverie . ' | Add User';
     echo $twig->render('userForm.html.twig', $variables);
-    return;
   }
 
 }
