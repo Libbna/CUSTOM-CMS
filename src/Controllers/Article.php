@@ -8,12 +8,12 @@ use Cms\Models\ArticleModel;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- *
+ * {@inheritdoc}
  */
 class Article extends ControllerBase {
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function getContentPage($twig) {
 
@@ -35,38 +35,36 @@ class Article extends ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function getArticleForm($twig) {
     $variables = parent::preprocesspage();
     if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != TRUE) {
       $variables['message'] = "Access Prohibited!";
       echo $twig->render("error.html.twig", $variables);
-      return;
     }
     $variables['role'] = $_SESSION['role'];
     $variables['authenticated_userId'] = $_SESSION['user_id'];
     $variables['username'] = $_SESSION['username'];
     $variables['title'] = $this->reverie . " | Article";
     echo $twig->render("articleForm.html.twig", $variables);
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function insertArticle($twig) {
     $variables = parent::preprocesspage();
-    if (empty($_POST['article-title']) || empty($_POST['article-description'])) {
+    $request = Request::createFromGlobals();
+    $article_title = $request->request->get('article-title');
+    $article_body = $request->request->get('article-description');
+
+    if (empty($article_title) || empty($article_body)) {
       $variables['message'] = "Enter all the article details!";
       echo $twig->render("error.html.twig", $variables);
-      return;
     }
-
-    $article_title = $_POST['article-title'];
-    $article_body = $_POST['article-description'];
-    $article_category = $_POST['article-category'];
-    $article_image = $_POST['article_image'];
+    $article_category = $request->request->get('article-category');
+    $article_image = $request->request->get('article_image');
 
     $contact = new ArticleModel();
     $ans = $contact->insertArticleData($article_title, $article_body, $_SESSION['user_id'], $article_category, $article_image);
@@ -77,13 +75,11 @@ class Article extends ControllerBase {
       $variables['role'] = $_SESSION['role'];
       $variables['title'] = $this->reverie . " | Article";
       echo $twig->render("articleForm.html.twig", $variables);
-      return;
     }
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function fetchAllArticles($twig) {
 
@@ -106,7 +102,7 @@ class Article extends ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function getArticleById($twig, $blog_id) {
     $variables = parent::preprocesspage();
@@ -134,7 +130,7 @@ class Article extends ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function getCategoryList($twig) {
     $variables = parent::preprocesspage();
@@ -153,12 +149,12 @@ class Article extends ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function deleteArticle($twig, $article_id) {
     $variables = parent::preprocessPage();
     $article = new ArticleModel();
-    $result = $article->deleteArticleById($article_id);
+    $article->deleteArticleById($article_id);
 
     if (isset($_SESSION["user_id"])) {
       $variables['username'] = $_SESSION['username'];
@@ -175,11 +171,10 @@ class Article extends ControllerBase {
       return;
     }
 
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function getEditForm($twig, $article_id) {
     $variables = parent::preprocessPage();
@@ -204,24 +199,23 @@ class Article extends ControllerBase {
     $variables['title'] = $this->reverie . " | " . $res_assoc['title'];
 
     echo $twig->render("articleEdit.html.twig", $variables);
-
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function editArticle($twig, $id) {
     $variables = parent::preprocessPage();
-    if (empty($_POST['article-title']) && empty($_POST['article-description']) && empty($_POST['article-category'])) {
+    $request = Request::createFromGlobals();
+    $article_title = $request->request->get('article-title');
+    $article_body = $request->request->get('article-description');
+    $article_category = $request->request->get('article-category');
+
+    if (empty($article_title) && empty($article_body) && empty($article_category)) {
       $variables['message'] = "Enter all the article details!";
       echo $twig->render("error.html.twig", $variables);
       return;
     }
-
-    $article_title = $_POST['article-title'];
-    $article_body = $_POST['article-description'];
-    $article_category = $_POST['article-category'];
 
     $contact = new ArticleModel();
     $ans = $contact->editArticleById($id, $article_title, $article_body, $article_category);
@@ -236,11 +230,11 @@ class Article extends ControllerBase {
       echo $twig->render("article.html.twig", $variables);
       return;
     }
-    return;
+
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function search($twig) {
 
@@ -274,7 +268,6 @@ class Article extends ControllerBase {
 
     $variables['len'] = mysqli_num_rows($result);
     echo $twig->render("searchResults.html.twig", $variables);
-    return;
   }
 
 }
