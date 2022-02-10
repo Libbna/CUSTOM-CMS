@@ -134,7 +134,7 @@ class AdminModel {
       move_uploaded_file($img, $resized_loc);
     }
     $query = $this->conn->prepare(
-          'UPDATE config SET logo = ?, alt_text = ? ,siteName = ? WHERE id = ?'
+          'UPDATE config SET logo = ?, alt_text = ?, siteName = ? WHERE id = ?'
       );
     $query->bind_param(
           'sssi',
