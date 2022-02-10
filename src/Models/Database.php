@@ -3,11 +3,20 @@
 namespace Cms\Models;
 
 /**
- *
+ * {@inheritdoc}
  */
 class Database {
+  /**
+   * {@inheritdoc}
+   */
   public $conn;
+  /**
+   * {@inheritdoc}
+   */
   public $result;
+  /**
+   * {@inheritdoc}
+   */
   public $sql;
 
   /**
@@ -34,7 +43,7 @@ class Database {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function insertUserDetails($name, $phone) {
     $query = $this->conn->prepare("INSERT INTO users(name, phone) VALUES(?, ?)");

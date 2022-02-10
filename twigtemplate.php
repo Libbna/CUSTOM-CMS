@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * {@inheritdoc}
+ */
+
 require __DIR__ . '/vendor/autoload.php';
 
 use Twig\Environment;
