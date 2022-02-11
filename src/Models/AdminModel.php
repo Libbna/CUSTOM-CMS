@@ -181,6 +181,7 @@ class AdminModel {
     $query->execute();
     $ans = $query->get_result();
     return $ans;
+
   }
 
   /**
