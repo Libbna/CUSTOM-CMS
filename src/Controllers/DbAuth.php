@@ -126,9 +126,9 @@ class DbAuth extends ControllerBase {
     $result = $userTableEmpty->usersEmpty();
     $noOfRows = mysqli_num_rows($result);
     $userProvider = new DatabaseUserProvider($this->conn);
-
     if ($noOfRows == 0) {
       $insertMainUser = $userProvider->insertUser($username, $hash_password, "admin");
+      ;
     }
     else {
       $insertUser = $userProvider->insertUser($username, $hash_password, $role);
