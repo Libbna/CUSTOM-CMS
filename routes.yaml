@@ -20,27 +20,27 @@ block_insert_route:
 
 register_form_route:
   path: /register
-  defaults: { controller: 'Cms\Controllers\Db_auth::getRegisterForm' }
+  defaults: { controller: 'Cms\Controllers\DbAuth::getRegisterForm' }
 
 registerInsert_form_route:
   path: /register-insert
-  defaults: { controller: 'Cms\Controllers\Db_auth::userRegistration' }
+  defaults: { controller: 'Cms\Controllers\DbAuth::userRegistration' }
 
 login_form_route:
   path: /login
-  defaults: { controller: 'Cms\Controllers\Db_auth::getLoginForm' }
+  defaults: { controller: 'Cms\Controllers\DbAuth::getLoginForm' }
 
 login_insert_form_route:
   path: /login-insert
-  defaults: { controller: 'Cms\Controllers\Db_auth::userAuth' }
+  defaults: { controller: 'Cms\Controllers\DbAuth::userAuth' }
 
 logout:
   path: /logout
-  defaults: { controller: 'Cms\Controllers\Db_auth::logout' }
+  defaults: { controller: 'Cms\Controllers\DbAuth::logout' }
 
 user_auth_route:
   path: /user-auth
-  defaults: { controller: 'Cms\Controllers\Db_auth::userAuth' }
+  defaults: { controller: 'Cms\Controllers\DbAuth::userAuth' }
 
 article_form_route:
   path: /articleForm
@@ -72,7 +72,7 @@ user_form_route:
 
 user_insert_route:
   path: /user-insert
-  defaults: { controller: 'Cms\Controllers\Db_auth::userRegistration' }
+  defaults: { controller: 'Cms\Controllers\DbAuth::userRegistration' }
 
 delete_route:
   path: /delete/id/{id}
@@ -133,5 +133,5 @@ search_route:
 
 demo_service_route:
   path: /demo-service
-  defaults: { controller: 'Cms\Controllers\Home::DemoFunc' }
+  defaults: { controller: 'Cms\Controllers\Home::demoFunc' }
 

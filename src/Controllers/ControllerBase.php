@@ -6,14 +6,21 @@ use Cms\Models\AdminModel;
 use Cms\Models\Database;
 
 /**
- *
+ * {@inheritdoc}
  */
 class ControllerBase {
+  /**
+   * {@inheritdoc}
+   */
   protected $page = [];
+
+  /**
+   * {@inheritdoc}
+   */
   protected $reverie = 'Reverie';
 
   /**
-   *
+   * {@inheritdoc}
    */
   protected function preprocessPage() {
     $this->page['nav_links'] = $this->getNavLinks();
@@ -24,7 +31,7 @@ class ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   protected function getNavLinks() {
     $displayMenu = new Database();
@@ -33,7 +40,7 @@ class ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   protected function getBaseUrl() {
     $url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
@@ -42,7 +49,7 @@ class ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   protected function getLogoDisplay() {
     $displayLogo = new AdminModel();
@@ -51,7 +58,7 @@ class ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   protected function getFooterDisplay() {
     $displayFooter = new AdminModel();

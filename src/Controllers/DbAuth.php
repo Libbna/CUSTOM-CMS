@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 /**
  * {@inheritdoc}
  */
-class Db_auth extends ControllerBase {
+class DbAuth extends ControllerBase {
 
   /**
    * {@inheritdoc}
@@ -126,9 +126,9 @@ class Db_auth extends ControllerBase {
     $result = $userTableEmpty->usersEmpty();
     $noOfRows = mysqli_num_rows($result);
     $userProvider = new DatabaseUserProvider($this->conn);
-
     if ($noOfRows == 0) {
       $insertMainUser = $userProvider->insertUser($username, $hash_password, "admin");
+      ;
     }
     else {
       $insertUser = $userProvider->insertUser($username, $hash_password, $role);

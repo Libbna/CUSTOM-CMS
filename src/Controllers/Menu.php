@@ -5,14 +5,15 @@ namespace Cms\Controllers;
 session_start();
 
 use Cms\Models\Database;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- *
+ * {@inheritdoc}
  */
 class Menu extends ControllerBase {
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function displayMenuForm($twig) {
 
@@ -30,18 +31,17 @@ class Menu extends ControllerBase {
     }
     $variables['title'] = $this->reverie . " | Enter Menu";
     echo $twig->render('menu.html.twig', $variables);
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function insertCustomMenu($twig) {
 
     $variables = parent::preprocesspage();
-    $menu_title = $_POST['menu-title'];
-    $menu_link = $_POST['menu-link'];
-
+    $request = Request::createFromGlobals();
+    $menu_title = $request->request->get('menu-title');
+    $menu_link = $request->request->get('menu-link');
     if (empty($menu_title) || empty($menu_link)) {
       $variables['message'] = "Enter all the details";
       echo $twig->render('error.html.twig', $variables);
@@ -56,11 +56,10 @@ class Menu extends ControllerBase {
     $baseUrl = $variables['base_url'];
     header("Location:" . $baseUrl . "menu-form");
     echo $twig->render('menu.html.twig', $variables);
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function displayCustomMenu($twig) {
 
@@ -81,7 +80,6 @@ class Menu extends ControllerBase {
     }
     $variables['title'] = $this->reverie . " | Menus";
     echo $twig->render('menuDisplay.html.twig', $variables);
-    return;
   }
 
 }

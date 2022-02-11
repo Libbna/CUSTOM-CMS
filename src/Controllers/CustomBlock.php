@@ -5,14 +5,15 @@ namespace Cms\Controllers;
 session_start();
 
 use Cms\Models\Database;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- *
+ * {@inheritdoc}
  */
 class CustomBlock extends ControllerBase {
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function displayForm($twig) {
 
@@ -28,18 +29,17 @@ class CustomBlock extends ControllerBase {
     $variables['authenticated_userId'] = $_SESSION['user_id'];
     $variables['title'] = $this->reverie . " | Block";
     echo $twig->render('block.html.twig', $variables);
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function insertCustomBlock($twig) {
 
     $variables = parent::preprocesspage();
-    $block_title = $_POST['block-title'];
-    $block_body = $_POST['block-description'];
-
+    $request = Request::createFromGlobals();
+    $block_title = $request->request->get('block-title');
+    $block_body = $request->request->get('block-description');
     if (empty($block_title) || empty($block_body)) {
       $variables['message'] = "Enter all the details";
       echo $twig->render('error.html.twig', $variables);
@@ -54,11 +54,10 @@ class CustomBlock extends ControllerBase {
     $baseUrl = $variables['base_url'];
     header("Location:" . $baseUrl . "block-form");
     echo $twig->render('block.html.twig');
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function displayCustomBlock($twig) {
     $variables = parent::preprocesspage();
@@ -72,7 +71,6 @@ class CustomBlock extends ControllerBase {
     }
     $variables['title'] = $this->reverie . " | Blocks";
     echo $twig->render('blockDisplay.html.twig', $variables);
-    return;
   }
 
 }

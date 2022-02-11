@@ -84,12 +84,11 @@ class DatabaseUserProvider implements UserProviderInterface {
    */
   public function insertUser($username, $password, $role) {
     $stmt = $this->connection->prepare(
-          'INSERT INTO userauth(username, password, roles) VALUES(?, ?, ?)'
-      );
+      'INSERT INTO userauth(username, password, roles) VALUES(?, ?, ?)'
+    );
     $stmt->bind_param('sss', $username, $password, $role);
     $stmt->execute();
-    $ans = $stmt->get_result();
-    return $ans;
+    return TRUE;
   }
 
   /**
