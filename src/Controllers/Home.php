@@ -6,12 +6,12 @@ use Cms\Services\Container;
 
 session_start();
 /**
- *
+ * {@inheritdoc}
  */
 class Home extends ControllerBase {
 
   /**
-   *
+   * {@inheritdoc}
    */
   public static function getData($twig) {
     $variables = parent::preprocesspage();
@@ -21,19 +21,16 @@ class Home extends ControllerBase {
       $variables['role'] = $_SESSION['role'];
     }
     echo $twig->render('home.html.twig', $variables);
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
-    public function DemoFunc($twig){
-      $variables = parent::preprocesspage();
-      $serviceOne = new Container();
-      $result = $serviceOne->yaml_service('current_date.service');
-      echo $result->currentDate();
-      die;
-      return;
-    }
+  public function demoFunc($twig) {
+    $serviceOne = new Container();
+    $result = $serviceOne->yaml_service('current_date.service');
+    echo $result->currentDate();
+    die;
+  }
 
 }
