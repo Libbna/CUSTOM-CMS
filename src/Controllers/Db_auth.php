@@ -5,13 +5,17 @@ namespace Cms\Controllers;
 // session_start();
 use Cms\User\DatabaseUserProvider;
 use Cms\Models\AdminModel;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 
 /**
- *
+ * {@inheritdoc}
  */
 class Db_auth extends ControllerBase {
 
+  /**
+   * {@inheritdoc}
+   */
   public $conn;
 
   /**
@@ -28,7 +32,7 @@ class Db_auth extends ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function userAuth($twig) {
     // Init our custom db user provider.
@@ -36,10 +40,13 @@ class Db_auth extends ControllerBase {
 
     try {
       $variables = parent::preprocesspage();
-      if (!empty($_POST['userName']) && !empty($_POST['userPassword'])) {
+      $request = Request::createFromGlobals();
+      $userName = $request->request->get('userName');
+      $userPassword = $request->request->get('userPassword');
+      if (!empty($userName) && !empty($userPassword)) {
 
-        $username = $_POST['userName'];
-        $password = $_POST['userPassword'];
+        $username = $userName;
+        $password = $userPassword;
       }
       else {
         $variables['message'] = "Enter all the details!";
@@ -89,16 +96,21 @@ class Db_auth extends ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function userRegistration($twig) {
     $variables = parent::preprocesspage();
-    if (!empty($_POST['userName']) && !empty($_POST['userPassword']) && !empty($_POST['userConfirmPassword']) && !empty($_POST['role'])) {
+    $request = Request::createFromGlobals();
+    $userName = $request->request->get('userName');
+    $userPassword = $request->request->get('userPassword');
+    $userConfirmPassword = $request->request->get('userConfirmPassword');
+    $role = $request->request->get('role');
+    if (!empty($userName) && !empty($userPassword) && !empty($userConfirmPassword) && !empty($role)) {
 
-      $username = $_POST['userName'];
-      $password = $_POST['userPassword'];
-      $confirmPassword = $_POST['userConfirmPassword'];
-      $role = $_POST['role'];
+      $username = $userName;
+      $password = $userPassword;
+      $confirmPassword = $userConfirmPassword;
+      $role = $role;
     }
     else {
       $variables['message'] = "Enter all the details!";
@@ -113,7 +125,6 @@ class Db_auth extends ControllerBase {
     $userTableEmpty = new AdminModel();
     $result = $userTableEmpty->usersEmpty();
     $noOfRows = mysqli_num_rows($result);
-
     $userProvider = new DatabaseUserProvider($this->conn);
 
     if ($noOfRows == 0) {
@@ -156,7 +167,7 @@ class Db_auth extends ControllerBase {
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function getLoginForm($twig) {
     $variables = parent::preprocesspage();
@@ -168,11 +179,10 @@ class Db_auth extends ControllerBase {
     }
     $variables['title'] = $this->reverie . " | Login";
     echo $twig->render('loginForm.html.twig', $variables);
-    return;
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function getRegisterForm($twig) {
     $variables = parent::preprocesspage();
@@ -184,11 +194,11 @@ class Db_auth extends ControllerBase {
     }
     $variables['title'] = $this->reverie . " | Register";
     echo $twig->render('registerForm.html.twig', $variables);
-    return;
+
   }
 
   /**
-   *
+   * {@inheritdoc}
    */
   public function logout($twig) {
     session_start();
@@ -201,7 +211,6 @@ class Db_auth extends ControllerBase {
     $baseUrl = $variables['base_url'];
     header("Location:" . $baseUrl . "login");
     echo $twig->render("loginForm.html.twig", $variables);
-    return;
   }
 
 }

@@ -133,5 +133,5 @@ search_route:
 
 demo_service_route:
   path: /demo-service
-  defaults: { controller: 'Cms\Controllers\Home::DemoFunc' }
+  defaults: { controller: 'Cms\Controllers\Home::demoFunc' }
 

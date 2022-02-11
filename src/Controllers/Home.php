@@ -28,7 +28,7 @@ class Home extends ControllerBase {
    */
   public function demoFunc($twig) {
     $serviceOne = new Container();
-    $result = $serviceOne->yaml_service('current_date.service');
+    $result = $serviceOne->yamlService('current_date.service');
     echo $result->currentDate();
     die;
   }
