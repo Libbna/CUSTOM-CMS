@@ -6,7 +6,6 @@ session_start();
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
 /**
@@ -58,14 +57,7 @@ class DatabaseUserProvider implements UserProviderInterface {
     $id = $row['id'];
 
     if (!$row['username']) {
-      $exception = new UsernameNotFoundException(
-            sprintf(
-                'Username "%s" not found in the database.',
-                $row['username']
-            )
-        );
-      $exception->setUsername($username);
-      throw $exception;
+      return 0;
     }
     else {
       return new User(

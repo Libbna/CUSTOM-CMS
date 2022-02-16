@@ -9,6 +9,9 @@
 	<div class="container mt-5 login_container">
 		<div class="col-xl-5 col-lg-6 col-md-8 col-sm-12 col-12 ">
 			<h1 class="text-center">LOGIN</h1>
+				{% if (error) %}
+					<p class="alert alert-danger" role="alert">{{ error }}</p>
+					{% endif %}
 			<form action="login-insert" method="POST" class="border-0 login-form">
 				<div class="form-group mb-3 required">
 					<input type="text" name="userName" class="form-control rounded-0 frm_input" placeholder="Username" autocomplete="off">

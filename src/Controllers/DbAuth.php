@@ -44,7 +44,6 @@ class DbAuth extends ControllerBase {
       $userName = $request->request->get('userName');
       $userPassword = $request->request->get('userPassword');
       if (!empty($userName) && !empty($userPassword)) {
-
         $username = $userName;
         $password = $userPassword;
       }
@@ -55,11 +54,15 @@ class DbAuth extends ControllerBase {
       }
 
       $user = $userProvider->getUser($username);
+
+      if (!$user) {
+        $variables['error'] = "Username Not Found";
+        echo $twig->render("loginForm.html.twig", $variables);
+      }
       $hashed_password = $user->getPassword();
 
       if (password_verify($password, $hashed_password)) {
         $auth_user = $user->getUsername();
-
         // session_start();
         $_SESSION['loggedin'] = TRUE;
         $_SESSION['user_id'] = $user->getUserId();
@@ -177,7 +180,7 @@ class DbAuth extends ControllerBase {
       echo $twig->render("error.html.twig", $variables);
       return;
     }
-    $variables['title'] = $this->reverie . " | Login";
+
     echo $twig->render('loginForm.html.twig', $variables);
   }
 
@@ -194,7 +197,6 @@ class DbAuth extends ControllerBase {
     }
     $variables['title'] = $this->reverie . " | Register";
     echo $twig->render('registerForm.html.twig', $variables);
-
   }
 
   /**
