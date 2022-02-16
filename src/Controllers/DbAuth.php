@@ -57,6 +57,7 @@ class DbAuth extends ControllerBase {
 
       if (!$user) {
         $variables['error'] = "Username Not Found";
+        $variables['title'] = $this->reverie . " | Login";
         echo $twig->render("loginForm.html.twig", $variables);
       }
       $hashed_password = $user->getPassword();
@@ -180,7 +181,7 @@ class DbAuth extends ControllerBase {
       echo $twig->render("error.html.twig", $variables);
       return;
     }
-
+    $variables['title'] = $this->reverie . " | Login";
     echo $twig->render('loginForm.html.twig', $variables);
   }
 
