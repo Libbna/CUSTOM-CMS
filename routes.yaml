@@ -135,3 +135,9 @@ demo_service_route:
   path: /demo-service
   defaults: { controller: 'Cms\Controllers\Home::demoFunc' }
 
+category_blogs_route:
+  path: /category/{query}
+  defaults: { controller: 'Cms\Controllers\Article::fetchCategoryWiseArticles' }
+  requirements:
+    data: "[a-zA-Z]"
+
