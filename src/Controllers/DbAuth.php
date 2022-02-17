@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
  * {@inheritdoc}
  */
 class DbAuth extends ControllerBase {
-
   /**
    * {@inheritdoc}
    */
@@ -24,9 +23,14 @@ class DbAuth extends ControllerBase {
   public function __construct() {
     require './dbconfig.php';
 
-    $this->conn = mysqli_connect($database['host'], $database['user'], $database['password'], $database['dbName']);
+    $this->conn = mysqli_connect(
+          $database['host'],
+          $database['user'],
+          $database['password'],
+          $database['dbName']
+      );
     if (!$this->conn) {
-      echo "<h1>Database connection failed</h1>";
+      echo '<h1>Database connection failed</h1>';
       return;
     }
   }
@@ -44,13 +48,12 @@ class DbAuth extends ControllerBase {
       $userName = $request->request->get('userName');
       $userPassword = $request->request->get('userPassword');
       if (!empty($userName) && !empty($userPassword)) {
-
         $username = $userName;
         $password = $userPassword;
       }
       else {
-        $variables['message'] = "Enter all the details!";
-        echo $twig->render("error.html.twig", $variables);
+        $variables['message'] = 'Enter all the details!';
+        echo $twig->render('error.html.twig', $variables);
         return;
       }
 
@@ -69,21 +72,20 @@ class DbAuth extends ControllerBase {
         $variables['username'] = $auth_user;
         $variables['role'] = $_SESSION['role'];
         $variables['authenticated_userId'] = $_SESSION['user_id'];
-        $variables['message'] = "Login Successful, Welcome";
-        $variables['title'] = $this->reverie . " | Welcome";
+        $variables['message'] = 'Login Successful, Welcome';
+        $variables['title'] = $this->reverie . ' | Welcome';
         $baseUrl = $variables['base_url'];
-        header("Location:" . $baseUrl . "home");
-        echo $twig->render("home.html.twig", $variables);
+        header('Location:' . $baseUrl . 'home');
+        echo $twig->render('home.html.twig', $variables);
         return;
       }
       else {
-
-        $variables['status'] = "false";
-        $variables['message'] = "Login Successful, Welcome";
-        $variables['title'] = $this->reverie . " | Login";
+        $variables['status'] = 'false';
+        $variables['message'] = 'Login Successful, Welcome';
+        $variables['title'] = $this->reverie . ' | Login';
         $baseUrl = $variables['base_url'];
-        header("Location:" . $baseUrl . "login");
-        echo $twig->render("loginForm.html.twig", $variables);
+        header('Location:' . $baseUrl . 'login');
+        echo $twig->render('loginForm.html.twig', $variables);
         return;
       }
 
@@ -105,16 +107,20 @@ class DbAuth extends ControllerBase {
     $userPassword = $request->request->get('userPassword');
     $userConfirmPassword = $request->request->get('userConfirmPassword');
     $role = $request->request->get('role');
-    if (!empty($userName) && !empty($userPassword) && !empty($userConfirmPassword) && !empty($role)) {
-
+    if (
+          !empty($userName) &&
+          !empty($userPassword) &&
+          !empty($userConfirmPassword) &&
+          !empty($role)
+      ) {
       $username = $userName;
       $password = $userPassword;
       $confirmPassword = $userConfirmPassword;
       $role = $role;
     }
     else {
-      $variables['message'] = "Enter all the details!";
-      echo $twig->render("error.html.twig", $variables);
+      $variables['message'] = 'Enter all the details!';
+      echo $twig->render('error.html.twig', $variables);
       return;
     }
 
@@ -127,40 +133,47 @@ class DbAuth extends ControllerBase {
     $noOfRows = mysqli_num_rows($result);
     $userProvider = new DatabaseUserProvider($this->conn);
     if ($noOfRows == 0) {
-      $insertMainUser = $userProvider->insertUser($username, $hash_password, "admin");
-      ;
+      $insertMainUser = $userProvider->insertUser(
+            $username,
+            $hash_password,
+            'admin'
+        );
     }
     else {
-      $insertUser = $userProvider->insertUser($username, $hash_password, $role);
+      $insertUser = $userProvider->insertUser(
+            $username,
+            $hash_password,
+            $role
+            );
     }
 
     if ($insertUser || $insertMainUser) {
-      $variables['status'] = "true";
-      $variables['message'] = "Registeration successful";
-      $variables['title'] = $this->reverie . " | Register";
+      $variables['status'] = 'true';
+      $variables['message'] = 'Registeration successful';
+      $variables['title'] = $this->reverie . ' | Register';
       $baseUrl = $variables['base_url'];
       if (isset($_SESSION['role'])) {
-        header("Location:" . $baseUrl . "user-form");
-        echo $twig->render("userForm.html.twig", $variables);
+        header('Location:' . $baseUrl . 'user-form');
+        echo $twig->render('userForm.html.twig', $variables);
       }
       else {
-        header("Location:" . $baseUrl . "login");
-        echo $twig->render("loginForm.html.twig", $variables);
+        header('Location:' . $baseUrl . 'login');
+        echo $twig->render('loginForm.html.twig', $variables);
       }
       return;
     }
     else {
-      $variables['status'] = "false";
-      $variables['message'] = "Registeration not successful";
-      $variables['title'] = $this->reverie . " | Register";
+      $variables['status'] = 'false';
+      $variables['message'] = 'Registeration not successful';
+      $variables['title'] = $this->reverie . ' | Register';
       $baseUrl = $variables['base_url'];
       if (isset($_SESSION['role'])) {
-        header("Location:" . $baseUrl . "user-form");
-        echo $twig->render("userForm.html.twig", $variables);
+        header('Location:' . $baseUrl . 'user-form');
+        echo $twig->render('userForm.html.twig', $variables);
       }
       else {
-        header("Location:" . $baseUrl . "register");
-        echo $twig->render("registerForm.html.twig", $variables);
+        header('Location:' . $baseUrl . 'register');
+        echo $twig->render('registerForm.html.twig', $variables);
       }
       return;
     }
@@ -170,15 +183,44 @@ class DbAuth extends ControllerBase {
    * {@inheritdoc}
    */
   public function getLoginForm($twig) {
+    $clientID =
+            '219467547423-a63kgr9qdb7cgvfupe0a69d1qr4jivat.apps.googleusercontent.com';
+    $clientSecret = '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';
+    $redirectUrl = '/login';
+    // Creating client request to google.
+    $client = new \Google_Client();
+    $client->setClientId($clientID);
+    $client->setClientSecret($clientSecret);
+    $client->setRedirectUri($redirectUrl);
+    $client->addScope('profile');
+    $client->addScope('email');
+
+    $request = Request::createFromGlobals();
+    $code = $request->request->get('code');
+
     $variables = parent::preprocesspage();
-    if (isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] == TRUE) {
+    if (isset($_SESSION['loggedin']) and $_SESSION['loggedin'] == TRUE) {
       $variables['authenticated_userId'] = $_SESSION['user_id'];
-      $variables['message'] = "Access Prohibited!";
-      echo $twig->render("error.html.twig", $variables);
+      $variables['message'] = 'Access Prohibited!';
+      echo $twig->render('error.html.twig', $variables);
       return;
     }
-    $variables['title'] = $this->reverie . " | Login";
-    echo $twig->render('loginForm.html.twig', $variables);
+    elseif (isset($code)) {
+      $token = $client->fetchAccessTokenWithAuthCode($code);
+      $client->setAccessToken($token['access_token']);
+
+      $google_oauth = new \Google_Service($client);
+      $google_account_info = $google_oauth->userinfo->get();
+      $email = $google_account_info->email;
+      $name = $google_account_info->name;
+
+      echo 'Welcome' . $name . $email;
+    }
+    else {
+      $variables['title'] = $this->reverie . ' | Login';
+      echo $twig->render('loginForm.html.twig', $variables);
+      echo "<a href='" . $client->createAuthUrl() . "'>Google Login</a>";
+    }
   }
 
   /**
@@ -186,15 +228,14 @@ class DbAuth extends ControllerBase {
    */
   public function getRegisterForm($twig) {
     $variables = parent::preprocesspage();
-    if (isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] == TRUE) {
+    if (isset($_SESSION['loggedin']) and $_SESSION['loggedin'] == TRUE) {
       $variables['authenticated_userId'] = $_SESSION['user_id'];
-      $variables['message'] = "Access Prohibited!";
-      echo $twig->render("error.html.twig", $variables);
+      $variables['message'] = 'Access Prohibited!';
+      echo $twig->render('error.html.twig', $variables);
       return;
     }
-    $variables['title'] = $this->reverie . " | Register";
+    $variables['title'] = $this->reverie . ' | Register';
     echo $twig->render('registerForm.html.twig', $variables);
-
   }
 
   /**
@@ -205,12 +246,12 @@ class DbAuth extends ControllerBase {
     session_unset();
     session_destroy();
     $variables = parent::preprocesspage();
-    $variables['status'] = "true";
-    $variables['message'] = "You have logged out!";
-    $variables['title'] = $this->reverie . " | Logout";
+    $variables['status'] = 'true';
+    $variables['message'] = 'You have logged out!';
+    $variables['title'] = $this->reverie . ' | Logout';
     $baseUrl = $variables['base_url'];
-    header("Location:" . $baseUrl . "login");
-    echo $twig->render("loginForm.html.twig", $variables);
+    header('Location:' . $baseUrl . 'login');
+    echo $twig->render('loginForm.html.twig', $variables);
   }
 
 }

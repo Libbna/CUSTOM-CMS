@@ -28,7 +28,8 @@
         "plasticbrain/php-flash-messages": "^1.0",
         "symfony/dependency-injection": "^5.4",
         "drupal/coder": "^8.3",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
+        "google/apiclient": "^2.12.1"
     },
     "scripts": {
         "post-install-cmd": "git config core.hooksPath .githooks"
