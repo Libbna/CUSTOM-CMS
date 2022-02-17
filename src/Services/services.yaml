@@ -5,4 +5,6 @@ services:
   current_date.service:
     class: \Cms\Services\ServicesClass\DateService
   
-  
+  message.service: {
+    class: \Cms\Services\ServicesClass\MessageGenerator
+  }

@@ -5,6 +5,7 @@ namespace Cms\Controllers;
 session_start();
 
 use Cms\Models\ArticleModel;
+use Cms\Services\Container;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -16,16 +17,15 @@ class Article extends ControllerBase {
    * {@inheritdoc}
    */
   public function getContentPage($twig) {
-
-    if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != TRUE) {
-      $variables['message'] = "Access Prohibited!";
-      echo $twig->render("error.html.twig", $variables);
+    if (!isset($_SESSION['loggedin']) and $_SESSION['loggedin'] != TRUE) {
+      $variables['message'] = 'Access Prohibited!';
+      echo $twig->render('error.html.twig', $variables);
       return;
     }
 
     $variables = parent::preprocesspage();
 
-    if (isset($_SESSION["user_id"])) {
+    if (isset($_SESSION['user_id'])) {
       $variables['username'] = $_SESSION['username'];
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['role'] = $_SESSION['role'];
@@ -39,15 +39,15 @@ class Article extends ControllerBase {
    */
   public function getArticleForm($twig) {
     $variables = parent::preprocesspage();
-    if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != TRUE) {
-      $variables['message'] = "Access Prohibited!";
-      echo $twig->render("error.html.twig", $variables);
+    if (!isset($_SESSION['loggedin']) and $_SESSION['loggedin'] != TRUE) {
+      $variables['message'] = 'Access Prohibited!';
+      echo $twig->render('error.html.twig', $variables);
     }
     $variables['role'] = $_SESSION['role'];
     $variables['authenticated_userId'] = $_SESSION['user_id'];
     $variables['username'] = $_SESSION['username'];
-    $variables['title'] = $this->reverie . " | Article";
-    echo $twig->render("articleForm.html.twig", $variables);
+    $variables['title'] = $this->reverie . ' | Article';
+    echo $twig->render('articleForm.html.twig', $variables);
   }
 
   /**
@@ -60,21 +60,30 @@ class Article extends ControllerBase {
     $article_body = $request->request->get('article-description');
 
     if (empty($article_title) || empty($article_body)) {
-      $variables['message'] = "Enter all the article details!";
-      echo $twig->render("error.html.twig", $variables);
+      $variables['message'] = 'Enter all the article details!';
+      echo $twig->render('error.html.twig', $variables);
     }
     $article_category = $request->request->get('article-category');
     $article_image = $request->request->get('article_image');
 
     $contact = new ArticleModel();
-    $ans = $contact->insertArticleData($article_title, $article_body, $_SESSION['user_id'], $article_category, $article_image);
+    $ans = $contact->insertArticleData(
+          $article_title,
+          $article_body,
+          $_SESSION['user_id'],
+          $article_category,
+          $article_image
+      );
 
     if (empty($ans) == 1) {
-      $variables['status'] = "true";
-      $variables['message'] = "Article posted successfully!";
+      $variables['status'] = 'true';
+      // $variables['message'] = 'Article posted successfully!';
+      $msgService = new Container();
+      $result = $msgService->yamlService('message.service');
+      $variables['message'] = $result->getMessage();
       $variables['role'] = $_SESSION['role'];
-      $variables['title'] = $this->reverie . " | Article";
-      echo $twig->render("articleForm.html.twig", $variables);
+      $variables['title'] = $this->reverie . ' | Article';
+      echo $twig->render('articleForm.html.twig', $variables);
     }
   }
 
@@ -82,7 +91,6 @@ class Article extends ControllerBase {
    * {@inheritdoc}
    */
   public function fetchAllArticles($twig) {
-
     $variables = parent::preprocesspage();
     $articles = new ArticleModel();
     $result = $articles->fetchAllArticleData();
@@ -90,15 +98,15 @@ class Article extends ControllerBase {
 
     $variables['result'] = $result;
     $variables['topicResult'] = $topicResult;
-    $variables['title'] = $this->reverie . " | Home";
+    $variables['title'] = $this->reverie . ' | Home';
 
-    if (isset($_SESSION["user_id"])) {
+    if (isset($_SESSION['user_id'])) {
       $variables['username'] = $_SESSION['username'];
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['role'] = $_SESSION['role'];
     }
 
-    echo $twig->render("home.html.twig", $variables);
+    echo $twig->render('home.html.twig', $variables);
   }
 
   /**
@@ -117,16 +125,16 @@ class Article extends ControllerBase {
     $variables['categoryList'] = $categoryList;
     $variables['popularPosts'] = $popularPosts;
 
-    if (isset($_SESSION["user_id"])) {
+    if (isset($_SESSION['user_id'])) {
       $variables['username'] = $_SESSION['username'];
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['role'] = $_SESSION['role'];
     }
 
     $res_assoc = mysqli_fetch_assoc($result);
-    $variables['title'] = $this->reverie . " | " . $res_assoc['title'];
+    $variables['title'] = $this->reverie . ' | ' . $res_assoc['title'];
 
-    echo $twig->render("article.html.twig", $variables);
+    echo $twig->render('article.html.twig', $variables);
   }
 
   /**
@@ -139,13 +147,13 @@ class Article extends ControllerBase {
 
     $variables['result'] = $result;
 
-    if (isset($_SESSION["user_id"])) {
+    if (isset($_SESSION['user_id'])) {
       $variables['username'] = $_SESSION['username'];
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['role'] = $_SESSION['role'];
     }
 
-    echo $twig->render("sidebar.html.twig", $variables);
+    echo $twig->render('sidebar.html.twig', $variables);
   }
 
   /**
@@ -156,21 +164,20 @@ class Article extends ControllerBase {
     $article = new ArticleModel();
     $article->deleteArticleById($article_id);
 
-    if (isset($_SESSION["user_id"])) {
+    if (isset($_SESSION['user_id'])) {
       $variables['username'] = $_SESSION['username'];
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['role'] = $_SESSION['role'];
     }
 
     if (empty($ans) == 1) {
-      $variables['status'] = "true";
-      $variables['message'] = "Article deleted successfully!";
+      $variables['status'] = 'true';
+      $variables['message'] = 'Article deleted successfully!';
       $variables['role'] = $_SESSION['role'];
-      $variables['title'] = $this->reverie . " | Article";
-      echo $twig->render("home.html.twig", $variables);
+      $variables['title'] = $this->reverie . ' | Article';
+      echo $twig->render('home.html.twig', $variables);
       return;
     }
-
   }
 
   /**
@@ -179,26 +186,26 @@ class Article extends ControllerBase {
   public function getEditForm($twig, $article_id) {
     $variables = parent::preprocessPage();
 
-    if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != TRUE) {
+    if (!isset($_SESSION['loggedin']) and $_SESSION['loggedin'] != TRUE) {
       $variables['authenticated_userId'] = $_SESSION['user_id'];
-      $variables['message'] = "Access Prohibited!";
-      echo $twig->render("error.html.twig", $variables);
+      $variables['message'] = 'Access Prohibited!';
+      echo $twig->render('error.html.twig', $variables);
       return;
     }
     $article = new ArticleModel();
     $result = $article->fetchArticleById($article_id);
     $variables['result'] = $result;
 
-    if (isset($_SESSION["user_id"])) {
+    if (isset($_SESSION['user_id'])) {
       $variables['username'] = $_SESSION['username'];
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['role'] = $_SESSION['role'];
     }
 
     $res_assoc = mysqli_fetch_assoc($result);
-    $variables['title'] = $this->reverie . " | " . $res_assoc['title'];
+    $variables['title'] = $this->reverie . ' | ' . $res_assoc['title'];
 
-    echo $twig->render("articleEdit.html.twig", $variables);
+    echo $twig->render('articleEdit.html.twig', $variables);
   }
 
   /**
@@ -211,38 +218,45 @@ class Article extends ControllerBase {
     $article_body = $request->request->get('article-description');
     $article_category = $request->request->get('article-category');
 
-    if (empty($article_title) && empty($article_body) && empty($article_category)) {
-      $variables['message'] = "Enter all the article details!";
-      echo $twig->render("error.html.twig", $variables);
+    if (
+          empty($article_title) &&
+          empty($article_body) &&
+          empty($article_category)
+      ) {
+      $variables['message'] = 'Enter all the article details!';
+      echo $twig->render('error.html.twig', $variables);
       return;
     }
 
     $contact = new ArticleModel();
-    $ans = $contact->editArticleById($id, $article_title, $article_body, $article_category);
+    $ans = $contact->editArticleById(
+          $id,
+          $article_title,
+          $article_body,
+          $article_category
+      );
 
     if (empty($ans) == 1) {
-      $variables['status'] = "true";
-      $variables['message'] = "Article edited successfully!";
+      $variables['status'] = 'true';
+      $variables['message'] = 'Article edited successfully!';
       $variables['role'] = $_SESSION['role'];
-      $variables['title'] = $this->reverie . " | Home";
+      $variables['title'] = $this->reverie . ' | Home';
       $baseUrl = $variables['base_url'];
-      header("Location:" . $baseUrl . "article/{$id}");
-      echo $twig->render("article.html.twig", $variables);
+      header('Location:' . $baseUrl . "article/{$id}");
+      echo $twig->render('article.html.twig', $variables);
       return;
     }
-
   }
 
   /**
    * {@inheritdoc}
    */
   public function search($twig) {
-
     $variables = parent::preprocessPage();
 
     $request = Request::createFromGlobals();
     $uri = $request->getRequestUri();
-    $params = explode("=", $uri);
+    $params = explode('=', $uri);
     $query = $params[1];
 
     if (str_contains($query, '+')) {
@@ -260,14 +274,14 @@ class Article extends ControllerBase {
     $variables['result'] = $result;
     $variables['query'] = $searchQuery;
 
-    if (isset($_SESSION["user_id"])) {
+    if (isset($_SESSION['user_id'])) {
       $variables['username'] = $_SESSION['username'];
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['role'] = $_SESSION['role'];
     }
 
     $variables['len'] = mysqli_num_rows($result);
-    echo $twig->render("searchResults.html.twig", $variables);
+    echo $twig->render('searchResults.html.twig', $variables);
   }
 
 }
