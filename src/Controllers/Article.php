@@ -80,7 +80,7 @@ class Article extends ControllerBase {
       // $variables['message'] = 'Article posted successfully!';
       $msgService = new Container();
       $result = $msgService->yamlService('message.service');
-      $variables['message'] = $result->getMessage();
+      $variables['message'] = $result->getMessage() . 'an article';
       $variables['role'] = $_SESSION['role'];
       $variables['title'] = $this->reverie . ' | Article';
       echo $twig->render('articleForm.html.twig', $variables);

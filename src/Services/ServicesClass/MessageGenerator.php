@@ -12,9 +12,7 @@ class MessageGenerator {
    */
   public function getMessage(): string {
     $messages = [
-      'You did it! You updated the system! Amazing!',
-      'That was one of the coolest updates I\'ve seen all day!',
-      'Great work! Keep going!',
+      'You did it! You Successfully created! ',
     ];
 
     $index = array_rand($messages);
