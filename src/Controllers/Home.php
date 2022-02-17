@@ -33,4 +33,13 @@ class Home extends ControllerBase {
     die;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function noRouteFound($twig) {
+    $variables = parent::preprocesspage();
+    $variables['message'] = "Page Not Found";
+    echo $twig->render('error.html.twig', $variables);
+  }
+
 }
