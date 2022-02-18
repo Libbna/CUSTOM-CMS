@@ -17,15 +17,15 @@ class Article extends ControllerBase {
    * {@inheritdoc}
    */
   public function getContentPage($twig) {
-    if (!isset($_SESSION['loggedin']) and $_SESSION['loggedin'] != TRUE) {
-      $variables['message'] = 'Access Prohibited!';
-      echo $twig->render('error.html.twig', $variables);
+    if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != TRUE) {
+      $variables['message'] = "Access Prohibited!";
+      echo $twig->render("error.html.twig", $variables);
       return;
     }
 
     $variables = parent::preprocesspage();
 
-    if (isset($_SESSION['user_id'])) {
+    if (isset($_SESSION["user_id"])) {
       $variables['username'] = $_SESSION['username'];
       $variables['authenticated_userId'] = $_SESSION['user_id'];
       $variables['role'] = $_SESSION['role'];
