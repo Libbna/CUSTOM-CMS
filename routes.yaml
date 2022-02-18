@@ -135,9 +135,12 @@ demo_service_route:
   path: /demo-service
   defaults: { controller: 'Cms\Controllers\Home::demoFunc' }
 
+page_not_found:
+  path: /page-not-found
+  defaults: { controller: 'Cms\Controllers\Home::noRouteFound' }
+
 category_blogs_route:
   path: /category/{query}
   defaults: { controller: 'Cms\Controllers\Article::fetchCategoryWiseArticles' }
   requirements:
     data: "[a-zA-Z]"
-

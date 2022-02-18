@@ -50,5 +50,11 @@ try {
 
 }
 catch (ResourceNotFoundException $e) {
-  echo $e->getMessage();
+  $code = $e->getCode();
+  if ($code == 0) {
+    header('Location: page-not-found');
+  }
+  else {
+    $e->getMessage();
+  }
 }
