@@ -16,4 +16,33 @@
     .carousel-control-next-icon {
         background-color: #6c6b6b;
     }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        height: fit-content;
+        width: auto;
+        top: 6rem;
+
+        @media only screen and (min-width: 1200px) {
+            top: 14rem;
+        }
+    }
+
+    .carousel-control-prev {
+        left: 0.8rem;
+
+        @media only screen and (min-width: 1200px) {
+            left: 3.5rem;
+        }
+    }
+
+    .carousel-control-next {
+        right: 0.8rem;
+
+        @media only screen and (min-width: 1200px) {
+            right: 3.5rem;
+        }
+
+    }
+
 }

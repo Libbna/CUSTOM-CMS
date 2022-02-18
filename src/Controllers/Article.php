@@ -16,7 +16,6 @@ class Article extends ControllerBase {
    * {@inheritdoc}
    */
   public function getContentPage($twig) {
-
     if (!isset($_SESSION["loggedin"]) and $_SESSION['loggedin'] != TRUE) {
       $variables['message'] = "Access Prohibited!";
       echo $twig->render("error.html.twig", $variables);
@@ -87,9 +86,11 @@ class Article extends ControllerBase {
     $articles = new ArticleModel();
     $result = $articles->fetchAllArticleData();
     $topicResult = $articles->fetchTopicWiseArticles();
+    $categoryList = $articles->fetchCategoryList();
 
     $variables['result'] = $result;
     $variables['topicResult'] = $topicResult;
+    $variables['categoryList'] = $categoryList;
     $variables['title'] = $this->reverie . " | Home";
 
     if (isset($_SESSION["user_id"])) {
@@ -170,7 +171,6 @@ class Article extends ControllerBase {
       echo $twig->render("home.html.twig", $variables);
       return;
     }
-
   }
 
   /**
@@ -230,7 +230,6 @@ class Article extends ControllerBase {
       echo $twig->render("article.html.twig", $variables);
       return;
     }
-
   }
 
   /**
@@ -268,6 +267,23 @@ class Article extends ControllerBase {
 
     $variables['len'] = mysqli_num_rows($result);
     echo $twig->render("searchResults.html.twig", $variables);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function fetchCategoryWiseArticles($twig, $query) {
+    $articles = new ArticleModel();
+    $result = $articles->fetchTopicWiseArticles($query);
+    $emparray = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+      $emparray[] = $row;
+    }
+
+    $response = json_encode($emparray);
+
+    header('Content-type: application/json');
+    echo $response;
   }
 
 }
