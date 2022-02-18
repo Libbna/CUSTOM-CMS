@@ -52,7 +52,7 @@ try {
 catch (ResourceNotFoundException $e) {
   $code = $e->getCode();
   if ($code == 0) {
-    header('Location: /page-not-found');
+    header('Location: page-not-found');
   }
   else {
     $e->getMessage();
