@@ -12,14 +12,13 @@ $("#category__selector").change(function (e) {
         return createHtml(data);
       });
       appendToHtml(newResult);
-
     },
   });
 });
 
 function createHtml(data) {
   htmlString = `				
-  <div>
+  <div class="my-2">
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="${data.image}" alt="Card image cap"/>
 
@@ -43,5 +42,9 @@ function createHtml(data) {
 var div = document.getElementById('category__section3');
 
 function appendToHtml(htmlString){
-  div.innerHTML = htmlString;
+  div.innerHTML ="";
+  htmlString.forEach(element => {
+    div.innerHTML += element;
+
+  });
 }
