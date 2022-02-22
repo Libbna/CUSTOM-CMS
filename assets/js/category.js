@@ -18,7 +18,7 @@ $("#category__selector").change(function (e) {
 
 function createHtml(data) {
   htmlString = `				
-  <div class="my-2">
+  <div class="my-4">
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="${data.image}" alt="Card image cap"/>
 
