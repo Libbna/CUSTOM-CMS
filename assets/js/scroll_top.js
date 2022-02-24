@@ -1,7 +1,7 @@
 var mybutton = document.getElementById("myButton");
 
 window.onscroll = function () {
-  if (document.body.scrollTop > 70 || document.documentElement.scrollTop > 70) {
+  if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
     mybutton.style.display = "block";
   } else {
     mybutton.style.display = "none";
