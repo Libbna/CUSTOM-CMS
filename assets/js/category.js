@@ -27,7 +27,7 @@ function createHtml(data) {
       ${data.title}
       </h5>
       <p class="card-text">
-      ${data.body.replace(/<\/?[^>]+(>|$)/g, "").substr(0, 160) + "..."}
+      ${data.body.replace(/<\/?[^>]+(>|$)/g, "").substr(0, 120) + "..."}
       </p>
       <a href="article/${data.id}" class="btn btn-primary home-read-more">
         Read More
