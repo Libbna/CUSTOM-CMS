@@ -12,14 +12,13 @@ $("#category__selector").change(function (e) {
         return createHtml(data);
       });
       appendToHtml(newResult);
-
     },
   });
 });
 
 function createHtml(data) {
   htmlString = `				
-  <div>
+  <div class="my-4">
   <div class="card" style="width: 18rem;">
     <img class="card-img-top" src="${data.image}" alt="Card image cap"/>
 
@@ -28,7 +27,7 @@ function createHtml(data) {
       ${data.title}
       </h5>
       <p class="card-text">
-      ${data.body.replace(/<\/?[^>]+(>|$)/g, "").substr(0, 160) + "..."}
+      ${data.body.replace(/<\/?[^>]+(>|$)/g, "").substr(0, 120) + "..."}
       </p>
       <a href="article/${data.id}" class="btn btn-primary home-read-more">
         Read More
@@ -43,5 +42,9 @@ function createHtml(data) {
 var div = document.getElementById('category__section3');
 
 function appendToHtml(htmlString){
-  div.innerHTML = htmlString;
+  div.innerHTML ="";
+  htmlString.forEach(element => {
+    div.innerHTML += element;
+
+  });
 }
