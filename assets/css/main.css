@@ -748,6 +748,56 @@ footer {
   background-color: #6c6b6b;
 }
 
+.banner .carousel-control-prev,
+.banner .carousel-control-next {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: auto;
+  top: 6rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  .banner .carousel-control-prev,
+  .banner .carousel-control-next {
+    top: 14rem;
+  }
+}
+
+.banner .carousel-control-prev {
+  left: 0.8rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  .banner .carousel-control-prev {
+    left: 3.5rem;
+  }
+}
+
+.banner .carousel-control-next {
+  right: 0.8rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  .banner .carousel-control-next {
+    right: 3.5rem;
+  }
+}
+
+.myButton {
+  display: none;
+  background-color: #fb885c;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  color: black;
+  z-index: 99;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+
 .region-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
